@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
   if(textArray.length) setTimeout(type, newTextDelay + 250);
 });
 
-// ScrollReveal
+// ScrollReveal Animations
 ScrollReveal({
   reset: true,
   distance: '60px',
@@ -60,7 +60,8 @@ ScrollReveal().reveal('.hero', { delay: 300, origin: 'top' });
 ScrollReveal().reveal('#about', { delay: 400, origin: 'left' });
 ScrollReveal().reveal('#skills', { delay: 500, origin: 'right' });
 ScrollReveal().reveal('#projects', { delay: 600, origin: 'bottom' });
-ScrollReveal().reveal('#contact', { delay: 700, origin: 'top' });
+ScrollReveal().reveal('#achievements', { delay: 700, origin: 'top' });
+ScrollReveal().reveal('#contact', { delay: 800, origin: 'left' });
 
 // ParticlesJS
 particlesJS("particles-js", {
@@ -94,7 +95,7 @@ particlesJS("particles-js", {
   }
 });
 
-// Back to Top
+// Back to Top Button
 const backToTop = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
   if(window.pageYOffset > 100){
@@ -105,4 +106,12 @@ window.addEventListener('scroll', () => {
 });
 backToTop.addEventListener('click', () => {
   window.scrollTo({top: 0, behavior: 'smooth'});
+});
+
+// Contact Form (just dummy for now)
+const contactForm = document.getElementById('contact-form');
+contactForm.addEventListener('submit', function(event){
+  event.preventDefault();
+  alert('Thank you for your message, Priyanka will reach out to you soon!');
+  contactForm.reset();
 });
