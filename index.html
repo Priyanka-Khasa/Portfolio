@@ -2,244 +2,685 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Priyanka | Full Stack Developer</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Priyanka Khasa | Full Stack Developer & AI Enthusiast</title>
+  <meta name="description" content="Priyanka Khasa - Full Stack Developer specializing in MERN stack and AI-based web applications. Passionate about creating innovative digital solutions.">
+  <meta name="keywords" content="Full Stack Developer, MERN Stack, AI Enthusiast, Web Developer, JavaScript, React, Node.js">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <meta name="description" content="Priyanka Khasa - Full Stack Developer specializing in MERN and AI-based Web Applications.">
-  <meta name="keywords" content="Full Stack Developer, MERN, AI Enthusiast, Priyanka Khasa, Web Developer Portfolio">
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="https://unpkg.com/scrollreveal" as="script">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="spinner"></div>
+      <p>Loading Portfolio...</p>
+    </div>
+  </div>
 
-<!-- Particle Background -->
-<div id="particles-js"></div>
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
 
-<!-- Loader -->
-<div id="loader">
-  <div class="spinner"></div>
-</div>
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+    <span class="theme-icon">🌙</span>
+    <span class="theme-text">Night Mode</span>
+  </button>
 
-<!-- Theme Toggle -->
-<button id="theme-toggle" class="theme-toggle">🌙/Night</button>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">Priyanka<span>.</span></a>
+      
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
+          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="nav-toggle" id="nav-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
 
-<!-- Side Navbar -->
-<nav class="navbar">
-  <ul>
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#achievements">Achievements</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- Floating Social Media Icons -->
-<div class="social-icons">
-  <a href="https://linkedin.com/in/priyanka-khasa" target="_blank" title="LinkedIn">
-    <img src="https://img.icons8.com/fluency/48/linkedin.png" alt="LinkedIn">
-  </a>
-  <a href="https://github.com/Priyanka-Khasa" target="_blank" title="GitHub">
-    <img src="https://img.icons8.com/ios-glyphs/48/ffffff/github.png" alt="GitHub">
-  </a>
-</div>
-
-<!-- Back to Top Button -->
-<button id="back-to-top">&#8679;</button>
-
-<section id="hero" class="section hero">
-  <h1>HI,</h1>   <!-- Static constant heading -->
-  <h1>I'm <span class="typewriter-text"></span></h1>  <!-- Dynamic typewriter below -->
-  <p>Full Stack Developer | MERN & AI Enthusiast</p>
-  <p class="slogan">"Turning ideas into beautiful web experiences."</p>
-  <a href="#contact" class="btn">Contact Me</a>
-</section>
-
-
-<!-- About Section -->
-<section id="about" class="section">
-  <h2>About Me</h2>
-  <p>
-    I'm a passionate Full Stack Developer with a deep interest in Artificial Intelligence and Machine Learning.
-    I specialize in building real-world web applications using the MERN stack and AI integrations.
-    Currently pursuing my B.Tech in Electronics and Communication Engineering (8.60 CGPA),  
-    I am constantly working to enhance my skills in Backend, Cloud, and AI-based technologies.
-  </p>
-  <p>
-    I believe in building user-centric solutions, writing clean code, and learning continuously to stay at the forefront of technology.
-    I am highly motivated to contribute to open-source communities and collaborate with like-minded developers.
-  </p>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="section">
-  <h2>Skills</h2>
-  <div class="skills-container">
+  <!-- Hero Section -->
+  <section id="hero" class="section hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>Full Stack Developer</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-greeting">Hello, I'm</span>
+          <span class="hero-name">Priyanka Khasa</span>
+        </h1>
+        <div class="hero-subtitle">
+          <span class="typewriter-text"></span>
+          <span class="typewriter-cursor">|</span>
+        </div>
+        <p class="hero-description">
+          I build exceptional digital experiences with modern technologies, specializing in the MERN stack and AI integrations.
+        </p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">
+            <span>View My Work</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            <span>Get In Touch</span>
+            <i class="fas fa-paper-plane"></i>
+          </a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-avatar">
+          <div class="avatar-placeholder">
+            <i class="fas fa-code"></i>
+          </div>
+          <div class="hero-decoration">
+            <div class="decoration-item"></div>
+            <div class="decoration-item"></div>
+            <div class="decoration-item"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     
-    <h3>Frontend</h3>
-    <div class="skills-logos">
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/color/48/html-5--v1.png" alt="HTML"> HTML
-      </div>
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/color/48/css3.png" alt="CSS"> CSS
-      </div>
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/color/48/javascript--v1.png" alt="JavaScript"> JavaScript
-      </div>
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/color/48/react-native.png" alt="React.js"> React.js
-      </div>
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/color/48/tailwindcss.png" alt="Tailwind CSS"> Tailwind CSS
+    <div class="scroll-indicator">
+      <span>Scroll Down</span>
+      <div class="scroll-arrow">
+        <i class="fas fa-chevron-down"></i>
       </div>
     </div>
+  </section>
 
-    <h3>Backend</h3>
-    <div class="skills-logos">
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/color/48/nodejs.png" alt="Node.js"> Node.js
+  <!-- About Section -->
+  <section id="about" class="section about">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Get to know me better</p>
       </div>
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/color/48/express-js.png" alt="Express.js"> Express.js
-      </div>
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/color/48/mongodb.png" alt="MongoDB"> MongoDB
-      </div>
-      <div class="skill-icon">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL
+      
+      <div class="about-container">
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              I'm a passionate Full Stack Developer with a deep interest in Artificial Intelligence and Machine Learning. 
+              I specialize in building real-world web applications using the MERN stack and AI integrations.
+            </p>
+            <p>
+              Currently pursuing my B.Tech in Electronics and Communication Engineering (8.60 CGPA), I am constantly working 
+              to enhance my skills in Backend, Cloud, and AI-based technologies.
+            </p>
+            <p>
+              I believe in building user-centric solutions, writing clean code, and learning continuously to stay at the 
+              forefront of technology. I am highly motivated to contribute to open-source communities and collaborate with 
+              like-minded developers.
+            </p>
+          </div>
+          
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Projects Completed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">1+</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">8.60</div>
+              <div class="stat-label">CGPA</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-image">
+        <div class="image-container">
+        <img src="./images/img.jpg" alt="Your Photo" class="personal-image">
+        <div class="image-overlay">
+         <i class="fas fa-camera"></i>
+       </div>
+        </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <h3>Tools</h3>
-    <div class="skills-logos">
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/git.png" alt="Git"> Git
+  <!-- Skills Section -->
+  <section id="skills" class="section skills">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">My Skills</h2>
+        <p class="section-subtitle">Technologies I work with</p>
       </div>
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/ios-glyphs/48/ffffff/github.png" alt="GitHub"> GitHub
-      </div>
-      <div class="skill-icon">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C"> C
-      </div>
-      <div class="skill-icon">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"> Java
-      </div>
-      <div class="skill-icon">
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/threejs/threejs-original.svg" alt="Three.js"> Three.js
-      </div>
-      <div class="skill-icon">
-        <img src="https://img.icons8.com/ios/50/artificial-intelligence.png" alt="MediaPipe"> MediaPipe
+      
+      <div class="skills-container">
+        <div class="skills-category">
+          <h3 class="skills-category-title">
+            <i class="fas fa-laptop-code"></i>
+            Frontend Development
+          </h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/color/48/000000/html-5--v1.png" alt="HTML5">
+              </div>
+              <span class="skill-name">HTML5</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="95"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS3">
+              </div>
+              <span class="skill-name">CSS3</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="90"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/color/48/000000/javascript--v1.png" alt="JavaScript">
+              </div>
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="88"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/color/48/000000/react-native.png" alt="React">
+              </div>
+              <span class="skill-name">React.js</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="85"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/color/48/000000/tailwindcss.png" alt="Tailwind CSS">
+              </div>
+              <span class="skill-name">Tailwind CSS</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="80"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills-category">
+          <h3 class="skills-category-title">
+            <i class="fas fa-server"></i>
+            Backend Development
+          </h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="Node.js">
+              </div>
+              <span class="skill-name">Node.js</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="82"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/color/48/000000/express-js.png" alt="Express.js">
+              </div>
+              <span class="skill-name">Express.js</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="80"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/color/48/000000/mongodb.png" alt="MongoDB">
+              </div>
+              <span class="skill-name">MongoDB</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="78"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+              </div>
+              <span class="skill-name">MySQL</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="75"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills-category">
+          <h3 class="skills-category-title">
+            <i class="fas fa-tools"></i>
+            Tools & Others
+          </h3>
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/ios-filled/50/ffffff/git.png" alt="Git">
+              </div>
+              <span class="skill-name">Git</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="90"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://img.icons8.com/ios-glyphs/48/ffffff/github.png" alt="GitHub">
+              </div>
+              <span class="skill-name">GitHub</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="88"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+              </div>
+              <span class="skill-name">C Programming</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="85"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+              </div>
+              <span class="skill-name">Java</span>
+              <div class="skill-bar">
+                <div class="skill-progress" data-level="80"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-  </div>
-</section>
-
-
-<!-- Projects Section -->
-<section id="projects" class="section">
-  <h2>Projects</h2>
-    <div class="projects-grid">
-
-      <div class="project-card">
-    <img src="./images/Wonderlust.png" alt="Wanderlust">
-    <h3>Wanderlust</h3>
-    <p>MERN Stack Travel Stay Booking App</p>
-    <p><strong>Tech:</strong> React, Node.js, MongoDB, Express</p>
-    <a href="https://wanderlust-by34.onrender.com/listings" target="_blank" class="btn">Live Demo</a>
-    <a href="https://github.com/Priyanka-Khasa/Wonderlust" target="_blank" class="btn">GitHub Repo</a>
-  </div>
-
-  <div class="project-card">
-    <img src="./images/ai-fitness-tracker.png" alt="AI Fitness Tracker">
-    <h3>AI Fitness Tracker</h3>
-    <p>Real-Time AI-based Fitness Tracking App</p>
-    <p><strong>Tech:</strong> React, TailwindCSS, Node.js, MediaPipe</p>
-    <a href="https://ai-fitness-tracker.netlify.app" target="_blank" class="btn">Live Demo</a>
-    <a href="https://github.com/Priyanka-Khasa/Fitness-app" target="_blank" class="btn">GitHub Repo</a>
-  </div>
-
-  <div class="project-card">
-    <img src="./images/weather-checker.png" alt="Weather Checker">
-    <h3>Weather Checker</h3>
-    <p>Real-Time Weather Forecasting Application</p>
-    <p><strong>Tech:</strong> HTML, CSS, JavaScript, OpenWeather API</p>
-    <a href="https://github.com/Priyanka-Khasa/Weather-Checker" target="_blank" class="btn">GitHub Repo</a>
-  </div>
-
-  <div class="project-card">
-    <img src="./images/spotify-clone.png" alt="Spotify Clone">
-    <h3>Spotify Clone</h3>
-    <p>Music Streaming UI Replica</p>
-    <p><strong>Tech:</strong> React.js, CSS ,HTML, Bootsrap</p>
-    <a href="https://github.com/Priyanka-Khasa/Spotify-clone1" target="_blank" class="btn">GitHub Repo</a>
-  </div>
-
-  <div class="project-card">
-    <img src="./images/tic-tac-toe.png" alt="Tic Tac Toe">
-    <h3>Tic Tac Toe</h3>
-    <p>Classic Interactive Game</p>
-    <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-    <a href="https://github.com/Priyanka-Khasa/Tic-Tac-Toe" target="_blank" class="btn">GitHub Repo</a>
-  </div>
-
-  <div class="project-card">
-    <img src="./images/stone-paper-sissors.png" alt="Stone Paper Scissors">
-    <h3>Stone Paper Scissors</h3>
-    <p>Fun Game Project</p>
-    <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
-    <a href="https://github.com/Priyanka-Khasa/Small-Project-on-HTML-and-CSS" target="_blank" class="btn">GitHub Repo</a>
+  <!-- Projects Section -->
+  <section id="projects" class="section projects">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">My Projects</h2>
+        <p class="section-subtitle">A showcase of my recent work</p>
+      </div>
+      
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="mern">MERN Stack</button>
+        <button class="filter-btn" data-filter="ai">AI Projects</button>
+        <button class="filter-btn" data-filter="frontend">Frontend</button>
+      </div>
+      
+      <div class="projects-grid">
+        <div class="project-card" data-category="mern">
+          <div class="project-image">
+            <img src="./images/Wonderlust.png" alt="Wanderlust">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://wonderlust-by34.onrender.com/listings" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="https://github.com/Priyanka-Khasa/Wonderlust" target="_blank" class="project-link">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Wanderlust</h3>
+            <p class="project-description">MERN Stack Travel Stay Booking App with user authentication, booking system, and payment integration.</p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MongoDB</span>
+              <span class="tech-tag">Express</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-category="ai">
+          <div class="project-image">
+            <img src="./images/ai-fitness-tracker.png" alt="AI Fitness Tracker">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://ai-fitness-tracker.netlify.app" target="_blank" class="project-link">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a href="https://github.com/Priyanka-Khasa/Fitness-app" target="_blank" class="project-link">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">AI Fitness Tracker</h3>
+            <p class="project-description">Real-Time AI-based Fitness Tracking App using MediaPipe for pose detection and exercise analysis.</p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">TailwindCSS</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">MediaPipe</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-category="frontend">
+          <div class="project-image">
+            <img src="./images/weather-checker.png" alt="Weather Checker">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/Priyanka-Khasa/Weather-Checker" target="_blank" class="project-link">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Weather Checker</h3>
+            <p class="project-description">Real-Time Weather Forecasting Application with location-based weather data and 5-day forecast.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">API</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-category="frontend">
+          <div class="project-image">
+            <img src="./images/spotify-clone.png" alt="Spotify Clone">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/Priyanka-Khasa/Spotify-clone1" target="_blank" class="project-link">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Spotify Clone</h3>
+            <p class="project-description">Music Streaming UI Replica with responsive design, playlist management, and audio controls.</p>
+            <div class="project-tech">
+              <span class="tech-tag">React</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-category="frontend">
+          <div class="project-image">
+            <img src="./images/tic-tac-toe.png" alt="Tic Tac Toe">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/Priyanka-Khasa/Tic-Tac-Toe" target="_blank" class="project-link">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Tic Tac Toe</h3>
+            <p class="project-description">Classic Interactive Game with responsive design, score tracking, and game state management.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card" data-category="frontend">
+          <div class="project-image">
+            <img src="./images/stone-paper-sissors.png" alt="Stone Paper Scissors">
+            <div class="project-overlay">
+              <div class="project-links">
+                <a href="https://github.com/Priyanka-Khasa/Small-Project-on-HTML-and-CSS" target="_blank" class="project-link">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">Stone Paper Scissors</h3>
+            <p class="project-description">Fun Game Project with interactive UI, game logic, and responsive design for all devices.</p>
+            <div class="project-tech">
+              <span class="tech-tag">HTML</span>
+              <span class="tech-tag">CSS</span>
+              <span class="tech-tag">JavaScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- Achievements Section -->
+  <section id="achievements" class="section achievements">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Achievements</h2>
+        <p class="section-subtitle">My accomplishments and milestones</p>
+      </div>
+      
+      <div class="achievements-container">
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-trophy"></i>
+          </div>
+          <h3 class="achievement-title">Projects Completed</h3>
+          <p class="achievement-description">Built 10+ real-world web applications using MERN and AI technologies.</p>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3 class="achievement-title">Academic Excellence</h3>
+          <p class="achievement-description">Secured 8.60 CGPA in B.Tech ECE (First Year).</p>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-code-branch"></i>
+          </div>
+          <h3 class="achievement-title">Open Source Contributor</h3>
+          <p class="achievement-description">Active contributor to open-source and GitHub community.</p>
+        </div>
+        
+        <div class="achievement-card">
+          <div class="achievement-icon">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3 class="achievement-title">Specialization</h3>
+          <p class="achievement-description">Completed Full Stack Development & AI specialization projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Achievements Section -->
-<section id="achievements" class="section">
-  <h2>Achievements</h2>
-  <div class="achievements-content">
-    <ul>
-      <li> Built 10+ real-world web applications using MERN and AI technologies.</li>
-      <li> Secured 8.60 CGPA in B.Tech ECE (First Year).</li>
-      <li> Active contributor to open-source and GitHub community.</li>
-      <li> Completed Full Stack Development & AI specialization projects.</li>
-    </ul>
-  </div>
-</section>
+  <!-- GitHub Section -->
+  <section class="section github">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">GitHub Activity</h2>
+        <p class="section-subtitle">My coding contributions and stats</p>
+      </div>
+      
+      <div class="github-stats">
+        <div class="github-stat">
+          <img src="https://github-readme-streak-stats.herokuapp.com/?user=Priyanka-Khasa&theme=dark" alt="GitHub Streak">
+        </div>
+        <div class="github-stat">
+          <img src="https://github-readme-stats.vercel.app/api?username=Priyanka-Khasa&show_icons=true&theme=dark" alt="GitHub Stats">
+        </div>
+        <div class="github-stat">
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Priyanka-Khasa&layout=compact&theme=dark" alt="Top Languages">
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- GitHub Streak -->
-<section class="section">
-  <h2>GitHub Contributions</h2>
-  <div class="github-streak">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Priyanka-Khasa&theme=dark" alt="GitHub Streak">
-  </div>
-</section>
+  <!-- Contact Section -->
+  <section id="contact" class="section contact">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's work together</p>
+      </div>
+      
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3 class="contact-title">Let's talk about everything!</h3>
+          <p class="contact-description">
+            Feel free to get in touch with me. I'm always open to discussing new projects, 
+            creative ideas or opportunities to be part of your vision.
+          </p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <a href="mailto:priyankakhasa937@gmail.com">priyankakhasa937@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div class="contact-text">
+                <h4>LinkedIn</h4>
+                <a href="https://linkedin.com/in/priyanka-khasa" target="_blank">linkedin.com/in/priyanka-khasa</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <div class="contact-text">
+                <h4>GitHub</h4>
+                <a href="https://github.com/Priyanka-Khasa" target="_blank">github.com/Priyanka-Khasa</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="social-links">
+            <a href="https://linkedin.com/in/priyanka-khasa" target="_blank" class="social-link">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/Priyanka-Khasa" target="_blank" class="social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:priyankakhasa937@gmail.com" class="social-link">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="contact-form-container">
+          <form action="https://formsubmit.co/priyankakhasa937@gmail.com" method="POST" class="contact-form">
+            <input type="hidden" name="_subject" value="New portfolio contact!">
+            <input type="hidden" name="_template" value="table">
+            
+            <div class="form-group">
+              <input type="text" name="name" id="name" required>
+              <label for="name">Your Name</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="email" name="email" id="email" required>
+              <label for="email">Your Email</label>
+            </div>
+            
+            <div class="form-group">
+              <input type="text" name="subject" id="subject" required>
+              <label for="subject">Subject</label>
+            </div>
+            
+            <div class="form-group">
+              <textarea name="message" id="message" rows="5" required></textarea>
+              <label for="message">Your Message</label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="resume-download">
+        <a href="https://drive.google.com/uc?export=download&id=12nFl4d8jqQor7WHHLaHvEKyqXzxX-gix" class="btn btn-outline">
+          <i class="fas fa-download"></i>
+          <span>Download Resume</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-<!-- Contact Section -->
-<section id="contact" class="section">
-  <h2>Contact</h2>
-  <form action="https://formsubmit.co/priyankakhasa937@gmail.com" method="POST" class="contact-form">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" required></textarea>
-    <button type="submit" class="btn">Send Message</button>
-  </form>
-  <p>Email: <a href="mailto:priyankakhasa937@gmail.com">priyankakhasa937@gmail.com</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/priyanka-khasa" target="_blank">linkedin.com/in/priyanka-khasa</a></p>
-  <p>GitHub: <a href="https://github.com/Priyanka-Khasa" target="_blank">github.com/Priyanka-Khasa</a></p>
-  <a href="https://drive.google.com/uc?export=download&id=12nFl4d8jqQor7WHHLaHvEKyqXzxX-gix" class="btn">Download Resume</a>
-</section>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-text">
+          <p>&copy; 2025 Priyanka Khasa. All rights reserved.</p>
+          <p>Made with <i class="fas fa-heart"></i> and lots of <i class="fas fa-coffee"></i></p>
+        </div>
+        
+        <div class="footer-links">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-<!-- Footer -->
-<footer>
-  <p>Made with ❤️ by Priyanka Khasa © 2025</p>
-</footer>
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-<!-- Scripts -->
-<script src="https://unpkg.com/scrollreveal"></script>
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="script.js"></script>
-
+  <!-- Scripts -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
