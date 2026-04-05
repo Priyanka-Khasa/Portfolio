@@ -6,17 +6,26 @@ document.addEventListener('DOMContentLoaded', function() {
 // ===== PORTFOLIO INITIALIZATION =====
 function initializePortfolio() {
   initializePreloader();
+  initializeCopyRefresh();
+  initializeParticles();
   initializeTheme();
   initializeNavigation();
   initializeTypewriter();
   initializeScrollReveal();
-  initializeParticles();
   initializeBackToTop();
   initializeSkillBars();
   initializeProjectFilter();
   initializeContactForm();
   initializeScrollAnimations();
   initializePerformanceOptimizations();
+}
+
+function initializeCopyRefresh() {
+  const heroGreeting = document.querySelector('.hero-greeting');
+
+  if (heroGreeting) {
+    heroGreeting.textContent = 'Full Stack Developer / Android Builder / AI Systems Creator';
+  }
 }
 
 // ===== PRELOADER =====
@@ -71,12 +80,34 @@ function initializeTheme() {
   // Check for saved theme preference or default to dark
   const savedTheme = localStorage.getItem('portfolio-theme') || 'dark';
   setTheme(savedTheme);
+  syncThemeButton();
+  syncParticlePalette();
   
   themeToggle.addEventListener('click', function() {
     const currentTheme = document.body.classList.contains('light-theme') ? 'light' : 'dark';
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     setTheme(newTheme);
+    syncThemeButton();
+    syncParticlePalette();
   });
+
+  function syncThemeButton() {
+    const isLightTheme = document.body.classList.contains('light-theme');
+    themeIcon.innerHTML = isLightTheme
+      ? '<i class="fas fa-sun"></i>'
+      : '<i class="fas fa-moon"></i>';
+    themeText.textContent = isLightTheme ? 'Light Mode' : 'Dark Mode';
+  }
+
+  function syncParticlePalette() {
+    if (window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS) {
+      const pJS = window.pJSDom[0].pJS;
+      const isLightTheme = document.body.classList.contains('light-theme');
+      pJS.particles.color.value = isLightTheme ? '#ff7a59' : '#ffd166';
+      pJS.particles.line_linked.color = isLightTheme ? '#ff7a59' : '#58e1c1';
+      pJS.fn.particlesRefresh();
+    }
+  }
   
   function setTheme(theme) {
     if (theme === 'light') {
@@ -208,11 +239,11 @@ function initializeTypewriter() {
   const cursorSpan = document.querySelector(".typewriter-cursor");
   
   const textArray = [
-    "Full Stack Developer",
-    "MERN Stack Specialist", 
-    "AI Enthusiast",
-    "Problem Solver",
-    "Continuous Learner"
+    "Building intelligent digital products",
+    "Designing full stack experiences",
+    "Crafting AI-powered interactions",
+    "Shipping Android-first ideas",
+    "Turning concepts into real products"
   ];
   
   const typingDelay = 80;
@@ -307,14 +338,14 @@ function initializeParticles() {
     particlesJS('particles-js', {
       particles: {
         number: {
-          value: 80,
+          value: 56,
           density: {
             enable: true,
             value_area: 800
           }
         },
         color: {
-          value: '#ff4c75'
+          value: '#ffd166'
         },
         shape: {
           type: 'circle',
@@ -324,7 +355,7 @@ function initializeParticles() {
           }
         },
         opacity: {
-          value: 0.5,
+          value: 0.35,
           random: true,
           anim: {
             enable: true,
@@ -334,7 +365,7 @@ function initializeParticles() {
           }
         },
         size: {
-          value: 3,
+          value: 2.4,
           random: true,
           anim: {
             enable: true,
@@ -345,14 +376,14 @@ function initializeParticles() {
         },
         line_linked: {
           enable: true,
-          distance: 150,
-          color: '#ff4c75',
-          opacity: 0.4,
+          distance: 130,
+          color: '#58e1c1',
+          opacity: 0.28,
           width: 1
         },
         move: {
           enable: true,
-          speed: 2,
+          speed: 1.4,
           direction: 'none',
           random: true,
           straight: false,
@@ -380,9 +411,9 @@ function initializeParticles() {
         },
         modes: {
           grab: {
-            distance: 140,
+            distance: 120,
             line_linked: {
-              opacity: 1
+              opacity: 0.6
             }
           },
           push: {
