@@ -2835,6 +2835,7 @@ function CameraRig({ activePlace }) {
   const controlsRef = useRef();
   const isOrbiting = useRef(false);
   const isSettling = useRef(true);
+  const isMobile = useRef(typeof window !== "undefined" ? window.innerWidth <= 860 : false);
   const homeView = cameraViews.home;
   const player = useRef(new THREE.Vector3(
     placeById.home.position[0] + homeView.targetOffset[0],
@@ -2858,9 +2859,15 @@ function CameraRig({ activePlace }) {
     };
     window.addEventListener("keydown", down);
     window.addEventListener("keyup", up);
+    const resize = () => {
+      isMobile.current = window.innerWidth <= 860;
+      isSettling.current = true;
+    };
+    window.addEventListener("resize", resize);
     return () => {
       window.removeEventListener("keydown", down);
       window.removeEventListener("keyup", up);
+      window.removeEventListener("resize", resize);
     };
   }, []);
 
@@ -2891,22 +2898,23 @@ function CameraRig({ activePlace }) {
 
     const zoomOff = zoom.current;
     const view = !walking ? cameraViews[activePlace] : null;
+    const mobileView = isMobile.current;
     const desired = view
       ? new THREE.Vector3(
-          place.position[0] + view.cameraOffset[0] + zoomOff,
-          view.cameraOffset[1] + zoomOff * 0.45,
-          place.position[2] + view.cameraOffset[2] + zoomOff
+          place.position[0] + view.cameraOffset[0] * (mobileView ? 1.18 : 1) + zoomOff,
+          view.cameraOffset[1] + (mobileView ? 4.4 : 0) + zoomOff * 0.45,
+          place.position[2] + view.cameraOffset[2] * (mobileView ? 1.28 : 1) + (mobileView ? 5.5 : 0) + zoomOff
         )
       : new THREE.Vector3(
           player.current.x + 8 + zoomOff,
-          7.5 + zoomOff * 0.5,
-          player.current.z + 12 + zoomOff
+          7.5 + (mobileView ? 3.4 : 0) + zoomOff * 0.5,
+          player.current.z + 12 + (mobileView ? 5 : 0) + zoomOff
         );
     const focus = walking
       ? new THREE.Vector3(player.current.x, 2, player.current.z - 6)
       : new THREE.Vector3(
           place.position[0] + (view?.focusOffset[0] ?? 0),
-          view?.focusOffset[1] ?? 2.5,
+          (view?.focusOffset[1] ?? 2.5) + (mobileView ? 0.8 : 0),
           place.position[2] + (view?.focusOffset[2] ?? 0)
         );
 
@@ -2932,10 +2940,10 @@ function CameraRig({ activePlace }) {
       dampingFactor={0.075}
       enablePan={false}
       minDistance={8}
-      maxDistance={42}
+      maxDistance={isMobile.current ? 58 : 42}
       minPolarAngle={0.18}
-      maxPolarAngle={Math.PI * 0.46}
-      rotateSpeed={0.55}
+      maxPolarAngle={isMobile.current ? Math.PI * 0.42 : Math.PI * 0.46}
+      rotateSpeed={isMobile.current ? 0.42 : 0.55}
       zoomSpeed={0.75}
       onStart={() => {
         isOrbiting.current = true;

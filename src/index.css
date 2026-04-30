@@ -879,21 +879,117 @@ textarea:focus-visible {
     overflow: auto;
   }
 
+  body {
+    background:
+      linear-gradient(180deg, rgba(6, 17, 25, 0) 0 48svh, #07131d 48svh 100%),
+      radial-gradient(circle at 50% 16%, rgba(255, 211, 122, 0.2), transparent 32%),
+      linear-gradient(120deg, #07121a 0%, #0f1d27 54%, #06241f 100%);
+  }
+
   .app-shell {
     min-height: 100vh;
     height: auto;
-    padding: 132px 16px 160px;
+    overflow: visible;
+    padding: calc(52svh + 12px) 12px 132px;
   }
 
-  .village-canvas,
+  .village-canvas {
+    position: fixed;
+    inset: 0 0 auto;
+    width: 100vw;
+    height: 52svh;
+    pointer-events: auto;
+  }
+
   .scene-grade {
-    inset: 0;
+    position: fixed;
+    inset: 0 0 auto;
+    height: 52svh;
+    background:
+      radial-gradient(circle at 50% 40%, transparent 0 48%, rgba(3, 9, 14, 0.08) 68%, rgba(3, 9, 14, 0.22) 100%),
+      linear-gradient(180deg, rgba(4, 10, 16, 0.08), rgba(4, 10, 16, 0.18));
+  }
+
+  .night-ui .scene-grade {
+    background:
+      radial-gradient(circle at 50% 40%, transparent 0 46%, rgba(3, 8, 18, 0.1) 68%, rgba(3, 8, 18, 0.3) 100%),
+      linear-gradient(180deg, rgba(4, 9, 22, 0.08), rgba(4, 9, 22, 0.24));
   }
 
   .top-bar {
-    left: 12px;
-    right: 12px;
-    top: 12px;
+    left: 10px;
+    right: 10px;
+    top: 10px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+    min-height: 58px;
+    padding: 7px;
+    border-radius: 8px;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.18), transparent 42%),
+      rgba(6, 16, 24, 0.56);
+    backdrop-filter: blur(20px) saturate(1.45);
+    -webkit-backdrop-filter: blur(20px) saturate(1.45);
+  }
+
+  .brand {
+    gap: 9px;
+    padding: 3px 5px 3px 3px;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    font-size: 0.82rem;
+  }
+
+  .brand strong {
+    font-size: 0.92rem;
+  }
+
+  .brand small {
+    max-width: 33vw;
+    font-size: 0.68rem;
+    line-height: 1.18;
+    white-space: normal;
+  }
+
+  .control-strip {
+    align-self: center;
+    gap: 5px;
+  }
+
+  .control-strip button {
+    min-height: 34px;
+    padding-inline: 8px;
+    font-size: 0.72rem;
+  }
+
+  .control-strip button:first-child {
+    min-width: 42px;
+  }
+
+  .section-tabs {
+    order: 3;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .section-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .section-tabs button {
+    flex: 0 0 auto;
+    min-height: 32px;
+    padding-inline: 10px;
+    font-size: 0.74rem;
   }
 
   .hero-panel,
@@ -905,102 +1001,261 @@ textarea:focus-visible {
     bottom: auto;
     width: 100%;
     max-height: none;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
+    border-color: rgba(255, 255, 255, 0.18);
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 0.16), transparent 38%),
+      linear-gradient(160deg, color-mix(in srgb, var(--active-color) 7%, rgba(8, 18, 28, 0.88)), rgba(5, 13, 20, 0.82));
+    box-shadow: 0 24px 60px -28px rgba(0, 0, 0, 0.72), var(--inner-light);
   }
 
   .hero-panel::after {
-    width: 58px;
-    height: 58px;
-    right: 18px;
-    top: 18px;
+    width: 52px;
+    height: 52px;
+    right: 14px;
+    top: 14px;
+    opacity: 0.18;
   }
 
   .hero-panel h1 {
     max-width: none;
-    font-size: clamp(2.8rem, 15vw, 4.2rem);
+    font-size: clamp(2.55rem, 13vw, 4rem);
+  }
+
+  .hero-panel > p {
+    max-width: none;
+  }
+
+  .hero-badges {
+    gap: 6px;
+  }
+
+  .hero-actions {
+    gap: 8px;
+  }
+
+  .hero-actions > button {
+    flex: 1 1 130px;
+  }
+
+  .stat-row {
+    grid-template-columns: repeat(4, minmax(78px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .stat-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stat-row article {
+    min-height: 66px;
+    padding: 11px;
+  }
+
+  .stat-row strong {
+    font-size: 1.16rem;
+  }
+
+  .stat-row span {
+    font-size: 0.68rem;
   }
 
   .wayfinder {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
+    position: fixed;
+    left: 10px;
+    right: 10px;
+    top: calc(52svh - 82px);
+    bottom: auto;
     width: auto;
+    z-index: 6;
+    padding: 8px;
+    background:
+      linear-gradient(120deg, color-mix(in srgb, var(--active-color) 14%, transparent), transparent 58%),
+      rgba(6, 16, 24, 0.58);
+    backdrop-filter: blur(18px) saturate(1.4);
+    -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  }
+
+  .wayfinder-head {
+    display: none;
+  }
+
+  .wayfinder-route {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .wayfinder-route::-webkit-scrollbar {
+    display: none;
+  }
+
+  .wayfinder button,
+  .wayfinder button:hover,
+  .wayfinder button:focus-visible,
+  .wayfinder button.active {
+    grid-template-rows: 24px;
+    flex: 0 0 42px;
+    min-height: 42px;
+    padding: 6px;
+    transform: none;
+  }
+
+  .route-index {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+  }
+
+  .route-copy {
+    display: none;
   }
 
   .toast {
-    bottom: 154px;
+    bottom: 16px;
+    width: min(420px, calc(100vw - 24px));
+    padding: 10px 12px;
+    font-size: 0.78rem;
   }
 }
 
 @media (max-width: 620px) {
   .app-shell {
-    padding: 172px 14px 150px;
+    padding: calc(50svh + 10px) 10px 116px;
+  }
+
+  .village-canvas,
+  .scene-grade {
+    height: 50svh;
   }
 
   .top-bar {
-    grid-template-columns: 1fr;
-  }
-
-  .control-strip {
-    justify-content: flex-start;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
 
   .brand small {
-    white-space: normal;
+    display: none;
   }
 
   .hero-panel,
   .detail-panel {
-    padding: 20px;
+    padding: 16px;
   }
 
-  .stat-row,
+  .eyebrow,
+  .panel-kicker {
+    margin-bottom: 8px;
+    font-size: 0.66rem;
+  }
+
+  .hero-panel h1 {
+    font-size: clamp(2.35rem, 12vw, 3.4rem);
+    line-height: 0.92;
+  }
+
+  .hero-panel p,
+  .detail-panel > p,
+  .panel-item {
+    font-size: 0.88rem;
+    line-height: 1.52;
+  }
+
+  .hero-badges {
+    margin-top: 12px;
+  }
+
+  .hero-actions,
+  .panel-links {
+    margin-top: 16px;
+  }
+
+  .primary-action,
+  .ghost-action,
+  .panel-links a {
+    min-height: 36px;
+  }
+
+  .detail-panel h2 {
+    margin-bottom: 10px;
+    font-size: clamp(1.45rem, 8vw, 2.1rem);
+  }
+
+  .panel-grid,
+  .project-stack,
   .skill-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 14px;
+  }
+
+  .panel-item,
+  .skill-list article {
+    padding: 11px 12px;
+  }
+
+  .skill-list {
+    grid-template-columns: 1fr;
   }
 
   .project-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: 92px 1fr;
+    gap: 10px;
+    padding: 9px;
   }
 
   .project-card img,
   .project-thumb {
-    height: 170px;
+    height: 92px;
+    border-radius: 6px;
   }
 
-  .hero-badges span {
-    font-size: 0.72rem;
+  .project-card h3 {
+    margin: 3px 0 4px;
+    font-size: 0.96rem;
+  }
+
+  .project-card p {
+    font-size: 0.76rem;
+    line-height: 1.35;
+  }
+
+  .chip-row {
+    gap: 5px;
+    margin-top: 7px;
+  }
+
+  .chip-row small {
+    padding: 4px 6px;
+    font-size: 0.62rem;
+  }
+
+  .project-links {
+    margin-top: 8px;
+  }
+
+  .project-links a {
     min-height: 28px;
+    font-size: 0.68rem;
   }
 
   .wayfinder {
-    padding: 10px;
+    top: calc(50svh - 72px);
+    padding: 7px;
   }
 
-  .wayfinder-route {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .wayfinder button {
-    min-height: 42px;
-  }
-
+  .wayfinder button,
   .wayfinder button:hover,
   .wayfinder button:focus-visible,
   .wayfinder button.active {
-    min-height: 76px;
+    flex-basis: 38px;
+    min-height: 38px;
   }
 
-  .toast {
-    bottom: 144px;
-  }
-
-  .section-tabs button,
-  .control-strip button,
-  .primary-action,
-  .ghost-action,
-  .panel-links a {
-    padding-inline: 11px;
-    font-size: 0.82rem;
+  .route-index {
+    width: 22px;
+    height: 22px;
+    font-size: 0.66rem;
   }
 }
