@@ -1,0 +1,84 @@
+.loading-header {
+  position: fixed; width: var(--cWidth); max-width: var(--cMaxWidth); top: 0;
+  z-index: 99999; left: 50%; transform: translateX(-50%);
+  display: flex; justify-content: space-between; padding: 20px 0px;
+}
+.loader-title { font-size: 16px; font-weight: 700; letter-spacing: 0.2px; }
+.loading-screen {
+  position: fixed; width: 100vw; height: 100vh; background-color: var(--backgroundColor);
+  display: flex; align-items: center; justify-content: center; z-index: 99998;
+  flex-direction: column; pointer-events: auto;
+}
+.loading-button {
+  width: 250px; height: 250px; border-radius: 50%; background: #1a1a1a;
+  border: 3px solid rgba(255, 255, 255, 0.1); position: relative;
+  display: flex; align-items: center; justify-content: center; cursor: pointer;
+  transition: 0.5s;
+}
+.loading-complete {
+  background: var(--accentColor) !important;
+  border-color: var(--accentColor) !important;
+  box-shadow: 0px 0px 50px 20px rgba(194, 164, 255, 0.35);
+  animation: loadingPulse 1s ease-in-out infinite;
+}
+@keyframes loadingPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+.loading-container { overflow: hidden; border-radius: 50%; }
+.loading-content { padding: 20px 50px; transition: 0.5s; }
+.loading-content-in { font-size: 22px; font-weight: 300; white-space: nowrap; }
+.loading-content-in span { font-weight: 600; color: var(--accentColor); }
+.loading-complete .loading-content-in span { color: #000; }
+.loading-complete .loading-content { transform: translateY(-100%); }
+.loading-content2 { position: absolute; top: 100%; transition: 0.5s; padding: 10px 30px; display: flex; align-items: center; justify-content: center; }
+.loading-complete .loading-content2 { top: 50%; transform: translateY(-50%); }
+.loading-content2 span { font-size: 22px; font-weight: 600; }
+.loading-complete .loading-content2 span { color: #000; }
+.loading-wrap {
+  position: relative; width: 250px; height: 250px;
+  --mouse-x: 50%; --mouse-y: 50%;
+}
+.loading-hover {
+  position: absolute; width: 350px; height: 350px; border-radius: 50%;
+  left: 50%; top: 50%; transform: translate(-50%, -50%);
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(194, 164, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none; z-index: -1;
+}
+.loading-box {
+  position: absolute; width: 280px; height: 280px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.05); left: 50%; top: 50%;
+  transform: translate(-50%, -50%); animation: rotate3d 8s linear infinite;
+}
+@keyframes rotate3d {
+  0% { transform: translate(-50%, -50%) rotateZ(0deg); }
+  100% { transform: translate(-50%, -50%) rotateZ(360deg); }
+}
+.loading-complete .loading-box { opacity: 0; }
+.loading-marquee {
+  position: absolute; bottom: 10%; width: 100%; font-size: 14px;
+  color: rgba(255, 255, 255, 0.4); letter-spacing: 4px; text-transform: uppercase;
+}
+.loading-marquee span { padding: 0 30px; }
+.loading-clicked { animation: loadingOut 0.8s forwards ease-in-out; }
+@keyframes loadingOut {
+  0% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0); }
+}
+
+/* loaderGame */
+.loaderGame { display: flex; align-items: center; justify-content: center; position: relative; transition: 0.5s; }
+.loaderGame-container { display: flex; position: relative; }
+.loader-out { opacity: 0; transform: translateY(-20px); }
+.loaderGame-in { display: flex; gap: 2px; }
+.loaderGame-line { width: 3px; height: 20px; background-color: rgba(255, 255, 255, 0.2); border-radius: 3px; animation: loaderGameAnim 0.8s ease-in-out infinite; }
+.loaderGame-line:nth-child(odd) { animation-delay: 0.2s; }
+@keyframes loaderGameAnim {
+  0%, 100% { height: 10px; opacity: 0.3; }
+  50% { height: 22px; opacity: 1; background-color: var(--accentColor); }
+}
+.loaderGame-ball { width: 10px; height: 10px; background-color: var(--accentColor); border-radius: 50%; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); animation: loaderBall 0.6s ease-in-out infinite alternate; box-shadow: 0 0 10px var(--accentColor); }
+@keyframes loaderBall {
+  0% { transform: translate(-50%, -50%) scale(0.8); }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
+}
