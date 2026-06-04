@@ -1,0 +1,4 @@
+.hover-link { overflow: hidden; position: relative; }
+.hover-in { display: flex; flex-direction: column; transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1); }
+.hover-in > div { position: absolute; top: 100%; color: var(--accentColor); }
+.hover-link:hover .hover-in { transform: translateY(-100%); }
