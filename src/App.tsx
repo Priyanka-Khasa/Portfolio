@@ -2,7 +2,6 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 
-const GirlCharacter = lazy(() => import("./components/Character"));
 const MainContainer = lazy(() => import("./components/MainContainer"));
 const MyWorks = lazy(() => import("./pages/MyWorks"));
 import { LoadingProvider } from "./context/LoadingProvider";
@@ -16,11 +15,7 @@ const App = () => {
           element={
             <LoadingProvider>
               <Suspense>
-                <MainContainer>
-                  <Suspense>
-                    <GirlCharacter />
-                  </Suspense>
-                </MainContainer>
+                <MainContainer />
               </Suspense>
             </LoadingProvider>
           }

@@ -6,7 +6,7 @@
   font-style: normal;
   line-height: 1.5;
   color-scheme: dark;
-  color: #e2e8f0;
+  color: #f0ece4;
   background-color: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,15 +15,24 @@
   user-select: none;
   -webkit-user-select: none;
 
-  --bg: #07091a;
-  --bg2: #0c0e20;
-  --accentColor: #b794f4;
-  --accentTeal: #63f5e0;
-  --accentPink: #f687b3;
-  --accentAmber: #fbbf24;
-  --textMuted: rgba(226, 232, 240, 0.55);
-  --border: rgba(226, 232, 240, 0.08);
-  --borderAccent: rgba(183, 148, 244, 0.25);
+  /* ── REFINED WARM-DARK PALETTE ── */
+  --bg:          #0d0b08;   /* warm near-black */
+  --bg2:         #141109;   /* slightly lighter warm dark */
+  --bg3:         #1c1812;   /* card/panel background */
+
+  /* Primary accent: golden amber */
+  --accentColor:   #e8b96a;   /* warm gold — replaces purple */
+  /* Secondary accent: soft rose */
+  --accentRose:    #e8748a;   /* muted rose — replaces pink */
+  /* Tertiary: sage/mint */
+  --accentSage:    #7ecbaa;   /* sage green — replaces teal */
+  /* Highlight: cream */
+  --accentCream:   #f5ead4;   /* warm cream */
+
+  --textPrimary:  #f0ece4;
+  --textMuted:    rgba(240, 236, 228, 0.5);
+  --border:       rgba(232, 185, 106, 0.1);
+  --borderAccent: rgba(232, 185, 106, 0.3);
   --vh: 100svh;
 }
 
@@ -53,7 +62,7 @@ h1, h2, h3, h4, h5, h6 { font-family: "Geist", sans-serif; }
   .container-main { position: static !important; height: auto !important; }
 }
 
-@media screen and (min-width: 500px) { body { --cWidth: 92%; } }
+@media screen and (min-width: 500px)  { body { --cWidth: 92%; } }
 @media screen and (min-width: 1200px) { body { --cWidth: 88%; } }
 
 a { color: inherit; text-decoration: none; }
@@ -65,8 +74,8 @@ main { opacity: 0; }
 }
 @keyframes fadeInMain {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 
 .split-line { overflow: hidden; display: block; }
-.split-h2 { overflow: hidden; display: flex; white-space: nowrap; flex-wrap: nowrap; }
+.split-h2   { overflow: hidden; display: flex; white-space: nowrap; flex-wrap: nowrap; }
