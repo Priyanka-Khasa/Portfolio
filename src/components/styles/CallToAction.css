@@ -1,12 +1,51 @@
-.cta-section { width: 100%; padding: 80px 20px; background-color: var(--backgroundColor); display: flex; justify-content: center; align-items: center; }
-.cta-buttons { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
-.cta-btn { display: inline-flex; align-items: center; padding: 14px 32px; font-size: 15px; font-weight: 500; text-decoration: none; border-radius: 8px; transition: all 0.3s ease; letter-spacing: 0.3px; }
-.cta-btn-play { background: rgba(255, 255, 255, 0.08); color: #fff; border: 1px solid rgba(255, 255, 255, 0.15); }
-.cta-btn-play:hover { background: rgba(255, 255, 255, 0.12); box-shadow: 0 8px 30px rgba(255, 255, 255, 0.1); transform: translateY(-2px); color: #fff; }
-.cta-btn-hire { background: var(--accentColor); color: #000; border: 1px solid var(--accentColor); }
-.cta-btn-hire:hover { box-shadow: 0 8px 30px rgba(194, 164, 255, 0.35); transform: translateY(-2px); color: #000; }
-@media only screen and (max-width: 768px) {
-  .cta-section { padding: 60px 20px; }
-  .cta-buttons { flex-direction: column; gap: 15px; }
-  .cta-btn { justify-content: center; padding: 12px 28px; }
+.cta-section {
+  padding: 60px 0;
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.cta-btn-play {
+  background: rgba(255,255,255,0.05);
+  color: #e2e8f0;
+  border: 1px solid var(--border);
+}
+.cta-btn-play:hover {
+  background: rgba(255,255,255,0.09);
+  transform: translateY(-2px);
+  color: #e2e8f0;
+  border-color: rgba(255,255,255,0.15);
+}
+
+.cta-btn-hire {
+  background: var(--accentColor);
+  color: #07091a;
+  border: 1px solid var(--accentColor);
+}
+.cta-btn-hire:hover {
+  box-shadow: 0 8px 28px rgba(183,148,244,0.4);
+  transform: translateY(-2px);
+  color: #07091a;
 }
