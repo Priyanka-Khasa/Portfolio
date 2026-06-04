@@ -1,124 +1,123 @@
-.girl-character-wrap {
+.character-model {
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+  bottom: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.character-model::after {
+  content: "";
   position: absolute;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 260px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(to top, var(--bg) 40%, transparent);
+  z-index: 3;
   pointer-events: none;
 }
 
+.char-glow-base {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, rgba(99, 245, 224, 0.06) 50%, transparent 70%);
+  filter: blur(20px);
+  z-index: 0;
+  animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.08); }
+}
+
 .girl-svg {
+  position: relative;
+  z-index: 2;
   width: auto;
-  height: 90%;
+  height: 85vh;
   max-height: 700px;
-  animation: girlFloat 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 30px rgba(194, 164, 255, 0.35));
-  transform-origin: center bottom;
+  animation: girlFloat 5s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(183, 148, 244, 0.25));
 }
 
 @keyframes girlFloat {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-18px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  30% { transform: translateY(-14px); }
+  60% { transform: translateY(-8px); }
 }
 
-/* Hair left sway */
+/* Head group smooth transition */
+.char-head-group {
+  transition: transform 0.12s ease-out;
+}
+
+/* Hair animations */
 .hair-left {
-  animation: hairSwayLeft 3.5s ease-in-out infinite;
-  transform-origin: top center;
+  transform-origin: 124px 155px;
+  animation: hairLeft 5s ease-in-out infinite;
 }
-.hair-flow-left {
-  animation: hairSwayLeft 3.5s ease-in-out infinite 0.2s;
-}
-
-@keyframes hairSwayLeft {
-  0%, 100% { transform: rotate(0deg); }
-  40% { transform: rotate(-3deg); }
-  70% { transform: rotate(1.5deg); }
-}
-
-/* Hair right sway */
 .hair-right {
-  animation: hairSwayRight 3.5s ease-in-out infinite 0.4s;
-  transform-origin: top center;
-}
-.hair-flow-right {
-  animation: hairSwayRight 3.5s ease-in-out infinite 0.6s;
+  transform-origin: 256px 155px;
+  animation: hairRight 5s ease-in-out infinite 0.5s;
 }
 
-@keyframes hairSwayRight {
+@keyframes hairLeft {
   0%, 100% { transform: rotate(0deg); }
-  40% { transform: rotate(3deg); }
-  70% { transform: rotate(-1.5deg); }
+  30% { transform: rotate(-2.5deg); }
+  70% { transform: rotate(1.2deg); }
+}
+@keyframes hairRight {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(2.5deg); }
+  70% { transform: rotate(-1.2deg); }
 }
 
-/* Cursor blink on laptop screen */
+/* Laptop cursor blink */
 .cursor-blink {
-  animation: blink 1.2s step-end infinite;
+  animation: blink 1.1s step-end infinite;
 }
-
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
 
 /* Floating particles */
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--accentColor);
-  opacity: 0;
-  animation: particleFloat 6s ease-in-out infinite;
+.p1 { animation: floatParticle 6s ease-in-out infinite; }
+.p2 { animation: floatParticle 7.5s ease-in-out infinite 1.5s; }
+.p3 { animation: floatParticle 5.5s ease-in-out infinite 3s; }
+.p4 { animation: floatParticle 8s ease-in-out infinite 0.8s; }
+.p5 { animation: floatParticle 6.5s ease-in-out infinite 2s; }
+.p6 { animation: floatParticle 7s ease-in-out infinite 4s; }
+
+@keyframes floatParticle {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.7; }
+  50% { transform: translateY(-30px) scale(1.3); opacity: 0.3; }
 }
 
-.particle-1 {
-  width: 6px; height: 6px;
-  left: 30%; top: 60%;
-  animation-delay: 0s;
-  animation-duration: 5.5s;
-}
-.particle-2 {
-  width: 4px; height: 4px;
-  left: 65%; top: 55%;
-  animation-delay: 1.2s;
-  animation-duration: 6.5s;
-}
-.particle-3 {
-  width: 5px; height: 5px;
-  left: 20%; top: 40%;
-  animation-delay: 2.4s;
-  animation-duration: 7s;
-}
-.particle-4 {
-  width: 3px; height: 3px;
-  left: 75%; top: 45%;
-  animation-delay: 0.8s;
-  animation-duration: 5s;
-}
-.particle-5 {
-  width: 6px; height: 6px;
-  left: 50%; top: 75%;
-  animation-delay: 3s;
-  animation-duration: 6s;
+/* Code text floats */
+.code-float-1 { animation: codeFloat 8s ease-in-out infinite; }
+.code-float-2 { animation: codeFloat 9s ease-in-out infinite 2s; }
+.code-float-3 { animation: codeFloat 7s ease-in-out infinite 4s; }
+
+@keyframes codeFloat {
+  0%, 100% { transform: translateY(0); opacity: 0.45; }
+  50% { transform: translateY(-20px); opacity: 0.15; }
 }
 
-@keyframes particleFloat {
-  0% {
-    opacity: 0;
-    transform: translateY(0) scale(0.5);
-  }
-  20% {
-    opacity: 0.7;
-  }
-  80% {
-    opacity: 0.4;
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-80px) scale(1.2);
-  }
+/* Mobile - hide character model */
+@media only screen and (max-width: 768px) {
+  .character-model { display: none !important; }
 }
