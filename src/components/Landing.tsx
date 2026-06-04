@@ -3,80 +3,110 @@ import "./styles/Landing.css";
 
 const Landing = ({ children }: PropsWithChildren) => {
   return (
-    <>
-      <div className="landing-section" id="landingDiv">
-        <div className="landing-container">
-          <div className="landing-intro">
-            <h2>Hello! I'm</h2>
-            <h1>
-              PRIYANKA
-              <br />
-              <span>KHASA</span>
-            </h1>
-          </div>
-          <div className="landing-info">
-            <h3>A</h3>
-            <h2 className="landing-info-h2">
-              <div className="landing-h2-1">Full Stack Developer</div>
-            </h2>
-            <h2>
-              <div className="landing-h2-info">Android &amp; AI Builder</div>
-            </h2>
-          </div>
-          <div className="mobile-photo">
-            <div className="mobile-girl-avatar">
-              <div className="girl-glow"></div>
-              <svg viewBox="0 0 280 480" xmlns="http://www.w3.org/2000/svg" className="girl-svg-mobile">
-                <defs>
-                  <radialGradient id="skinGradM" cx="50%" cy="40%" r="60%">
-                    <stop offset="0%" stopColor="#FDDBB4"/>
-                    <stop offset="100%" stopColor="#F4C49A"/>
-                  </radialGradient>
-                  <radialGradient id="hairGradM" cx="50%" cy="30%" r="70%">
-                    <stop offset="0%" stopColor="#2d1b6b"/>
-                    <stop offset="100%" stopColor="#1a0e42"/>
-                  </radialGradient>
-                </defs>
-                <ellipse cx="140" cy="95" rx="52" ry="58" fill="url(#hairGradM)"/>
-                <rect x="88" y="70" width="22" height="180" rx="11" fill="#1a0e42"/>
-                <rect x="170" y="70" width="22" height="180" rx="11" fill="#1a0e42"/>
-                <path d="M100 130 Q140 160 180 130" fill="#1a0e42"/>
-                <ellipse cx="140" cy="92" rx="45" ry="50" fill="url(#skinGradM)"/>
-                <ellipse cx="140" cy="52" rx="50" ry="30" fill="url(#hairGradM)"/>
-                <path d="M90 52 Q140 20 190 52" fill="#2d1b6b"/>
-                <path d="M95 45 Q140 10 185 45 Q185 52 140 50 Q95 52 95 45Z" fill="#3b22a0"/>
-                <ellipse cx="122" cy="95" rx="10" ry="11" fill="white"/>
-                <ellipse cx="158" cy="95" rx="10" ry="11" fill="white"/>
-                <ellipse cx="124" cy="97" rx="7" ry="8" fill="#1a0a40"/>
-                <ellipse cx="160" cy="97" rx="7" ry="8" fill="#1a0a40"/>
-                <ellipse cx="126" cy="94" rx="2.5" ry="2.5" fill="white"/>
-                <ellipse cx="162" cy="94" rx="2.5" ry="2.5" fill="white"/>
-                <path d="M115 87 Q122 82 129 87" stroke="#8b5cf6" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                <path d="M151 87 Q158 82 165 87" stroke="#8b5cf6" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-                <ellipse cx="140" cy="108" rx="3" ry="2" fill="#e8a882"/>
-                <path d="M130 119 Q140 127 150 119" stroke="#e87878" strokeWidth="2" fill="none" strokeLinecap="round"/>
-                <rect x="110" y="140" width="60" height="25" rx="12" fill="#FDDBB4"/>
-                <rect x="88" y="160" width="104" height="110" rx="20" fill="#7c3aed"/>
-                <rect x="100" y="155" width="80" height="20" rx="10" fill="#6d28d9"/>
-                <path d="M88 195 Q55 210 62 270" stroke="#6d28d9" strokeWidth="24" fill="none" strokeLinecap="round"/>
-                <path d="M192 195 Q225 210 218 270" stroke="#6d28d9" strokeWidth="24" fill="none" strokeLinecap="round"/>
-                <ellipse cx="140" cy="305" rx="60" ry="40" fill="#5b21b6"/>
-                <rect x="95" y="315" width="27" height="80" rx="13" fill="#6d28d9"/>
-                <rect x="158" y="315" width="27" height="80" rx="13" fill="#6d28d9"/>
-                <ellipse cx="108" cy="397" rx="20" ry="10" fill="#4c1d95"/>
-                <ellipse cx="172" cy="397" rx="20" ry="10" fill="#4c1d95"/>
-                <rect x="55" y="265" width="170" height="12" rx="6" fill="#1e1b4b"/>
-                <rect x="65" y="228" width="150" height="42" rx="8" fill="#1e1b4b"/>
-                <rect x="70" y="233" width="140" height="32" rx="5" fill="#312e81"/>
-                <ellipse cx="88" cy="270" rx="9" ry="9" fill="#60a5fa" opacity="0.6"/>
-                <ellipse cx="108" cy="270" rx="9" ry="9" fill="#34d399" opacity="0.6"/>
-              </svg>
-            </div>
-          </div>
+    <div className="landing-section" id="landingDiv">
+      <div className="landing-container">
+        <div className="landing-intro">
+          <h2>Hello! I'm</h2>
+          <h1>
+            PRIYANKA
+            <span>KHASA</span>
+          </h1>
         </div>
-        {children}
+
+        <div className="landing-info">
+          <h3>A</h3>
+          <h2 className="landing-info-h2">
+            <div className="landing-h2-1">Full Stack Dev</div>
+            <div className="landing-h2-2">Android Builder</div>
+          </h2>
+          <h2>
+            <div className="landing-h2-info">Android &amp; AI Builder</div>
+            <div className="landing-h2-info-1">Full Stack Developer</div>
+          </h2>
+        </div>
+
+        {/* Mobile inline SVG girl avatar */}
+        <div className="mobile-photo">
+          <svg viewBox="0 0 320 520" xmlns="http://www.w3.org/2000/svg" className="girl-svg-mobile">
+            <defs>
+              <radialGradient id="mSkin" cx="50%" cy="40%" r="60%">
+                <stop offset="0%" stopColor="#fde8c8"/>
+                <stop offset="100%" stopColor="#e8ad78"/>
+              </radialGradient>
+              <radialGradient id="mEye" cx="35%" cy="35%" r="65%">
+                <stop offset="0%" stopColor="#c4b5fd"/>
+                <stop offset="60%" stopColor="#7c3aed"/>
+                <stop offset="100%" stopColor="#3b0764"/>
+              </radialGradient>
+            </defs>
+            {/* Legs */}
+            <rect x="118" y="380" width="30" height="110" rx="15" fill="#1e293b"/>
+            <rect x="172" y="380" width="30" height="110" rx="15" fill="#1e293b"/>
+            {/* Shoes */}
+            <ellipse cx="133" cy="492" rx="24" ry="9" fill="#4338ca"/>
+            <ellipse cx="187" cy="492" rx="24" ry="9" fill="#4338ca"/>
+            {/* Body */}
+            <path d="M82 270 Q75 325 80 380 L240 380 Q245 325 238 270 Q200 252 160 250 Q120 252 82 270Z" fill="#1e1b4b"/>
+            <line x1="160" y1="260" x2="160" y2="380" stroke="#4f46e5" strokeWidth="1.5" opacity="0.4"/>
+            {/* Arms */}
+            <path d="M82 285 Q52 315 56 370 Q60 385 72 387" stroke="#2d2a5e" strokeWidth="26" fill="none" strokeLinecap="round"/>
+            <path d="M238 285 Q268 315 264 370 Q260 385 248 387" stroke="#2d2a5e" strokeWidth="26" fill="none" strokeLinecap="round"/>
+            {/* Hands */}
+            <ellipse cx="70" cy="390" rx="15" ry="11" fill="url(#mSkin)"/>
+            <ellipse cx="250" cy="390" rx="15" ry="11" fill="url(#mSkin)"/>
+            {/* Laptop */}
+            <rect x="58" y="384" width="204" height="14" rx="7" fill="#0f172a"/>
+            <rect x="72" y="330" width="176" height="58" rx="8" fill="#0f172a"/>
+            <rect x="77" y="335" width="166" height="48" rx="5" fill="#0ea5e9" opacity="0.15"/>
+            <rect x="82" y="340" width="76" height="3" rx="1" fill="#f472b6" opacity="0.9"/>
+            <rect x="82" y="347" width="56" height="3" rx="1" fill="#818cf8" opacity="0.8"/>
+            <rect x="82" y="354" width="66" height="3" rx="1" fill="#34d399" opacity="0.8"/>
+            <rect x="82" y="361" width="46" height="3" rx="1" fill="#fbbf24" opacity="0.7"/>
+            <rect x="166" y="340" width="70" height="3" rx="1" fill="#34d399" opacity="0.7"/>
+            <rect x="166" y="347" width="50" height="3" rx="1" fill="#818cf8" opacity="0.7"/>
+            <rect x="166" y="354" width="64" height="3" rx="1" fill="#f472b6" opacity="0.6"/>
+            {/* Neck */}
+            <rect x="146" y="224" width="28" height="34" rx="14" fill="url(#mSkin)"/>
+            {/* Hair back */}
+            <ellipse cx="160" cy="128" rx="62" ry="70" fill="#1e0a4a"/>
+            {/* Long hair strands */}
+            <path d="M100 130 Q82 190 86 270 Q90 305 100 330" stroke="#1e0a4a" strokeWidth="22" fill="none" strokeLinecap="round"/>
+            <path d="M220 130 Q238 190 234 270 Q230 305 220 330" stroke="#1e0a4a" strokeWidth="22" fill="none" strokeLinecap="round"/>
+            {/* Face */}
+            <ellipse cx="160" cy="132" rx="52" ry="56" fill="url(#mSkin)"/>
+            {/* Hair top */}
+            <ellipse cx="160" cy="74" rx="60" ry="30" fill="#1e0a4a"/>
+            <path d="M100 72 Q128 58 148 72 Q160 62 172 72 Q192 58 220 72" fill="#150d38"/>
+            {/* Eyebrows */}
+            <path d="M132 102 Q143 96 154 100" stroke="#2d1066" strokeWidth="3" fill="none" strokeLinecap="round"/>
+            <path d="M166 100 Q177 96 188 102" stroke="#2d1066" strokeWidth="3" fill="none" strokeLinecap="round"/>
+            {/* Eyes */}
+            <ellipse cx="143" cy="118" rx="13" ry="12" fill="white"/>
+            <ellipse cx="177" cy="118" rx="13" ry="12" fill="white"/>
+            <ellipse cx="144" cy="119" rx="9" ry="10" fill="url(#mEye)"/>
+            <ellipse cx="178" cy="119" rx="9" ry="10" fill="url(#mEye)"/>
+            <ellipse cx="145" cy="120" rx="5.5" ry="6" fill="#1a0633"/>
+            <ellipse cx="179" cy="120" rx="5.5" ry="6" fill="#1a0633"/>
+            <ellipse cx="147" cy="115" rx="2.5" ry="2.5" fill="white" opacity="0.95"/>
+            <ellipse cx="181" cy="115" rx="2.5" ry="2.5" fill="white" opacity="0.95"/>
+            {/* Blush */}
+            <ellipse cx="122" cy="136" rx="14" ry="8" fill="#f9a8d4" opacity="0.3"/>
+            <ellipse cx="198" cy="136" rx="14" ry="8" fill="#f9a8d4" opacity="0.3"/>
+            {/* Nose */}
+            <ellipse cx="160" cy="144" rx="4" ry="3" fill="#d4956a" opacity="0.5"/>
+            {/* Mouth */}
+            <path d="M148 158 Q160 170 172 158" stroke="#e87090" strokeWidth="2.5" fill="rgba(232,112,144,0.25)" strokeLinecap="round"/>
+            {/* Earrings */}
+            <ellipse cx="108" cy="140" rx="5" ry="5" fill="#b794f4" opacity="0.8"/>
+            <ellipse cx="212" cy="140" rx="5" ry="5" fill="#b794f4" opacity="0.8"/>
+            {/* Code particles */}
+            <text x="24" y="270" fill="#63f5e0" fontSize="10" opacity="0.5">{"</>"}</text>
+            <text x="272" y="310" fill="#b794f4" fontSize="9" opacity="0.45">{"{ }"}</text>
+          </svg>
+        </div>
       </div>
-    </>
+      {children}
+    </div>
   );
 };
 
