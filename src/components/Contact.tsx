@@ -1,99 +1,112 @@
-import { MdArrowOutward, MdCopyright } from "react-icons/md";
+import { useState } from "react";
+import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
+import { aboutData } from "../data/portfolio";
 import "./styles/Contact.css";
-import { config } from "../config";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
 
-gsap.registerPlugin(ScrollTrigger);
+export default function Contact() {
+  const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-const Contact = () => {
-  useEffect(() => {
-    const contactTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".contact-section",
-        start: "top 80%",
-        end: "bottom center",
-        toggleActions: "play none none none",
-      },
-    });
-
-    contactTimeline.fromTo(
-      ".contact-section h3",
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
-    );
-
-    contactTimeline.fromTo(
-      ".contact-box",
-      { opacity: 0, y: 50 },
-      { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power3.out" },
-      "-=0.4"
-    );
-
-    return () => { contactTimeline.kill(); };
-  }, []);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSent(true);
+    setForm({ name: "", email: "", message: "" });
+    setTimeout(() => setSent(false), 4000);
+  };
 
   return (
-    <div className="contact-section section-container" id="contact">
-      <div className="contact-container">
-        <h3>{config.developer.fullName}</h3>
-        <div className="contact-flex">
-          <div className="contact-box">
-            <h4>Email</h4>
-            <p>
-              <a href={`mailto:${config.contact.email}`} data-cursor="disable">
-                {config.contact.email}
-              </a>
-            </p>
-            <h4>Location</h4>
-            <p><span>{config.social.location}</span></p>
-            <h4>Phone</h4>
-            <p><span>+91 8168429699</span></p>
+    <section className="contact section" id="contact">
+      <div className="section-inner">
+        <div className="contact-left fade-left">
+          <div className="contact-photo-wrap">
+            <img src="/images/main6.png" alt="Priyanka Khasa" className="contact-photo" />
+            <div className="contact-photo-glow" />
           </div>
-          <div className="contact-box">
-            <h4>Social</h4>
-            <a
-              href={config.contact.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
-            >
-              Github <MdArrowOutward />
+
+          <div className="section-tag">Get in Touch</div>
+          <h2 className="section-heading">
+            Let's <span className="gradient-text">Talk</span>
+          </h2>
+          <p className="contact-bio">
+            Whether you have a project in mind, want to collaborate, or just say hello —
+            my inbox is always open.
+          </p>
+
+          <div className="contact-links">
+            <a href={`mailto:${aboutData.email}`} className="contact-link-item">
+              <FiMail />
+              <span>{aboutData.email}</span>
             </a>
             <a
-              href={config.contact.linkedin}
+              href="https://github.com/Priyanka-Khasa"
               target="_blank"
               rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
+              className="contact-link-item"
             >
-              LinkedIn <MdArrowOutward />
+              <FiGithub />
+              <span>github.com/Priyanka-Khasa</span>
             </a>
             <a
-              href={config.contact.resume}
+              href="https://linkedin.com/in/priyanka-khasa"
               target="_blank"
               rel="noopener noreferrer"
-              data-cursor="disable"
-              className="contact-social"
+              className="contact-link-item"
             >
-              Resume <MdArrowOutward />
+              <FiLinkedin />
+              <span>linkedin.com/in/priyanka-khasa</span>
             </a>
-          </div>
-          <div className="contact-box">
-            <h2>
-              Designed and Developed <br /> by{" "}
-              <span>{config.developer.fullName}</span>
-            </h2>
-            <h5>
-              <MdCopyright /> {new Date().getFullYear()}
-            </h5>
           </div>
         </div>
-      </div>
-    </div>
-  );
-};
 
-export default Contact;
+        <div className="contact-right fade-right">
+          {sent ? (
+            <div className="contact-success">
+              <span className="success-icon">✓</span>
+              <h3>Message sent!</h3>
+              <p>Thank you for reaching out. I'll be in touch soon.</p>
+            </div>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label>Name</label>
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    required
+                    value={form.name}
+                    onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+                  />
+                </div>
+                <div className="form-group">
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                    value={form.email}
+                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <label>Message</label>
+                <textarea
+                  placeholder="Tell me about your project..."
+                  required
+                  rows={5}
+                  value={form.message}
+                  onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
+                />
+              </div>
+              <button type="submit" className="form-submit">
+                <FiSend />
+                Send Message
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}

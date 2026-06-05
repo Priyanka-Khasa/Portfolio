@@ -1,50 +1,58 @@
 import { useEffect, useRef } from "react";
 import "./styles/Cursor.css";
-import gsap from "gsap";
 
-const Cursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
+export default function Cursor() {
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef({ x: 0, y: 0 });
+  const ringPos = useRef({ x: 0, y: 0 });
+
   useEffect(() => {
-    let hover = false;
-    const cursor = cursorRef.current!;
-    const mousePos = { x: 0, y: 0 };
-    const cursorPos = { x: 0, y: 0 };
-    document.addEventListener("mousemove", (e) => {
-      mousePos.x = e.clientX;
-      mousePos.y = e.clientY;
-    });
-    requestAnimationFrame(function loop() {
-      if (!hover) {
-        const delay = 6;
-        cursorPos.x += (mousePos.x - cursorPos.x) / delay;
-        cursorPos.y += (mousePos.y - cursorPos.y) / delay;
-        gsap.to(cursor, { x: cursorPos.x, y: cursorPos.y, duration: 0.1 });
+    const handleMove = (e: MouseEvent) => {
+      posRef.current = { x: e.clientX, y: e.clientY };
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
       }
-      requestAnimationFrame(loop);
+    };
+
+    const handleEnterLink = () => {
+      ringRef.current?.classList.add("cursor-hover");
+      dotRef.current?.classList.add("cursor-hover");
+    };
+    const handleLeaveLink = () => {
+      ringRef.current?.classList.remove("cursor-hover");
+      dotRef.current?.classList.remove("cursor-hover");
+    };
+
+    document.addEventListener("mousemove", handleMove);
+
+    let raf: number;
+    const animateRing = () => {
+      ringPos.current.x += (posRef.current.x - ringPos.current.x) * 0.12;
+      ringPos.current.y += (posRef.current.y - ringPos.current.y) * 0.12;
+      if (ringRef.current) {
+        ringRef.current.style.transform = `translate(${ringPos.current.x}px, ${ringPos.current.y}px)`;
+      }
+      raf = requestAnimationFrame(animateRing);
+    };
+    raf = requestAnimationFrame(animateRing);
+
+    const links = document.querySelectorAll("a, button, [data-cursor-hover]");
+    links.forEach((el) => {
+      el.addEventListener("mouseenter", handleEnterLink);
+      el.addEventListener("mouseleave", handleLeaveLink);
     });
-    document.querySelectorAll("[data-cursor]").forEach((item) => {
-      const element = item as HTMLElement;
-      element.addEventListener("mouseover", (e: MouseEvent) => {
-        const target = e.currentTarget as HTMLElement;
-        const rect = target.getBoundingClientRect();
-        if (element.dataset.cursor === "icons") {
-          cursor.classList.add("cursor-icons");
-          gsap.to(cursor, { x: rect.left, y: rect.top, duration: 0.1 });
-          cursor.style.setProperty("--cursorH", `${rect.height}px`);
-          hover = true;
-        }
-        if (element.dataset.cursor === "disable") {
-          cursor.classList.add("cursor-disable");
-        }
-      });
-      element.addEventListener("mouseout", () => {
-        cursor.classList.remove("cursor-disable", "cursor-icons");
-        hover = false;
-      });
-    });
+
+    return () => {
+      document.removeEventListener("mousemove", handleMove);
+      cancelAnimationFrame(raf);
+    };
   }, []);
 
-  return <div className="cursor-main" ref={cursorRef}></div>;
-};
-
-export default Cursor;
+  return (
+    <>
+      <div ref={dotRef} className="cursor-dot" />
+      <div ref={ringRef} className="cursor-ring" />
+    </>
+  );
+}

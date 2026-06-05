@@ -1,42 +1,24 @@
 import { useState } from "react";
-import { MdArrowOutward } from "react-icons/md";
 
-interface Props {
-  image: string;
-  alt?: string;
-  link?: string;
+interface WorkImageProps {
+  src: string;
+  alt: string;
+  className?: string;
 }
 
-const WorkImage = (props: Props) => {
-  const [imgError, setImgError] = useState(false);
+export default function WorkImage({ src, alt, className = "" }: WorkImageProps) {
+  const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className="work-image">
-      <a
-        className="work-image-in"
-        href={props.link || "#"}
-        target={props.link ? "_blank" : "_self"}
-        data-cursor="disable"
-      >
-        {props.link && (
-          <div className="work-link">
-            <MdArrowOutward />
-          </div>
-        )}
-        {!imgError ? (
-          <img
-            src={props.image}
-            alt={props.alt}
-            onError={() => setImgError(true)}
-          />
-        ) : (
-          <div className="work-image-placeholder">
-            <span>{props.alt}</span>
-          </div>
-        )}
-      </a>
+    <div className={`work-img-wrap ${className}`}>
+      {!loaded && <div className="work-img-skeleton" />}
+      <img
+        src={src}
+        alt={alt}
+        onLoad={() => setLoaded(true)}
+        style={{ opacity: loaded ? 1 : 0 }}
+        loading="lazy"
+      />
     </div>
   );
-};
-
-export default WorkImage;
+}

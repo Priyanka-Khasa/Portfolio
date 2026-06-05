@@ -1,94 +1,75 @@
-import "./styles/Work.css";
+import { projects } from "../data/portfolio";
 import WorkImage from "./WorkImage";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect } from "react";
-import { config } from "../config";
-import { Link } from "react-router-dom";
+import { FiExternalLink, FiGithub } from "react-icons/fi";
+import "./styles/Work.css";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const Work = () => {
-  useEffect(() => {
-    if (window.innerWidth <= 768) return;
-
-    let translateX: number = 0;
-
-    function setTranslateX() {
-      const box = document.getElementsByClassName("work-box");
-      if (box.length === 0) return;
-      const rectLeft = document
-        .querySelector(".work-container")!
-        .getBoundingClientRect().left;
-      const rect = box[0].getBoundingClientRect();
-      const parentWidth = box[0].parentElement!.getBoundingClientRect().width;
-      let padding: number =
-        parseInt(window.getComputedStyle(box[0]).padding) / 2;
-      translateX = rect.width * box.length - (rectLeft + parentWidth) + padding;
-    }
-
-    setTranslateX();
-
-    let timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".work-section",
-        start: "top top",
-        end: `+=${translateX}`,
-        scrub: 1,
-        pin: true,
-        pinSpacing: true,
-        anticipatePin: 1,
-        id: "work",
-        invalidateOnRefresh: true,
-      },
-    });
-
-    timeline.to(".work-flex", { x: -translateX, ease: "none" });
-
-    ScrollTrigger.refresh();
-
-    return () => {
-      timeline.kill();
-      ScrollTrigger.getById("work")?.kill();
-    };
-  }, []);
-
+export default function Work() {
   return (
-    <div className="work-section" id="work">
-      <div className="work-container section-container">
-        <h2>
-          My <span>Work</span>
-        </h2>
-        <div className="work-flex">
-          {config.projects.map((project, index) => (
-            <div className="work-box" key={project.id}>
-              <div className="work-info">
-                <div className="work-title">
-                  <h3>0{index + 1}</h3>
-                  <div>
-                    <h4>{project.title}</h4>
-                    <p>{project.category}</p>
+    <section className="work section" id="work">
+      <div className="section-inner">
+        <div className="fade-up">
+          <div className="section-tag">Selected Work</div>
+          <h2 className="section-heading">
+            Things I've <span className="gradient-text">Built</span>
+          </h2>
+          <p className="work-subtitle">
+            A selection of projects that showcase my range — from AI-powered platforms to gesture-based interfaces.
+          </p>
+        </div>
+
+        <div className="work-list">
+          {projects.map((project, i) => (
+            <article
+              key={project.id}
+              className={`work-card ${i % 2 !== 0 ? "reverse" : ""} scale-in`}
+            >
+              <div className="work-card-image">
+                <WorkImage src={project.image} alt={project.title} />
+                <div className="work-card-overlay">
+                  <div className="work-card-links">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                      <FiGithub />
+                    </a>
+                    <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label="Live">
+                      <FiExternalLink />
+                    </a>
                   </div>
                 </div>
-                <h4>Tools and features</h4>
-                <p>{project.technologies}</p>
               </div>
-              <WorkImage image={project.image} alt={project.title} />
-            </div>
+
+              <div className="work-card-content">
+                <span className="work-index">0{i + 1}</span>
+                <h3 className="work-title">{project.title}</h3>
+                <p className="work-subtitle-text">{project.subtitle}</p>
+                <p className="work-desc">{project.description}</p>
+                <div className="work-tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="work-tag">{tag}</span>
+                  ))}
+                </div>
+                <div className="work-actions">
+                  <a
+                    href={project.github}
+                    className="work-btn-ghost"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FiGithub /> GitHub
+                  </a>
+                  <a
+                    href={project.live}
+                    className="work-btn-primary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FiExternalLink /> Live Demo
+                  </a>
+                </div>
+              </div>
+            </article>
           ))}
-          <div className="work-box work-box-cta">
-            <div className="see-all-works">
-              <h3>Want to see more?</h3>
-              <p>Explore all of my projects and creations</p>
-              <Link to="/myworks" className="see-all-btn" data-cursor="disable">
-                See All Works →
-              </Link>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Work;
+}

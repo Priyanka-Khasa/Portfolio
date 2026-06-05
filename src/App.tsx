@@ -1,36 +1,30 @@
-import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import { useEffect, useState } from "react";
+import Loading from "./components/Loading";
+import MainContainer from "./components/MainContainer";
+import MyWorks from "./pages/MyWorks";
+import Cursor from "./components/Cursor";
 
-const MainContainer = lazy(() => import("./components/MainContainer"));
-const MyWorks = lazy(() => import("./pages/MyWorks"));
-import { LoadingProvider } from "./context/LoadingProvider";
+function App() {
+  const [loading, setLoading] = useState(true);
 
-const App = () => {
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 2400);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <LoadingProvider>
-              <Suspense>
-                <MainContainer />
-              </Suspense>
-            </LoadingProvider>
-          }
-        />
-        <Route
-          path="/myworks"
-          element={
-            <Suspense fallback={<div>Loading...</div>}>
-              <MyWorks />
-            </Suspense>
-          }
-        />
-      </Routes>
+      <Cursor />
+      {loading && <Loading />}
+      <div className={`app-content ${loading ? "app-hidden" : "app-visible"}`}>
+        <Routes>
+          <Route path="/" element={<MainContainer />} />
+          <Route path="/myworks" element={<MyWorks />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
-};
+}
 
 export default App;

@@ -1,13 +1,39 @@
-import "./styles/style.css";
+import { useRef } from "react";
 
-const HoverLinks = ({ text, cursor }: { text: string; cursor?: boolean }) => {
+interface HoverLinksProps {
+  href: string;
+  className?: string;
+  children: React.ReactNode;
+  target?: string;
+}
+
+export default function HoverLinks({
+  href,
+  className = "",
+  children,
+  target,
+}: HoverLinksProps) {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  const handleMouseEnter = () => {
+    ref.current?.classList.add("hovered");
+  };
+
+  const handleMouseLeave = () => {
+    ref.current?.classList.remove("hovered");
+  };
+
   return (
-    <div className="hover-link" data-cursor={!cursor && `disable`}>
-      <div className="hover-in">
-        {text} <div>{text}</div>
-      </div>
-    </div>
+    <a
+      ref={ref}
+      href={href}
+      className={`hover-link ${className}`}
+      target={target}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {children}
+    </a>
   );
-};
-
-export default HoverLinks;
+}

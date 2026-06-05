@@ -1,38 +1,47 @@
-import { PropsWithChildren, useEffect, useState } from "react";
-import About from "./About";
-import Career from "./Career";
-import Contact from "./Contact";
-import Cursor from "./Cursor";
-import Landing from "./Landing";
+import { useEffect } from "react";
+import Lenis from "lenis";
 import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
+import Landing from "./Landing";
+import About from "./About";
 import WhatIDo from "./WhatIDo";
+import Career from "./Career";
 import Work from "./Work";
 import TechStackNew from "./TechStackNew";
 import CallToAction from "./CallToAction";
-import setSplitText from "./utils/splitText";
+import Contact from "./Contact";
+import Footer from "./Footer";
+import { initScrollAnimations } from "../utils/GsapScroll";
+import "./styles/MainContainer.css";
 
-const MainContainer = ({ children }: PropsWithChildren) => {
-  const [isDesktopView, setIsDesktopView] = useState<boolean>(
-    window.innerWidth > 1024
-  );
-
+export default function MainContainer() {
   useEffect(() => {
-    const resizeHandler = () => {
-      setSplitText();
-      setIsDesktopView(window.innerWidth > 1024);
+    const lenis = new Lenis({
+      lerp: 0.085,
+      smoothWheel: true,
+    });
+
+    const raf = (time: number) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
     };
-    resizeHandler();
-    window.addEventListener("resize", resizeHandler);
-    return () => { window.removeEventListener("resize", resizeHandler); };
-  }, [isDesktopView]);
+    requestAnimationFrame(raf);
+
+    const timer = setTimeout(() => {
+      initScrollAnimations();
+    }, 300);
+
+    return () => {
+      lenis.destroy();
+      clearTimeout(timer);
+    };
+  }, []);
 
   return (
-    <div className="container-main">
-      <Cursor />
+    <div className="main-container">
       <Navbar />
       <SocialIcons />
-      <div className="container-main">
+      <main>
         <Landing />
         <About />
         <WhatIDo />
@@ -41,9 +50,8 @@ const MainContainer = ({ children }: PropsWithChildren) => {
         <TechStackNew />
         <CallToAction />
         <Contact />
-      </div>
+      </main>
+      <Footer />
     </div>
   );
-};
-
-export default MainContainer;
+}

@@ -1,80 +1,39 @@
-.icons-section {
-  position: fixed;
-  width: var(--cWidth);
-  max-width: var(--cMaxWidth);
-  bottom: 0;
-  z-index: 99;
-  left: 50%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  opacity: 0;
-}
-
 .social-icons {
-  position: absolute;
-  left: -10px;
-  bottom: 28px;
-  display: none;
+  position: fixed;
+  left: 2rem;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
   flex-direction: column;
-  gap: 0;
-  pointer-events: all;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.social-icons span {
-  width: 50px;
-  height: 50px;
-  position: relative;
-  display: flex;
-}
-
-.social-icons a {
-  --siLeft: 50%;
-  --siTop: 50%;
-  position: absolute;
-  left: var(--siLeft, 50%);
-  top: var(--siTop, 50%);
-  transform: translate(-50%, -50%);
-  display: flex;
-  font-size: 20px;
-  color: var(--textMuted);
-  transition: color 0.3s;
-  will-change: left, top;
-}
-
-.social-icons a:hover { color: var(--accentColor); }
-
-.resume-button {
-  position: absolute;
-  z-index: 99;
-  bottom: 50px;
-  right: 0;
+.social-icon-link {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  padding: 0.3rem;
   display: flex;
   align-items: center;
-  gap: 6px;
-  text-wrap: nowrap;
-  letter-spacing: 3px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--textMuted);
-  pointer-events: all;
-  transition: color 0.3s;
-  transform: translateX(calc(100% - 4px)) rotate(-90deg);
-  transform-origin: left bottom;
-  text-transform: uppercase;
+  justify-content: center;
+  transition: color 0.25s ease, transform 0.25s ease;
+  text-decoration: none;
 }
 
-.resume-button:hover { color: var(--accentColor); }
-
-.resume-button span {
-  color: var(--accentColor);
-  font-size: 16px;
-  display: flex;
-  align-items: center;
+.social-icon-link:hover {
+  color: var(--accent-violet);
+  transform: translateY(-3px);
 }
 
-@media only screen and (min-width: 768px) {
-  .social-icons { display: flex; }
+.social-line {
+  width: 1.5px;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(139, 92, 246, 0.4), transparent);
+  margin-top: 0.25rem;
 }
-@media only screen and (min-width: 1024px) {
-  .resume-button { transform: none; font-size: 13px; bottom: 36px; }
+
+@media (max-width: 900px) {
+  .social-icons {
+    display: none;
+  }
 }

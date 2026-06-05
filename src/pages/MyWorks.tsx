@@ -1,153 +1,72 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { projects } from "../data/portfolio";
+import WorkImage from "../components/WorkImage";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { FiArrowLeft, FiExternalLink, FiGithub } from "react-icons/fi";
+import { initScrollAnimations } from "../utils/GsapScroll";
 import "./MyWorks.css";
-import { config } from "../config";
-import { MdArrowOutward, MdArrowBack } from "react-icons/md";
-import { FaGithub } from "react-icons/fa6";
 
-interface ProjectLink {
-  github?: string;
-  demo?: string;
-}
+export default function MyWorks() {
+  const navigate = useNavigate();
 
-interface ExtendedProject {
-  id: number;
-  title: string;
-  category: string;
-  technologies: string;
-  image: string;
-  description: string;
-  links?: ProjectLink;
-}
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const timer = setTimeout(() => initScrollAnimations(), 200);
+    return () => clearTimeout(timer);
+  }, []);
 
-const allProjects: ExtendedProject[] = [
-  {
-    ...config.projects[0],
-    links: {
-      github: "https://github.com/Priyanka-Khasa/GestureOS",
-    },
-  },
-  {
-    ...config.projects[1],
-    links: {
-      github: "https://github.com/Priyanka-Khasa/ClassConnect",
-    },
-  },
-  {
-    ...config.projects[2],
-    links: {
-      github: "https://github.com/Priyanka-Khasa/Wanderlust",
-      demo: "https://wanderlust-app.onrender.com",
-    },
-  },
-  {
-    ...config.projects[3],
-    links: {
-      github: "https://github.com/Priyanka-Khasa/MediCap",
-    },
-  },
-  {
-    id: 5,
-    title: "AI Fitness Evaluator",
-    category: "AI / Computer Vision / Web",
-    technologies: "React.js, MediaPipe Pose Detection, JavaScript, WebRTC",
-    image: "/images/Gestra.png",
-    description:
-      "Real-time AI fitness evaluation app with MediaPipe Pose Detection, rep counting, posture scoring, voice feedback, and a 30fps client-side ML inference pipeline.",
-    links: {
-      github: "https://github.com/Priyanka-Khasa",
-    },
-  },
-];
-
-const MyWorks = () => {
   return (
     <div className="myworks-page">
-      <div className="myworks-header">
-        <Link to="/" className="back-link" data-cursor="disable">
-          <MdArrowBack /> Back
-        </Link>
-        <h1>
-          All <span>Works</span>
+      <Navbar />
+      <div className="myworks-hero fade-up">
+        <button className="back-btn" onClick={() => navigate(-1)}>
+          <FiArrowLeft /> Back
+        </button>
+        <div className="section-tag" style={{ justifyContent: "center", marginTop: "2rem" }}>All Projects</div>
+        <h1 className="myworks-heading">
+          Everything I've<br />
+          <span className="gradient-text">Built</span>
         </h1>
-        <p>A collection of projects I've built and shipped</p>
+        <p className="myworks-sub">
+          A complete archive of projects — big and small, serious and experimental.
+        </p>
       </div>
 
-      <div className="myworks-grid">
-        {allProjects.map((project) => (
-          <div className="mywork-card" key={project.id}>
-            <div className="mywork-image">
-              <img
-                src={project.image}
-                alt={project.title}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                  (e.target as HTMLImageElement).parentElement!.classList.add(
-                    "no-image"
-                  );
-                }}
-              />
-              <div className="mywork-image-overlay"></div>
-            </div>
-            <div className="mywork-info">
-              <div className="mywork-meta">
-                <span className="mywork-category">{project.category}</span>
+      <div className="myworks-grid stagger-group">
+        {projects.map((project) => (
+          <article key={project.id} className="myworks-card">
+            <div className="myworks-card-img">
+              <WorkImage src={project.image} alt={project.title} />
+              <div className="myworks-hover-overlay">
+                <div className="myworks-overlay-links">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">
+                    <FiGithub />
+                  </a>
+                  <a href={project.live} target="_blank" rel="noopener noreferrer">
+                    <FiExternalLink />
+                  </a>
+                </div>
               </div>
-              <h2>{project.title}</h2>
-              <p>{project.description}</p>
-              <div className="mywork-tech">
-                {project.technologies.split(", ").map((tech, i) => (
-                  <span key={i} className="mywork-tag">
-                    {tech}
-                  </span>
+            </div>
+            <div className="myworks-card-info">
+              <div className="myworks-card-top">
+                <h2 className="myworks-card-title">{project.title}</h2>
+                <span className="myworks-card-sub">{project.subtitle}</span>
+              </div>
+              <p className="myworks-card-desc">{project.description}</p>
+              <div className="myworks-tags">
+                {project.tags.map((t) => (
+                  <span key={t} className="work-tag">{t}</span>
                 ))}
               </div>
-              <div className="mywork-links">
-                {project.links?.github && (
-                  <a
-                    href={project.links.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mywork-link"
-                    data-cursor="disable"
-                  >
-                    <FaGithub /> GitHub
-                  </a>
-                )}
-                {project.links?.demo && (
-                  <a
-                    href={project.links.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mywork-link mywork-link-demo"
-                    data-cursor="disable"
-                  >
-                    <MdArrowOutward /> Live Demo
-                  </a>
-                )}
-              </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
 
-      <div className="myworks-footer">
-        <p>
-          More on{" "}
-          <a
-            href={config.contact.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-cursor="disable"
-          >
-            GitHub <MdArrowOutward />
-          </a>
-        </p>
-        <Link to="/" data-cursor="disable" className="back-home-btn">
-          ← Back to Portfolio
-        </Link>
-      </div>
+      <Footer />
     </div>
   );
-};
-
-export default MyWorks;
+}

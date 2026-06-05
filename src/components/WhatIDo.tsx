@@ -1,108 +1,55 @@
-import { useEffect, useRef } from "react";
+import Marquee from "react-fast-marquee";
+import { whatIDo, marqueeItems } from "../data/portfolio";
 import "./styles/WhatIDo.css";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { config } from "../config";
 
-const WhatIDo = () => {
-  const containerRef = useRef<(HTMLDivElement | null)[]>([]);
-  const setRef = (el: HTMLDivElement | null, index: number) => {
-    containerRef.current[index] = el;
-  };
-  useEffect(() => {
-    if (ScrollTrigger.isTouch) {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.classList.remove("what-noTouch");
-          container.addEventListener("click", () => handleClick(container));
-        }
-      });
-    }
-    return () => {
-      containerRef.current.forEach((container) => {
-        if (container) {
-          container.removeEventListener("click", () => handleClick(container));
-        }
-      });
-    };
-  }, []);
-
+export default function WhatIDo() {
   return (
-    <div className="whatIDO">
-      <div className="what-box">
-        <h2 className="title">
-          W<span className="hat-h2">HAT</span>
-          <div>
-            &nbsp;I<span className="do-h2"> DO</span>
+    <section className="whatido section" id="whatido">
+      <div className="section-inner">
+        <div className="whatido-header fade-up">
+          <div className="whatido-header-text">
+            <div className="section-tag">What I Do</div>
+            <h2 className="section-heading">
+              My <span className="gradient-text">Superpowers</span>
+            </h2>
+            <p className="whatido-intro">
+              I blend technical depth with design instinct — building things that look great <em>and</em> work beautifully.
+            </p>
           </div>
-        </h2>
-      </div>
-      <div className="what-box">
-        <div className="what-box-in">
-          <div className="what-border2">
-            <svg width="100%">
-              <line x1="0" y1="0" x2="0" y2="100%" stroke="white" strokeWidth="2" strokeDasharray="7,7" />
-              <line x1="100%" y1="0" x2="100%" y2="100%" stroke="white" strokeWidth="2" strokeDasharray="7,7" />
-            </svg>
-          </div>
-          <div className="what-content what-noTouch" ref={(el) => setRef(el, 0)}>
-            <div className="what-border1">
-              <svg height="100%">
-                <line x1="0" y1="0" x2="100%" y2="0" stroke="white" strokeWidth="2" strokeDasharray="6,6" />
-                <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" strokeWidth="2" strokeDasharray="6,6" />
-              </svg>
+          <div className="whatido-header-img">
+            <div className="whatido-img-frame">
+              <img src="/images/main5.png" alt="Skills visual" loading="lazy" />
+              <div className="whatido-img-accent" />
             </div>
-            <div className="what-corner"></div>
-            <div className="what-content-in">
-              <h3>{config.skills.develop.title}</h3>
-              <h4>{config.skills.develop.description}</h4>
-              <p>{config.skills.develop.details}</p>
-              <h5>Skillset &amp; tools</h5>
-              <div className="what-content-flex">
-                {config.skills.develop.tools.map((tool, index) => (
-                  <div key={index} className="what-tags">{tool}</div>
-                ))}
-              </div>
-              <div className="what-arrow"></div>
-            </div>
-          </div>
-          <div className="what-content what-noTouch" ref={(el) => setRef(el, 1)}>
-            <div className="what-border1">
-              <svg height="100%">
-                <line x1="0" y1="100%" x2="100%" y2="100%" stroke="white" strokeWidth="2" strokeDasharray="6,6" />
-              </svg>
-            </div>
-            <div className="what-corner"></div>
-            <div className="what-content-in">
-              <h3>{config.skills.design.title}</h3>
-              <h4>{config.skills.design.description}</h4>
-              <p>{config.skills.design.details}</p>
-              <h5>Skillset &amp; tools</h5>
-              <div className="what-content-flex">
-                {config.skills.design.tools.map((tool, index) => (
-                  <div key={index} className="what-tags">{tool}</div>
-                ))}
-              </div>
-              <div className="what-arrow"></div>
+            <div className="whatido-img-label">
+              <span>4</span>
+              <span>Core skills</span>
             </div>
           </div>
         </div>
+
+        <div className="whatido-grid stagger-group">
+          {whatIDo.map((item) => (
+            <div key={item.title} className="whatido-card">
+              <div className="whatido-icon">{item.icon}</div>
+              <h3 className="whatido-title">{item.title}</h3>
+              <p className="whatido-desc">{item.description}</p>
+              <div className="card-glow" />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+
+      <div className="marquee-section fade-up">
+        <Marquee speed={48} gradient={false} pauseOnHover className="whatido-marquee">
+          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+            <div key={i} className="marquee-item">
+              <span className="marquee-star">✦</span>
+              <span>{item}</span>
+            </div>
+          ))}
+        </Marquee>
+      </div>
+    </section>
   );
-};
-
-export default WhatIDo;
-
-function handleClick(container: HTMLDivElement) {
-  container.classList.toggle("what-content-active");
-  container.classList.remove("what-sibling");
-  if (container.parentElement) {
-    const siblings = Array.from(container.parentElement.children);
-    siblings.forEach((sibling) => {
-      if (sibling !== container) {
-        sibling.classList.remove("what-content-active");
-        sibling.classList.toggle("what-sibling");
-      }
-    });
-  }
 }

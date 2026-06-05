@@ -1,57 +1,172 @@
-.about-section {
-  position: relative;
-  z-index: 9;
-  min-height: 100svh;
+.about {
+  padding: 8rem 6vw;
+  background: var(--bg);
+}
+
+.about .section-inner {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  padding: 80px 0;
+  gap: 5rem;
 }
 
-.about-me {
-  width: 52%;
-  max-width: 640px;
+.about-image-col {
+  flex: 0 0 auto;
+  width: min(340px, 38vw);
 }
 
-.about-me h3 {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  font-weight: 500;
-  color: var(--accentTeal);
-  margin: 0 0 20px;
-  opacity: 0.85;
+.about-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  transition: transform 0.15s ease;
+  will-change: transform;
+  cursor: default;
 }
 
-.about-me p {
-  font-size: clamp(18px, 1.8vw, 28px);
-  font-weight: 500;
-  line-height: 1.6;
-  letter-spacing: 0.3px;
-  color: #e2e8f0;
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 18px;
+  display: block;
 }
 
-.about-me .split-word {
-  display: inline-block;
-  margin-right: 0.28em;
+.about-img-border {
+  position: absolute;
+  inset: -3px;
+  border-radius: 21px;
+  background: var(--gradient-violet-teal);
+  z-index: -1;
+  opacity: 0.5;
 }
 
-/* Mobile */
-@media only screen and (max-width: 768px) {
-  .about-section {
-    min-height: auto;
-    justify-content: flex-start;
-    padding: 70px 0 50px;
+.about-badge {
+  position: absolute;
+  bottom: -1.2rem;
+  left: -1.2rem;
+  background: rgba(13, 11, 22, 0.92);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  backdrop-filter: blur(16px);
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: tagFloat 4s ease-in-out infinite;
+}
+
+.badge-emoji {
+  font-size: 1.4rem;
+  color: var(--accent-gold);
+  animation: spinSlow 10s linear infinite;
+}
+
+.badge-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+.badge-sub {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.about-text-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.about-bio {
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--text-muted);
+}
+
+.about-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.25rem;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.87rem;
+  color: var(--text-muted);
+}
+
+.meta-item svg {
+  color: var(--accent-violet);
+  flex-shrink: 0;
+}
+
+.meta-item a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.meta-item a:hover {
+  color: var(--accent-violet-light);
+}
+
+.meta-item.available {
+  color: var(--accent-teal);
+}
+
+.avail-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--accent-teal);
+  border-radius: 50%;
+  animation: blink 2s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--accent-teal);
+}
+
+.download-cv {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1.5px solid rgba(139, 92, 246, 0.4);
+  color: var(--accent-violet-light);
+  padding: 0.75rem 1.5rem;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: fit-content;
+  font-family: var(--font-body);
+  letter-spacing: 0.04em;
+}
+
+.download-cv:hover {
+  background: var(--accent-violet);
+  border-color: var(--accent-violet);
+  color: white;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
+}
+
+@media (max-width: 900px) {
+  .about .section-inner {
+    flex-direction: column;
+    gap: 3rem;
   }
-  .about-me {
-    width: 100%;
-    max-width: 100%;
-  }
-  .about-me h3 { font-size: 10px; letter-spacing: 4px; }
-  .about-me p { font-size: clamp(16px, 4.5vw, 22px); line-height: 1.55; }
-}
 
-@media only screen and (min-width: 769px) and (max-width: 1024px) {
-  .about-me { width: 58%; }
-  .about-me p { font-size: clamp(17px, 2.2vw, 24px); }
+  .about-image-col {
+    width: min(280px, 70vw);
+    align-self: center;
+  }
 }

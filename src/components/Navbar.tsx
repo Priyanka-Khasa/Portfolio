@@ -1,94 +1,80 @@
-import { useEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import HoverLinks from "./HoverLinks";
-import { gsap } from "gsap";
-import Lenis from "lenis";
+import { useEffect, useState } from "react";
+import { navLinks } from "../data/portfolio";
 import "./styles/Navbar.css";
 
-gsap.registerPlugin(ScrollTrigger);
-export let lenis: Lenis | null = null;
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-const Navbar = () => {
   useEffect(() => {
-    lenis = new Lenis({
-      duration: 1.7,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1.7,
-      touchMultiplier: 2,
-      infinite: false,
-    });
-
-    lenis.stop();
-
-    function raf(time: number) {
-      lenis?.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    let links = document.querySelectorAll(".header ul a");
-    links.forEach((elem) => {
-      let element = elem as HTMLAnchorElement;
-      element.addEventListener("click", (e) => {
-        if (window.innerWidth > 1024) {
-          e.preventDefault();
-          let elem = e.currentTarget as HTMLAnchorElement;
-          let section = elem.getAttribute("data-href");
-          if (section && lenis) {
-            const target = document.querySelector(section) as HTMLElement;
-            if (target) {
-              lenis.scrollTo(target, { offset: 0, duration: 1.5 });
-            }
-          }
-        }
-      });
-    });
-
-    window.addEventListener("resize", () => { lenis?.resize(); });
-
-    return () => { lenis?.destroy(); };
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const handleNav = (href: string) => {
+    setMenuOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <>
-      <div className="header">
-        <a href="/#" className="navbar-title" data-cursor="disable">
-          PK
+    <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
+      <div className="navbar-inner">
+        <a className="navbar-logo" href="/">
+          <span className="logo-pk">PK</span>
+          <span className="logo-dot">.</span>
         </a>
-        <a
-          href="mailto:priyankakhasa937@gmail.com"
-          className="navbar-connect"
-          data-cursor="disable"
-        >
-          priyankakhasa937@gmail.com
-        </a>
-        <ul>
-          <li>
-            <a data-href="#about" href="#about">
-              <HoverLinks text="ABOUT" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#work" href="#work">
-              <HoverLinks text="WORK" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#contact" href="#contact">
-              <HoverLinks text="CONTACT" />
-            </a>
-          </li>
+
+        <ul className="navbar-links">
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <button
+                className="nav-link"
+                onClick={() => handleNav(link.href)}
+              >
+                {link.label}
+                <span className="nav-link-line" />
+              </button>
+            </li>
+          ))}
         </ul>
+
+        <button
+          className="navbar-hire"
+          onClick={() => handleNav("#contact")}
+        >
+          Hire Me
+        </button>
+
+        <button
+          className={`navbar-burger ${menuOpen ? "open" : ""}`}
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
 
-      <div className="landing-circle1"></div>
-      <div className="landing-circle2"></div>
-      <div className="nav-fade"></div>
-    </>
+      <div className={`navbar-mobile ${menuOpen ? "open" : ""}`}>
+        {navLinks.map((link) => (
+          <button
+            key={link.label}
+            className="mobile-nav-link"
+            onClick={() => handleNav(link.href)}
+          >
+            {link.label}
+          </button>
+        ))}
+        <button
+          className="mobile-hire"
+          onClick={() => handleNav("#contact")}
+        >
+          Hire Me
+        </button>
+      </div>
+    </nav>
   );
-};
-
-export default Navbar;
+}

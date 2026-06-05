@@ -1,55 +1,24 @@
-import {
-  createContext,
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import Loading from "../components/Loading";
+import { createContext, useContext, useState, ReactNode } from "react";
 
-interface LoadingType {
+interface LoadingContextType {
   isLoading: boolean;
-  setIsLoading: (state: boolean) => void;
-  setLoading: (percent: number) => void;
+  setIsLoading: (v: boolean) => void;
 }
 
-export const LoadingContext = createContext<LoadingType | null>(null);
+const LoadingContext = createContext<LoadingContextType>({
+  isLoading: true,
+  setIsLoading: () => {},
+});
 
-export const LoadingProvider = ({ children }: PropsWithChildren) => {
-  const [isLoading, setIsLoading] = useState(() => {
-    if (window.innerWidth <= 768) return false;
-    return true;
-  });
-  const [loading, setLoading] = useState(0);
-
-  const value = { isLoading, setIsLoading, setLoading };
-
-  useEffect(() => {
-    if (window.innerWidth <= 768) {
-      import("../components/utils/initialFX").then((module) => {
-        if (module.initialFX) {
-          setTimeout(() => {
-            module.initialFX();
-          }, 100);
-        }
-      });
-    }
-  }, []);
-
-  useEffect(() => {}, [loading]);
-
+export function LoadingProvider({ children }: { children: ReactNode }) {
+  const [isLoading, setIsLoading] = useState(true);
   return (
-    <LoadingContext.Provider value={value as LoadingType}>
-      {isLoading && <Loading percent={loading} />}
-      <main className="main-body">{children}</main>
+    <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+      {children}
     </LoadingContext.Provider>
   );
-};
+}
 
-export const useLoading = () => {
-  const context = useContext(LoadingContext);
-  if (!context) {
-    throw new Error("useLoading must be used within a LoadingProvider");
-  }
-  return context;
-};
+export function useLoading() {
+  return useContext(LoadingContext);
+}

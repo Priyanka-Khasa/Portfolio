@@ -1,40 +1,55 @@
+import { careerItems } from "../data/portfolio";
+import { FiBriefcase, FiBook } from "react-icons/fi";
 import "./styles/Career.css";
-import { config } from "../config";
 
-const getDisplayYear = (period: string) => {
-  if (period.includes("Present")) return "NOW";
-  if (period.includes(" - ")) return period.split(" - ")[0];
-  return period;
-};
-
-const Career = () => {
+export default function Career() {
   return (
-    <div className="career-section section-container">
-      <div className="career-container">
-        <h2>
-          My career <span>&</span>
-          <br /> experience
-        </h2>
-        <div className="career-info">
-          <div className="career-timeline">
-            <div className="career-dot"></div>
+    <section className="career section" id="career">
+      <div className="section-inner">
+        <div className="career-header fade-up">
+          <div className="career-header-text">
+            <div className="section-tag">Career</div>
+            <h2 className="section-heading">
+              My <span className="gradient-text">Journey</span>
+            </h2>
+            <p className="career-intro">
+              From first lines of code to shipping real products — here's where I've been.
+            </p>
           </div>
-          {config.experiences.map((exp, index) => (
-            <div key={index} className="career-info-box">
-              <div className="career-info-in">
-                <div className="career-role">
-                  <h4>{exp.position}</h4>
-                  <h5>{exp.company}</h5>
-                </div>
-                <h3>{getDisplayYear(exp.period)}</h3>
+          <div className="career-header-img">
+            <div className="career-img-frame">
+              <img src="/images/main3.png" alt="Career visual" loading="lazy" />
+              <div className="career-img-badge">
+                <span className="career-badge-num">2+</span>
+                <span className="career-badge-label">Years of<br />Experience</span>
               </div>
-              <p>{exp.description}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="career-timeline">
+          {careerItems.map((item, i) => (
+            <div
+              key={i}
+              className={`timeline-item ${i % 2 === 0 ? "fade-left" : "fade-right"}`}
+            >
+              <div className="timeline-line">
+                <div className="timeline-node">
+                  {item.type === "work" ? <FiBriefcase /> : <FiBook />}
+                </div>
+              </div>
+              <div className="timeline-card">
+                <span className="timeline-year">{item.year}</span>
+                <h3 className="timeline-role">{item.role}</h3>
+                <span className="timeline-company">{item.company}</span>
+                <p className="timeline-desc">{item.description}</p>
+                <div className="timeline-card-glow" />
+              </div>
             </div>
           ))}
+          <div className="timeline-end-dot" />
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Career;
+}
