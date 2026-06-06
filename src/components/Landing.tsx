@@ -1,11 +1,26 @@
-import { useEffect, useRef } from "react";
-import { aboutData } from "../data/portfolio";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { aboutData, mainImages } from "../data/portfolio";
 import { splitTextIntoSpans } from "../utils/splitText";
 import { runInitialFX } from "../utils/initialFX";
 import "./styles/Landing.css";
 
+const GLOWS = [
+  "rgba(139, 92, 246, 0.55)",
+  "rgba(45, 212, 191, 0.45)",
+  "rgba(245, 158, 11, 0.40)",
+  "rgba(244, 63, 94, 0.40)",
+];
+
 export default function Landing() {
   const hasAnimated = useRef(false);
+  const [active, setActive] = useState(0);
+  const [prev, setPrev] = useState<number | null>(null);
+  const [transitioning, setTransitioning] = useState(false);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const counterRef = useRef<HTMLSpanElement>(null);
+  const glowRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     splitTextIntoSpans(".landing-headline");
@@ -15,17 +30,65 @@ export default function Landing() {
     }
   }, []);
 
+  const goTo = (next: number) => {
+    if (transitioning || next === active) return;
+    setTransitioning(true);
+    setPrev(active);
+    setActive(next);
+
+    gsap.to(glowRef.current, {
+      background: `radial-gradient(circle, ${GLOWS[next]} 0%, transparent 70%)`,
+      duration: 0.9,
+      ease: "power2.inOut",
+    });
+
+    setTimeout(() => {
+      setPrev(null);
+      setTransitioning(false);
+    }, 700);
+  };
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      const next = (active + 1) % mainImages.length;
+      goTo(next);
+    }, 3500);
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [active, transitioning]);
+
+  useEffect(() => {
+    if (counterRef.current) {
+      gsap.fromTo(
+        counterRef.current,
+        { y: 12, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" },
+      );
+    }
+  }, [active]);
+
+  const handleDotClick = (i: number) => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    goTo(i);
+  };
+
   return (
     <section className="landing" id="landing">
       <div className="landing-bg-glow" />
       <div className="landing-particles">
-        {Array.from({ length: 16 }).map((_, i) => (
-          <div key={i} className="landing-particle" style={{
-            left: `${(i * 6.25) % 100}%`,
-            top: `${(i * 13 + 10) % 90}%`,
-            animationDelay: `${(i * 0.4) % 6}s`,
-            animationDuration: `${4 + (i % 4) * 1.5}s`,
-          }} />
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="landing-particle"
+            style={{
+              left: `${(i * 5.1) % 100}%`,
+              top: `${(i * 13 + 10) % 90}%`,
+              animationDelay: `${(i * 0.38) % 6}s`,
+              animationDuration: `${4 + (i % 4) * 1.5}s`,
+            }}
+          />
         ))}
       </div>
 
@@ -36,9 +99,7 @@ export default function Landing() {
             Available for work
           </span>
 
-          <h1 className="landing-headline">
-            {aboutData.name}
-          </h1>
+          <h1 className="landing-headline">{aboutData.name}</h1>
 
           <p className="landing-sub">
             <span className="sub-role">{aboutData.role}</span>
@@ -48,7 +109,7 @@ export default function Landing() {
 
           <div className="landing-cta">
             <button
-              className="cta-primary"
+              className="cta-primary magnetic-btn"
               onClick={() => document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" })}
             >
               <span>View My Work</span>
@@ -83,17 +144,51 @@ export default function Landing() {
         </div>
 
         <div className="landing-right">
-          <div className="landing-image-container">
-            <div className="image-glow" />
-            <img
-              src="/images/main1.png"
-              alt="Priyanka Khasa"
-              className="hero-img"
-              loading="eager"
-            />
+          <div className="hero-carousel-wrap" ref={carouselRef}>
+            <div className="hero-glow-orb" ref={glowRef} />
+            <div className="hero-img-stack">
+              {mainImages.map((src, i) => (
+                <div
+                  key={src}
+                  className={`hero-img-slide ${i === active ? "active" : i === prev ? "prev" : "behind"}`}
+                >
+                  <img src={src} alt={`Priyanka Khasa ${i + 1}`} loading={i === 0 ? "eager" : "lazy"} />
+                </div>
+              ))}
+            </div>
+
+            <div className="hero-counter">
+              <span className="hero-counter-num" ref={counterRef}>0{active + 1}</span>
+              <span className="hero-counter-total">/ 0{mainImages.length}</span>
+            </div>
+
             <div className="image-tag">
               <span className="tag-icon">✦</span>
               Frontend Developer
+            </div>
+
+            <div className="hero-dots">
+              {mainImages.map((_, i) => (
+                <button
+                  key={i}
+                  className={`hero-dot ${i === active ? "active" : ""}`}
+                  onClick={() => handleDotClick(i)}
+                  aria-label={`Photo ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <div className="hero-thumbs">
+              {mainImages.map((src, i) => (
+                <button
+                  key={i}
+                  className={`hero-thumb ${i === active ? "active" : ""}`}
+                  onClick={() => handleDotClick(i)}
+                  aria-label={`Photo ${i + 1}`}
+                >
+                  <img src={src} alt="" />
+                </button>
+              ))}
             </div>
           </div>
         </div>

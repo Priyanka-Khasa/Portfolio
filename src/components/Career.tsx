@@ -18,7 +18,7 @@ export default function Career() {
           </div>
           <div className="career-header-img">
             <div className="career-img-frame">
-              <img src="/images/main3.png" alt="Career visual" loading="lazy" />
+              <img src="/images/main_image3.jpeg" alt="Career visual" loading="lazy" />
               <div className="career-img-badge">
                 <span className="career-badge-num">2+</span>
                 <span className="career-badge-label">Years of<br />Experience</span>
