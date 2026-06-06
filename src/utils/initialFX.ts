@@ -25,7 +25,7 @@ export function runInitialFX(): void {
       "-=0.4"
     )
     .from(
-      ".landing-image-container",
+      ".hero-carousel-wrap",
       { scale: 1.08, opacity: 0, duration: 1.1 },
       "-=0.9"
     )
