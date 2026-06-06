@@ -13,12 +13,12 @@ export default function WhatIDo() {
               My <span className="gradient-text">Superpowers</span>
             </h2>
             <p className="whatido-intro">
-              I blend technical depth with design instinct — building things that look great <em>and</em> work beautifully.
+              I blend AI engineering, full-stack development, Android craft, and motion design into products that feel alive.
             </p>
           </div>
           <div className="whatido-header-img">
             <div className="whatido-img-frame">
-              <img src="/images/main5.png" alt="Skills visual" loading="lazy" />
+              <img src="/images/image2.jpeg" alt="Skills visual" loading="lazy" />
               <div className="whatido-img-accent" />
             </div>
             <div className="whatido-img-label">
@@ -44,7 +44,7 @@ export default function WhatIDo() {
         <Marquee speed={48} gradient={false} pauseOnHover className="whatido-marquee">
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <div key={i} className="marquee-item">
-              <span className="marquee-star">✦</span>
+              <span className="marquee-star">*</span>
               <span>{item}</span>
             </div>
           ))}

@@ -19,7 +19,7 @@ export default function Contact() {
       <div className="section-inner">
         <div className="contact-left fade-left">
           <div className="contact-photo-wrap">
-            <img src="/images/main6.png" alt="Priyanka Khasa" className="contact-photo" />
+            <img src="/images/image4.jpeg" alt="Priyanka Khasa" className="contact-photo" />
             <div className="contact-photo-glow" />
           </div>
 
@@ -28,8 +28,7 @@ export default function Contact() {
             Let's <span className="gradient-text">Talk</span>
           </h2>
           <p className="contact-bio">
-            Whether you have a project in mind, want to collaborate, or just say hello —
-            my inbox is always open.
+            Have an internship, collaboration, AI idea, Android product, or web app in mind? Send the note. I like ambitious builds.
           </p>
 
           <div className="contact-links">
@@ -61,7 +60,7 @@ export default function Contact() {
         <div className="contact-right fade-right">
           {sent ? (
             <div className="contact-success">
-              <span className="success-icon">✓</span>
+              <span className="success-icon">OK</span>
               <h3>Message sent!</h3>
               <p>Thank you for reaching out. I'll be in touch soon.</p>
             </div>

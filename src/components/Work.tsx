@@ -13,7 +13,7 @@ export default function Work() {
             Things I've <span className="gradient-text">Built</span>
           </h2>
           <p className="work-subtitle">
-            A selection of projects that showcase my range — from AI-powered platforms to gesture-based interfaces.
+            A focused set of AI, Android, computer-vision, and full-stack products with hackathon recognition and real engineering depth.
           </p>
         </div>
 

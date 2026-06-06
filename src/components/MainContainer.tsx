@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import SocialIcons from "./SocialIcons";
 import Landing from "./Landing";
 import About from "./About";
+import ImageStrip from "./ImageStrip";
 import WhatIDo from "./WhatIDo";
 import Career from "./Career";
 import Work from "./Work";
@@ -13,6 +14,7 @@ import Contact from "./Contact";
 import Footer from "./Footer";
 import { initScrollAnimations } from "../utils/GsapScroll";
 import "./styles/MainContainer.css";
+import "./styles/AestheticRefresh.css";
 
 export default function MainContainer() {
   useEffect(() => {
@@ -44,6 +46,7 @@ export default function MainContainer() {
       <main>
         <Landing />
         <About />
+        <ImageStrip />
         <WhatIDo />
         <Career />
         <Work />

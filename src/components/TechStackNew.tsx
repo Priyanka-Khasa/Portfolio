@@ -7,6 +7,10 @@ const categoryColors: Record<string, string> = {
   Backend:   "var(--accent-teal)",
   Language:  "var(--accent-gold)",
   Database:  "var(--accent-rose)",
+  "AI / CV": "var(--accent-teal)",
+  Android:   "var(--accent-violet)",
+  Styling:   "var(--accent-gold)",
+  ECE:       "var(--accent-rose)",
   Design:    "#f472b6",
   Animation: "var(--accent-violet)",
   Tool:      "var(--text-muted)",
@@ -23,7 +27,7 @@ export default function TechStackNew() {
               Tools of the <span className="gradient-text">Trade</span>
             </h2>
             <p className="techstack-sub">
-              Technologies I work with daily to build fast, beautiful products.
+              Technologies I use to build intelligent interfaces, Android apps, real-time AI flows, and reliable backends.
             </p>
           </div>
           <div className="techstack-header-img">

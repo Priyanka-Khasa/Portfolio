@@ -6,10 +6,10 @@ import { runInitialFX } from "../utils/initialFX";
 import "./styles/Landing.css";
 
 const GLOWS = [
-  "rgba(139, 92, 246, 0.55)",
-  "rgba(45, 212, 191, 0.45)",
-  "rgba(245, 158, 11, 0.40)",
-  "rgba(244, 63, 94, 0.40)",
+  "rgba(24, 40, 37, 0.34)",
+  "rgba(154, 103, 53, 0.32)",
+  "rgba(197, 135, 61, 0.28)",
+  "rgba(99, 64, 35, 0.28)",
 ];
 
 export default function Landing() {
@@ -18,7 +18,6 @@ export default function Landing() {
   const [prev, setPrev] = useState<number | null>(null);
   const [transitioning, setTransitioning] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const counterRef = useRef<HTMLSpanElement>(null);
   const glowRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +51,7 @@ export default function Landing() {
     intervalRef.current = setInterval(() => {
       const next = (active + 1) % mainImages.length;
       goTo(next);
-    }, 3500);
+    }, 3400);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -78,7 +77,7 @@ export default function Landing() {
     <section className="landing" id="landing">
       <div className="landing-bg-glow" />
       <div className="landing-particles">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 24 }).map((_, i) => (
           <div
             key={i}
             className="landing-particle"
@@ -96,15 +95,15 @@ export default function Landing() {
         <div className="landing-left">
           <span className="landing-eyebrow">
             <span className="eyebrow-dot" />
-            Available for work
+            Google Ambassador / Hackathon Finalist / Builder
           </span>
 
           <h1 className="landing-headline">{aboutData.name}</h1>
 
           <p className="landing-sub">
             <span className="sub-role">{aboutData.role}</span>
-            <span className="sub-divider">—</span>
-            crafting digital experiences that move people.
+            <span className="sub-divider">-</span>
+            crafting intelligent products with a soft editorial glow.
           </p>
 
           <div className="landing-cta">
@@ -127,24 +126,24 @@ export default function Landing() {
 
           <div className="landing-stats">
             <div className="stat-item">
-              <span className="stat-number">3+</span>
-              <span className="stat-label">Years Coding</span>
+              <span className="stat-number">8.65</span>
+              <span className="stat-label">B.Tech CGPA</span>
             </div>
             <div className="stat-divider" />
             <div className="stat-item">
-              <span className="stat-number">10+</span>
-              <span className="stat-label">Projects Built</span>
+              <span className="stat-number">30fps</span>
+              <span className="stat-label">AI Tracking</span>
             </div>
             <div className="stat-divider" />
             <div className="stat-item">
-              <span className="stat-number">∞</span>
-              <span className="stat-label">Ideas Brewing</span>
+              <span className="stat-number">4+</span>
+              <span className="stat-label">Flagship Builds</span>
             </div>
           </div>
         </div>
 
         <div className="landing-right">
-          <div className="hero-carousel-wrap" ref={carouselRef}>
+          <div className="hero-carousel-wrap">
             <div className="hero-glow-orb" ref={glowRef} />
             <div className="hero-img-stack">
               {mainImages.map((src, i) => (
@@ -163,8 +162,8 @@ export default function Landing() {
             </div>
 
             <div className="image-tag">
-              <span className="tag-icon">✦</span>
-              Frontend Developer
+              <span className="tag-icon">*</span>
+              AI + Full-Stack Engineer
             </div>
 
             <div className="hero-dots">

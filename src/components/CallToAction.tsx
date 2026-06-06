@@ -12,15 +12,14 @@ export default function CallToAction() {
         </span>
         <h2 className="cta-heading">
           Have an idea? Let's build<br />
-          something <span className="gradient-text">incredible</span>.
+          something <span className="gradient-text">memorable</span>.
         </h2>
         <p className="cta-body">
-          Whether it's a new product, a redesign, or just a conversation — I'm all ears.
-          Let's create something that matters.
+          From AI prototypes to polished product interfaces, I love turning ambitious concepts into usable, beautiful systems.
         </p>
         <div className="cta-actions">
           <a
-            href="mailto:priyankakhasa@gmail.com"
+            href="mailto:priyankakhasa937@gmail.com"
             className="cta-btn-primary"
           >
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -33,7 +32,7 @@ export default function CallToAction() {
             className="cta-btn-ghost"
             onClick={() => document.querySelector("#work")?.scrollIntoView({ behavior: "smooth" })}
           >
-            View my work first →
+            View my work first
           </button>
         </div>
       </div>

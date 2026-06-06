@@ -17,8 +17,9 @@ export default function About() {
       imgRef.current.style.transform = `perspective(900px) rotateY(${rx}deg) rotateX(${ry}deg)`;
     };
     const onLeave = () => {
-      if (imgRef.current)
+      if (imgRef.current) {
         imgRef.current.style.transform = "perspective(900px) rotateY(0deg) rotateX(0deg)";
+      }
     };
     const el = imgRef.current;
     el?.addEventListener("mousemove", onMove);
@@ -37,10 +38,10 @@ export default function About() {
             <img src="/images/main_image2.jpeg" alt="Priyanka Khasa" className="about-photo" />
             <div className="about-img-border" />
             <div className="about-badge">
-              <span className="badge-emoji">✦</span>
+              <span className="badge-emoji">*</span>
               <div>
-                <div className="badge-title">Creative Dev</div>
-                <div className="badge-sub">Turning ideas into pixels</div>
+                <div className="badge-title">Builder Energy</div>
+                <div className="badge-sub">AI, Android, full-stack</div>
               </div>
             </div>
           </div>
@@ -49,8 +50,8 @@ export default function About() {
         <div className="about-text-col fade-right">
           <div className="section-tag">About Me</div>
           <h2 className="section-heading">
-            Crafting the <span className="gradient-text">web</span> with<br />
-            passion & precision
+            Building the <span className="gradient-text">future</span><br />
+            with warmth and precision
           </h2>
           <p className="about-bio">{aboutData.bio}</p>
           <p className="about-bio">{aboutData.bio2}</p>
@@ -67,12 +68,12 @@ export default function About() {
             {aboutData.available && (
               <div className="meta-item available">
                 <span className="avail-dot" />
-                Available for opportunities
+                Open to internships, collaborations, and product work
               </div>
             )}
           </div>
 
-          <a href="#" className="download-cv" download>
+          <a href="/Priyanka_Khasa_Resume_Google.pdf" className="download-cv" download>
             <FiDownload />
             Download CV
           </a>

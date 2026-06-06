@@ -1,23 +1,17 @@
 export const aboutData = {
   greeting: "Hi, I'm Priyanka",
   name: "Priyanka Khasa",
-  role: "Frontend Developer & UI Designer",
-  bio: `I craft immersive digital experiences where code meets creativity.
-  With a deep passion for frontend development and UI/UX design, I build
-  interfaces that are not just functional — but genuinely beautiful and
-  delightful to use.`,
-  bio2: `Currently pursuing my degree in Computer Science, I blend technical
-  precision with design sensibility to create products that leave an impression.
-  Always exploring the intersection of art and engineering.`,
-  email: "priyankakhasa@gmail.com",
-  location: "India",
+  role: "AI, Computer Vision, Full-Stack & Android Engineer",
+  bio: `I build polished products where interface, intelligence, and real-time engineering meet. My work spans AI fitness coaching, gesture-controlled desktops, Android student platforms, and full-stack MERN products.`,
+  bio2: `Currently pursuing B.Tech in Electronics & Communication Engineering with an 8.65 CGPA, I bring a rare blend of ECE curiosity, frontend taste, backend discipline, and on-device AI experimentation.`,
+  email: "priyankakhasa937@gmail.com",
+  location: "Sonipat, India",
   available: true,
 };
 
 export const socialLinks = [
   { label: "GitHub", url: "https://github.com/Priyanka-Khasa", icon: "github" },
   { label: "LinkedIn", url: "https://linkedin.com/in/priyanka-khasa", icon: "linkedin" },
-  { label: "Twitter", url: "https://twitter.com/priyankakhasa", icon: "twitter" },
   { label: "Instagram", url: "https://instagram.com/priyankakhasa", icon: "instagram" },
 ];
 
@@ -31,66 +25,73 @@ export const navLinks = [
 
 export const whatIDo = [
   {
-    title: "Frontend Development",
-    description: "Building fast, accessible, pixel-perfect interfaces with React and modern CSS.",
-    icon: "⚡",
+    title: "AI & Computer Vision",
+    description: "Building real-time MediaPipe and on-device AI pipelines for posture, gestures, and human-computer interaction.",
+    icon: "AI",
   },
   {
-    title: "UI / UX Design",
-    description: "Designing intuitive, visually stunning user experiences in Figma.",
-    icon: "✦",
+    title: "Full-Stack Web",
+    description: "Shipping React, Node.js, Express, MongoDB, SQL, REST API, and authentication-heavy products.",
+    icon: "FS",
   },
   {
-    title: "Motion & Animation",
-    description: "Crafting fluid animations and micro-interactions with GSAP and CSS.",
-    icon: "◈",
+    title: "Android Engineering",
+    description: "Creating Kotlin and Jetpack Compose apps with MVVM, Room DB, Firebase, and modern mobile flows.",
+    icon: "KT",
   },
   {
-    title: "Full Stack",
-    description: "Connecting beautiful frontends to robust Node.js and Express backends.",
-    icon: "◉",
+    title: "Motion Interfaces",
+    description: "Designing cream-toned, cinematic interfaces with thoughtful animations and tiny delightful details.",
+    icon: "UX",
   },
 ];
 
 export const marqueeItems = [
-  "WEB DESIGN",
-  "FRONTEND DEV",
-  "MOTION DESIGN",
-  "UI / UX",
-  "REACT",
-  "CREATIVE CODE",
+  "AI PRODUCTS",
+  "COMPUTER VISION",
   "FULL STACK",
-  "GSAP ANIMATIONS",
+  "ANDROID",
+  "REACT",
+  "KOTLIN",
+  "MEDIAPIPE",
+  "CREATIVE MOTION",
 ];
 
 export const careerItems = [
   {
-    year: "2024",
-    role: "Frontend Developer Intern",
-    company: "Tech Startup",
+    year: "2026",
+    role: "Google Brand Ambassador",
+    company: "BPS Mahila Vishwavidyalaya",
     type: "work",
-    description: "Built responsive React interfaces, improved performance by 40%, collaborated with design teams to ship pixel-perfect components.",
+    description: "Represented Google on campus, organized a student hackathon, and ran Gemini AI sessions focused on practical AI integration.",
   },
   {
-    year: "2023",
-    role: "UI Designer",
-    company: "Freelance",
+    year: "2025-2026",
+    role: "Backend Developer Intern",
+    company: "Vishvena Techno Solutions",
     type: "work",
-    description: "Designed and developed portfolio sites and web apps for 10+ clients, specializing in animated, high-fidelity designs.",
+    description: "Built production RESTful APIs using Node.js, Express, MongoDB, JWT authentication, Mongoose ORM, and validation middleware.",
   },
   {
-    year: "2022",
-    role: "B.Tech — Computer Science",
-    company: "University",
+    year: "2025",
+    role: "Software Development Intern",
+    company: "Realfy Oasis",
+    type: "work",
+    description: "Built an AI fitness web app with React and MediaPipe Pose, adding real-time rep counting, posture scoring, and voice feedback.",
+  },
+  {
+    year: "2024-2028",
+    role: "B.Tech - Electronics & Communication Engineering",
+    company: "BPS Mahila Vishwavidyalaya",
     type: "education",
-    description: "Studying Computer Science with focus on software engineering, data structures, and web technologies.",
+    description: "Maintaining 8.65 CGPA while exploring software engineering, AI, embedded systems, Android, and ECE tooling.",
   },
   {
-    year: "2021",
-    role: "Open Source Contributor",
-    company: "Various Projects",
+    year: "2024-Present",
+    role: "Tech Lead",
+    company: "Elecom Society",
     type: "work",
-    description: "Contributed UI improvements and bug fixes to open-source React projects on GitHub.",
+    description: "Leading technical projects, mentoring juniors, and organizing hands-on events across ECE and software skills.",
   },
 ];
 
@@ -98,54 +99,71 @@ export const projects = [
   {
     id: 1,
     title: "ClassConnect",
-    subtitle: "AI-Powered Classroom Platform",
-    description: "A modern classroom management system powered by AI. Features real-time collaboration, automated assignment grading, and an intelligent study assistant.",
+    subtitle: "AI Android Student Platform",
+    description: "A full Android student platform with on-device AI, real-time group chat, smart task dashboard, Deep Focus Mode, AI resume builder, and 30+ ECE/dev tools. Grand Finalist at Vibestate Hackathon 2025.",
     image: "/images/ClassConnect.png",
-    tags: ["React", "Node.js", "AI", "MongoDB", "Socket.io"],
+    tags: ["Kotlin", "Jetpack Compose", "MVVM", "Room DB", "RunAnywhere AI"],
     live: "#",
     github: "https://github.com/Priyanka-Khasa/ClassConnect",
-    accent: "#8b5cf6",
+    accent: "#182825",
   },
   {
     id: 2,
-    title: "GuestureOs",
-    subtitle: "Gesture-Controlled Interface",
-    description: "Control your computer with hand gestures. Built with computer vision and ML to recognize 20+ gestures, enabling hands-free OS interaction.",
+    title: "Gestra",
+    subtitle: "Gesture-Controlled Desktop Interface",
+    description: "A touchless desktop controller using MediaPipe hand landmarks for cursor, scroll, and media control, with a live React dashboard showing gesture confidence, FPS, and action feed. Winner at HackXtreme by GeeksForGeeks.",
     image: "/images/GuestureOs.png",
-    tags: ["Python", "OpenCV", "MediaPipe", "ML", "React"],
+    tags: ["Python", "OpenCV", "MediaPipe", "React", "WebSocket"],
     live: "#",
     github: "https://github.com/Priyanka-Khasa/GuestureOs",
-    accent: "#2dd4bf",
+    accent: "#9a6735",
   },
   {
     id: 3,
-    title: "Wonderlust",
-    subtitle: "Travel Discovery App",
-    description: "Discover breathtaking destinations with curated itineraries, immersive photo stories, and a community of travelers sharing their adventures.",
+    title: "Wanderlust",
+    subtitle: "Full-Stack MERN Travel Platform",
+    description: "An Airbnb-style travel platform with full CRUD, auth, Cloudinary image storage, Mapbox geolocation, MongoDB Atlas deployment, and a clean travel discovery flow.",
     image: "/images/Wonderlust.png",
-    tags: ["React", "TypeScript", "Node.js", "PostgreSQL", "GSAP"],
+    tags: ["Node.js", "Express", "MongoDB", "Cloudinary", "Mapbox"],
     live: "#",
     github: "https://github.com/Priyanka-Khasa/Wonderlust",
-    accent: "#f59e0b",
+    accent: "#c5873d",
+  },
+  {
+    id: 4,
+    title: "Fitness Coach",
+    subtitle: "AI Real-Time Posture Analysis",
+    description: "A privacy-first AI coaching app with hybrid on-device/cloud intelligence, 30 fps posture tracking, confidence thresholding, and Web Bluetooth heart-rate integration. Grand Finalist at Vibeathon by ThoughtWorks.",
+    image: "/images/image1.jpeg",
+    tags: ["React", "TypeScript", "MediaPipe", "RunAnywhere SDK", "Web Bluetooth"],
+    live: "#",
+    github: "https://github.com/Priyanka-Khasa",
+    accent: "#182825",
   },
 ];
 
 export const techStack = [
   { name: "React", category: "Frontend" },
   { name: "TypeScript", category: "Language" },
+  { name: "JavaScript", category: "Language" },
   { name: "Node.js", category: "Backend" },
-  { name: "Python", category: "Language" },
-  { name: "GSAP", category: "Animation" },
-  { name: "Figma", category: "Design" },
-  { name: "MongoDB", category: "Database" },
-  { name: "PostgreSQL", category: "Database" },
   { name: "Express", category: "Backend" },
-  { name: "Next.js", category: "Frontend" },
+  { name: "Python", category: "Language" },
+  { name: "Kotlin", category: "Language" },
+  { name: "Java", category: "Language" },
+  { name: "MediaPipe", category: "AI / CV" },
+  { name: "OpenCV", category: "AI / CV" },
+  { name: "RunAnywhere SDK", category: "AI / CV" },
+  { name: "Jetpack Compose", category: "Android" },
+  { name: "MongoDB", category: "Database" },
+  { name: "SQL", category: "Database" },
+  { name: "Firebase", category: "Backend" },
   { name: "Tailwind", category: "Styling" },
+  { name: "GSAP", category: "Animation" },
+  { name: "Arduino", category: "ECE" },
   { name: "Git", category: "Tool" },
 ];
 
-// Real photos — used on hero, about, career, tech sections
 export const mainImages = [
   "/images/main_image1.jpeg",
   "/images/main_image2.jpeg",
@@ -153,7 +171,6 @@ export const mainImages = [
   "/images/main_image4.jpeg",
 ];
 
-// AI-generated images — used in gallery / supporting sections
 export const aiImages = [
   "/images/image1.jpeg",
   "/images/image2.jpeg",
@@ -161,8 +178,11 @@ export const aiImages = [
   "/images/image4.jpeg",
 ];
 
-// Gallery strip uses ai images
 export const galleryImages = [
+  "/images/main_image1.jpeg",
+  "/images/main_image2.jpeg",
+  "/images/main_image3.jpeg",
+  "/images/main_image4.jpeg",
   "/images/image1.jpeg",
   "/images/image2.jpeg",
   "/images/image3.jpeg",

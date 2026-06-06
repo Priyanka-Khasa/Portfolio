@@ -13,7 +13,7 @@ export default function Career() {
               My <span className="gradient-text">Journey</span>
             </h2>
             <p className="career-intro">
-              From first lines of code to shipping real products — here's where I've been.
+              From ECE labs to AI prototypes, internships, campus leadership, and nationally recognized hackathon work.
             </p>
           </div>
           <div className="career-header-img">
@@ -21,7 +21,7 @@ export default function Career() {
               <img src="/images/main_image3.jpeg" alt="Career visual" loading="lazy" />
               <div className="career-img-badge">
                 <span className="career-badge-num">2+</span>
-                <span className="career-badge-label">Years of<br />Experience</span>
+                <span className="career-badge-label">Internship<br />roles</span>
               </div>
             </div>
           </div>
