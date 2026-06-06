@@ -145,11 +145,26 @@ export const techStack = [
   { name: "Git", category: "Tool" },
 ];
 
-export const heroImages = [
-  "/images/main1.png",
-  "/images/main2.png",
-  "/images/main3.png",
-  "/images/main4.png",
-  "/images/main5.png",
-  "/images/main6.png",
+// Real photos — used on hero, about, career, tech sections
+export const mainImages = [
+  "/images/main_image1.jpeg",
+  "/images/main_image2.jpeg",
+  "/images/main_image3.jpeg",
+  "/images/main_image4.jpeg",
+];
+
+// AI-generated images — used in gallery / supporting sections
+export const aiImages = [
+  "/images/image1.jpeg",
+  "/images/image2.jpeg",
+  "/images/image3.jpeg",
+  "/images/image4.jpeg",
+];
+
+// Gallery strip uses ai images
+export const galleryImages = [
+  "/images/image1.jpeg",
+  "/images/image2.jpeg",
+  "/images/image3.jpeg",
+  "/images/image4.jpeg",
 ];

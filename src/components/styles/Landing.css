@@ -245,51 +245,112 @@
   background: rgba(139, 92, 246, 0.2);
 }
 
-/* ── Hero image (single static) ─────────────────────────── */
+/* ── Hero image carousel ───────────────────────── */
 .landing-right {
   flex: 0 0 auto;
-  width: min(380px, 38vw);
+  width: min(420px, 40vw);
 }
 
-.landing-image-container {
+.hero-carousel-wrap {
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 4;
-  border-radius: 28px;
-  overflow: visible;
+  border-radius: 32px;
+  isolation: isolate;
 }
 
-.image-glow {
+.hero-glow-orb {
   position: absolute;
-  inset: -3px;
-  border-radius: 30px;
-  background: var(--gradient-violet-teal);
-  z-index: 0;
-  opacity: 0.55;
+  inset: -18px;
+  border-radius: 36px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.55) 0%, transparent 70%);
+  filter: blur(24px);
+  opacity: 0.65;
+  z-index: -1;
   animation: glowPulse 4s ease-in-out infinite;
 }
 
-.hero-img {
-  position: relative;
+.hero-img-stack {
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  overflow: hidden;
+  background: rgba(10, 8, 18, 0.72);
+  border: 1px solid rgba(240, 238, 250, 0.12);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.38);
+}
+
+.hero-img-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.08) translateX(28px) rotate(2deg);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s ease;
+  filter: saturate(0.86) blur(8px);
+}
+
+.hero-img-slide.active {
+  opacity: 1;
+  transform: scale(1) translateX(0) rotate(0deg);
+  filter: saturate(1.05) blur(0);
+  z-index: 2;
+}
+
+.hero-img-slide.prev {
+  opacity: 0;
+  transform: scale(0.96) translateX(-28px) rotate(-2deg);
+  filter: saturate(0.9) blur(5px);
   z-index: 1;
+}
+
+.hero-img-slide.behind {
+  z-index: 0;
+}
+
+.hero-img-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  border-radius: 26px;
   display: block;
-  transition: transform 0.6s ease;
 }
 
-.landing-image-container:hover .hero-img {
-  transform: scale(1.02);
+.hero-counter {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 3;
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 14px;
+  background: rgba(5, 4, 8, 0.68);
+  border: 1px solid rgba(240, 238, 250, 0.14);
+  backdrop-filter: blur(16px);
+  font-family: var(--font-mono);
+}
+
+.hero-counter-num {
+  color: var(--accent-teal);
+  font-weight: 700;
+  font-size: 0.92rem;
+  display: inline-block;
+}
+
+.hero-counter-total {
+  color: var(--text-muted);
+  font-size: 0.72rem;
 }
 
 .image-tag {
   position: absolute;
-  bottom: -14px;
+  bottom: 4.75rem;
   right: -14px;
-  z-index: 2;
+  z-index: 4;
   background: rgba(5, 4, 8, 0.92);
   border: 1px solid rgba(139, 92, 246, 0.3);
   backdrop-filter: blur(16px);
@@ -319,6 +380,72 @@
 @keyframes spinSlow {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+.hero-dots {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 4;
+  display: flex;
+  gap: 0.45rem;
+}
+
+.hero-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(240, 238, 250, 0.32);
+  background: rgba(240, 238, 250, 0.12);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hero-dot.active,
+.hero-dot:hover {
+  width: 24px;
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+  box-shadow: 0 0 14px rgba(45, 212, 191, 0.45);
+}
+
+.hero-thumbs {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 4;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.55rem;
+}
+
+.hero-thumb {
+  border: 1px solid rgba(240, 238, 250, 0.14);
+  background: rgba(5, 4, 8, 0.58);
+  padding: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 13px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.62;
+  transform: translateY(0);
+  transition: all 0.25s ease;
+}
+
+.hero-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-thumb.active,
+.hero-thumb:hover {
+  opacity: 1;
+  transform: translateY(-4px);
+  border-color: var(--accent-violet);
+  box-shadow: 0 10px 26px rgba(139, 92, 246, 0.28);
 }
 
 /* ── Scroll hint ─────────────────────────────────────────── */

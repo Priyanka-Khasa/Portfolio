@@ -28,7 +28,7 @@ export default function TechStackNew() {
           </div>
           <div className="techstack-header-img">
             <div className="techstack-img-frame">
-              <img src="/images/main4.png" alt="Tech visual" loading="lazy" />
+              <img src="/images/main_image4.jpeg" alt="Tech visual" loading="lazy" />
               <div className="techstack-img-overlay" />
             </div>
             <div className="techstack-img-tag">

@@ -34,7 +34,7 @@ export default function About() {
       <div className="section-inner">
         <div className="about-image-col fade-left">
           <div className="about-img-wrap" ref={imgRef}>
-            <img src="/images/main2.png" alt="Priyanka Khasa" className="about-photo" />
+            <img src="/images/main_image2.jpeg" alt="Priyanka Khasa" className="about-photo" />
             <div className="about-img-border" />
             <div className="about-badge">
               <span className="badge-emoji">✦</span>
