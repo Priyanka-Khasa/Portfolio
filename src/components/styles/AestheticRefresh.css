@@ -1,17 +1,18 @@
+
 :root {
-  --bg: #f8efdf;
-  --bg2: #fff8ec;
-  --bg-card: rgba(255, 251, 242, 0.78);
-  --accent-violet: #182825;
-  --accent-violet-light: #2f4943;
-  --accent-teal: #9a6735;
-  --accent-gold: #c5873d;
-  --accent-rose: #8d4d3a;
-  --text: #182825;
-  --text-muted: rgba(24, 40, 37, 0.66);
-  --border-color: rgba(24, 40, 37, 0.12);
-  --gradient-violet-teal: linear-gradient(135deg, #182825 0%, #9a6735 100%);
-  --gradient-gold-rose: linear-gradient(135deg, #c5873d 0%, #8d4d3a 100%);
+  --bg: #f7f5ef;
+  --bg2: #eef1eb;
+  --bg-card: rgba(255, 255, 255, 0.72);
+  --accent-violet: #193730;
+  --accent-violet-light: #244b42;
+  --accent-teal: #193730;
+  --accent-gold: #193730;
+  --accent-rose: #193730;
+  --text: #193730;
+  --text-muted: rgba(25, 55, 48, 0.66);
+  --border-color: rgba(25, 55, 48, 0.12);
+  --gradient-violet-teal: linear-gradient(135deg, #193730 0%, #315d52 100%);
+  --gradient-gold-rose: linear-gradient(135deg, #193730 0%, #315d52 100%);
 }
 
 body {
@@ -666,3 +667,59 @@ body::after {
     border-radius: 22px;
   }
 }
+
+
+/* Final light editorial palette and portrait crop corrections. */
+body {
+  background: #f7f5ef;
+}
+
+body::before {
+  background:
+    linear-gradient(rgba(25, 55, 48, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(25, 55, 48, 0.03) 1px, transparent 1px);
+}
+
+.whatido,
+.work {
+  background: #eef1eb;
+}
+
+.techstack {
+  background: #eef1eb;
+}
+
+.landing {
+  background: #f7f5ef;
+}
+
+.landing-bg-glow {
+  background: rgba(25, 55, 48, 0.09);
+  filter: blur(20px);
+}
+
+.landing-headline,
+.gradient-text,
+.gradient-text-anim {
+  background: none;
+  color: var(--text);
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+  animation: none;
+}
+
+.stat-number,
+.career-badge-num,
+.techstack-tag-num,
+.whatido-img-label span:first-child {
+  background: none;
+  color: var(--text);
+  -webkit-text-fill-color: currentColor;
+}
+
+.about-photo { object-position: 50% 14%; }
+.whatido-img-frame img { object-position: 50% 12%; }
+.career-img-frame img { object-position: 50% 13%; }
+.techstack-img-frame img { object-position: 50% 10%; }
+.contact-photo { object-position: 50% 12%; }
+.strip-frame img { object-position: 50% 14%; }

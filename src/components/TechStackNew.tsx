@@ -1,68 +1,80 @@
+import type { CSSProperties } from "react";
 import { techStack } from "../data/portfolio";
-import Marquee from "react-fast-marquee";
 import "./styles/TechStackNew.css";
 
-const categoryColors: Record<string, string> = {
-  Frontend:  "var(--accent-violet)",
-  Backend:   "var(--accent-teal)",
-  Language:  "var(--accent-gold)",
-  Database:  "var(--accent-rose)",
-  "AI / CV": "var(--accent-teal)",
-  Android:   "var(--accent-violet)",
-  Styling:   "var(--accent-gold)",
-  ECE:       "var(--accent-rose)",
-  Design:    "#f472b6",
-  Animation: "var(--accent-violet)",
-  Tool:      "var(--text-muted)",
+const categoryOrder = ["Frontend", "Backend", "Language", "AI / CV", "Android", "Database", "Styling", "Animation", "ECE", "Tool"];
+
+const categoryLabels: Record<string, string> = {
+  Frontend: "Interface",
+  Backend: "Server",
+  Language: "Code",
+  "AI / CV": "Intelligence",
+  Android: "Mobile",
+  Database: "Data",
+  Styling: "Visual",
+  Animation: "Motion",
+  ECE: "Hardware",
+  Tool: "Workflow",
 };
 
 export default function TechStackNew() {
+  const groupedStack = categoryOrder
+    .map((category) => ({
+      category,
+      items: techStack.filter((tech) => tech.category === category),
+    }))
+    .filter((group) => group.items.length > 0);
+
   return (
     <section className="techstack section" id="techstack">
       <div className="section-inner">
         <div className="techstack-header fade-up">
           <div className="techstack-header-text">
-            <div className="section-tag">Tech Stack</div>
+            <div className="section-tag">Skills & tools</div>
             <h2 className="section-heading">
-              Tools of the <span className="gradient-text">Trade</span>
+              Built to <span className="gradient-text">build.</span>
             </h2>
             <p className="techstack-sub">
-              Technologies I use to build intelligent interfaces, Android apps, real-time AI flows, and reliable backends.
+              A practical toolkit for intelligent interfaces, mobile products, real-time AI, and dependable backends.
             </p>
           </div>
-          <div className="techstack-header-img">
-            <div className="techstack-img-frame">
-              <img src="/images/main_image4.jpeg" alt="Tech visual" loading="lazy" />
-              <div className="techstack-img-overlay" />
-            </div>
-            <div className="techstack-img-tag">
-              <span className="techstack-tag-num">{techStack.length}</span>
-              Technologies
-            </div>
+          <div className="skill-orbit" aria-label={`${techStack.length} technologies in my toolkit`}>
+            <span className="skill-orbit-ring" />
+            <strong>{techStack.length}</strong>
+            <span>tools</span>
           </div>
         </div>
-      </div>
 
-      <div className="tech-marquee-wrap fade-up">
-        <Marquee speed={38} gradient gradientColor="var(--bg2)" gradientWidth={80} pauseOnHover>
-          {techStack.map((tech) => (
-            <div key={tech.name} className="tech-badge">
-              <span
-                className="tech-dot"
-                style={{ background: categoryColors[tech.category] ?? "var(--accent-violet)" }}
-              />
-              <span className="tech-name">{tech.name}</span>
-              <span className="tech-cat">{tech.category}</span>
-            </div>
+        <div className="skill-board stagger-group">
+          {groupedStack.map((group, groupIndex) => (
+            <article
+              className={`skill-group skill-group-${groupIndex + 1}`}
+              key={group.category}
+              style={{ "--group-index": groupIndex } as CSSProperties}
+            >
+              <div className="skill-group-top">
+                <span className="skill-group-index">0{groupIndex + 1}</span>
+                <div>
+                  <span className="skill-group-kicker">{categoryLabels[group.category]}</span>
+                  <h3>{group.category}</h3>
+                </div>
+              </div>
+              <div className="skill-pills">
+                {group.items.map((tech, itemIndex) => (
+                  <span
+                    className="skill-pill"
+                    key={tech.name}
+                    style={{ "--item-index": itemIndex } as CSSProperties}
+                  >
+                    <span className="skill-pill-dot" />
+                    {tech.name}
+                  </span>
+                ))}
+              </div>
+              <span className="skill-card-mark" aria-hidden="true">+</span>
+            </article>
           ))}
-        </Marquee>
-        <Marquee speed={28} direction="right" gradient gradientColor="var(--bg2)" gradientWidth={80} pauseOnHover style={{ marginTop: "0.75rem" }}>
-          {[...techStack].reverse().map((tech) => (
-            <div key={tech.name} className="tech-badge ghost">
-              <span className="tech-name">{tech.name}</span>
-            </div>
-          ))}
-        </Marquee>
+        </div>
       </div>
     </section>
   );
