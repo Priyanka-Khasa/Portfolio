@@ -25,9 +25,21 @@ export function runInitialFX(): void {
       "-=0.4"
     )
     .from(
-      ".hero-carousel-wrap",
-      { scale: 1.08, opacity: 0, duration: 1.1 },
-      "-=0.9"
+      ".collage-photo",
+      {
+        y: 28,
+        scale: 0.94,
+        opacity: 0,
+        duration: 0.62,
+        stagger: 0.07,
+        clearProps: "transform",
+      },
+      "-=0.85"
+    )
+    .from(
+      ".collage-monogram, .collage-accent",
+      { scale: 0.8, opacity: 0, duration: 0.4, stagger: 0.06 },
+      "-=0.35"
     )
     .from(
       ".social-icons",
