@@ -1,44 +1,95 @@
+/* ══════════════════════════════════════════════════════════
+   WHAT I DO — Premium service cards section
+══════════════════════════════════════════════════════════ */
+
 .whatido {
   padding: 8rem 6vw;
   background: var(--bg2);
+  position: relative;
+  overflow: hidden;
 }
 
-/* ── Two-column section header ─────────────────────────── */
+/* ── Section Header ─────────────────────────────────────── */
+
 .whatido-header {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 3rem;
   align-items: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 4.5rem;
 }
 
 .whatido-header-text {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-violet);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(9, 2, 23, 0.18);
+  border-radius: 99px;
+  padding: 0.28rem 0.85rem;
+  width: fit-content;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-violet);
+  flex-shrink: 0;
 }
 
 .whatido-intro {
   font-size: 0.95rem;
   color: var(--text-muted);
-  line-height: 1.75;
+  line-height: 1.8;
   max-width: 420px;
-  margin-top: 0.25rem;
 }
+
+/* ── Profile Image Frame ────────────────────────────────── */
 
 .whatido-header-img {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.75rem;
+  gap: 0.85rem;
 }
 
 .whatido-img-frame {
   position: relative;
-  width: 160px;
-  height: 200px;
-  border-radius: 18px;
+  width: 165px;
+  height: 210px;
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.07),
+    0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Gradient glow ring behind the frame */
+.whatido-img-accent {
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 22px;
+  background: var(--gradient-violet-teal);
+  z-index: -1;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.whatido-img-frame:hover .whatido-img-accent {
+  opacity: 0.85;
 }
 
 .whatido-img-frame img {
@@ -47,36 +98,28 @@
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .whatido-img-frame:hover img {
-  transform: scale(1.05);
-}
-
-.whatido-img-accent {
-  position: absolute;
-  inset: -2px;
-  border-radius: 20px;
-  background: var(--gradient-violet-teal);
-  z-index: -1;
-  opacity: 0.45;
+  transform: scale(1.06);
 }
 
 .whatido-img-label {
   display: flex;
-  align-items: baseline;
-  gap: 0.45rem;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   color: var(--text-muted);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
 }
 
-.whatido-img-label span:first-child {
+.whatido-img-label strong {
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 800;
+  font-size: 1.6rem;
+  font-weight: 900;
   background: var(--gradient-violet-teal);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -84,112 +127,270 @@
   line-height: 1;
 }
 
-/* ── Cards grid ────────────────────────────────────────── */
+/* ── Cards Grid ─────────────────────────────────────────── */
+
 .whatido-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
 }
 
+/* ── Cards grid ────────────────────────────────────────── */
 .whatido-card {
   position: relative;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 18px;
-  padding: 1.8rem 1.6rem;
+  border-radius: 20px;
+  padding: 1.85rem 1.6rem;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
   overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .whatido-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(139, 92, 246, 0.38);
-  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.32);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(139, 92, 246, 0.1);
 }
 
-.whatido-card:hover .card-glow {
-  opacity: 1;
-}
-
-.card-glow {
+/* Animated top accent bar — sweeps in on hover */
+.card-top-bar {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 1.5px;
+  height: 2px;
   background: var(--gradient-violet-teal);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.whatido-icon {
-  font-size: 1.7rem;
-  line-height: 1;
-  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.45));
+.whatido-card:hover .card-top-bar {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Icon container with wiggle on hover */
+.card-icon-wrap {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  margin-bottom: 1.1rem;
+  flex-shrink: 0;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.whatido-card:hover .card-icon-wrap {
+  background: rgba(17, 3, 52, 0.18);
+  border-color: rgba(9, 2, 25, 0.35);
+  transform: scale(1.08) rotate(-3deg);
 }
 
 .whatido-title {
-  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
   color: var(--text);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.55rem;
 }
 
 .whatido-desc {
-  font-size: 0.85rem;
-  line-height: 1.72;
+  font-size: 0.84rem;
+  line-height: 1.75;
   color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  flex: 1;
 }
 
-/* ── Marquee strip ─────────────────────────────────────── */
+/* Skill pills at the bottom of each card */
+.card-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: auto;
+}
+
+.card-skill {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: rgba(14, 10, 27, 0.75);
+  background: rgba(183, 158, 241, 0.06);
+  border: 1px solid rgba(10, 3, 26, 0.12);
+  border-radius: 99px;
+  padding: 0.18rem 0.6rem;
+}
+
+/* ── Marquee Strip ──────────────────────────────────────── */
+
 .marquee-section {
   margin-top: 4.5rem;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   overflow: hidden;
+  /* Soft edge fade */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
 }
 
-.whatido-marquee {
-  padding: 1.1rem 0;
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-run 22s linear infinite;
+  padding: 1rem 0;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-run {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .marquee-item {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: 0 2rem;
+  gap: 0.75rem;
+  padding: 0 2.25rem;
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
   white-space: nowrap;
 }
 
-.marquee-star {
-  color: var(--accent-violet);
-  font-size: 0.6rem;
-  filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.8));
+.marquee-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-violet);
+  flex-shrink: 0;
+  opacity: 0.7;
 }
 
-/* ── Responsive ────────────────────────────────────────── */
+/* ── Responsive ─────────────────────────────────────────── */
+
 @media (max-width: 768px) {
   .whatido-header {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   .whatido-header-img {
-    align-items: flex-start;
     flex-direction: row;
     align-items: center;
   }
+
   .whatido-img-frame {
     width: 120px;
     height: 150px;
+  }
+
+  .section-heading {
+    font-size: 1.8rem;
+  }
+}
+/* ── LIGHT THEME FIX — Card text colors ── */
+
+.whatido-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a2e;          /* Was var(--text) — too light on cream */
+  letter-spacing: -0.02em;
+  margin-bottom: 0.55rem;
+}
+
+.whatido-desc {
+  font-size: 0.84rem;
+  line-height: 1.75;
+  color: #161618;          /* Was var(--text-muted) — near invisible */
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.card-skill {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #050111;          /* Dark violet, readable on cream */
+  background: rgba(187, 165, 238, 0.1);
+  border: 1px solid rgba(7, 1, 21, 0.2);
+  border-radius: 99px;
+  padding: 0.18rem 0.6rem;
+}
+
+/* ── Section header text ── */
+.whatido-intro {
+  font-size: 0.95rem;
+  color: #18181a;          /* Dark enough on gray background */
+  line-height: 1.8;
+  max-width: 420px;
+}
+
+/* ── Marquee items ── */
+.marquee-item {
+  color: #121119;          /* Dark text on light bg */
+}
+
+/* ── Card abbr badge (AI, FS, KT, UX) ── */
+.card-abbr {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #130c24;
+  background: rgba(139, 92, 246, 0.12);
+  border: 1px solid rgba(5, 1, 14, 0.2);
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  width: fit-content;
+  margin-bottom: 0.75rem;
+}
+/* Light theme card overrides */
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #1d1d39;
+    --text-muted: #383645;
+    --bg-card: #f5f3ee;
+    --border-color: rgba(0, 0, 0, 0.08);
   }
 }

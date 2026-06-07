@@ -1,44 +1,102 @@
+/* ══════════════════════════════════════════════════════════
+   WORK SECTION — World-class portfolio layout
+══════════════════════════════════════════════════════════ */
+
 .work {
   padding: 8rem 6vw;
   background: var(--bg2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Section Header ─────────────────────────────────────── */
+
+.work-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-violet);
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.18);
+  border-radius: 99px;
+  padding: 0.28rem 0.85rem;
+  margin-bottom: 1.4rem;
+}
+
+.work-eyebrow::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-violet);
+  flex-shrink: 0;
+}
+
+.work-heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.work-heading em {
+  font-style: normal;
+  background: var(--gradient-violet-teal);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .work-subtitle {
-  font-size: 0.97rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
-  margin-top: 0.75rem;
-  max-width: 540px;
-  line-height: 1.7;
+  max-width: 480px;
+  line-height: 1.8;
 }
+
+/* ── Card List ──────────────────────────────────────────── */
 
 .work-list {
-  margin-top: 4rem;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 2rem;
 }
+
+/* ── Work Card — Full Bordered Container ────────────────── */
 
 .work-card {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: border-color 0.4s ease, transform 0.4s ease;
 }
 
-.work-card.reverse {
-  direction: rtl;
+.work-card:hover {
+  border-color: rgba(139, 92, 246, 0.28);
+  transform: translateY(-3px);
 }
 
-.work-card.reverse > * {
-  direction: ltr;
-}
+/* Reversed layout — image on right */
+.work-card.reverse .work-card-image { order: 2; }
+.work-card.reverse .work-card-content { order: 1; }
+
+/* ── Card Image Panel ───────────────────────────────────── */
 
 .work-card-image {
   position: relative;
-  border-radius: 18px;
   overflow: hidden;
-  aspect-ratio: 16 / 11;
-  background: var(--bg-card);
+  min-height: 360px;
 }
 
 .work-img-wrap {
@@ -50,20 +108,26 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease, opacity 0.3s ease;
   display: block;
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
+.work-card:hover .work-img-wrap img {
+  transform: scale(1.06);
+}
+
+/* Loading skeleton */
 .work-img-skeleton {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg,
-    rgba(139, 92, 246, 0.05) 25%,
-    rgba(139, 92, 246, 0.1) 50%,
-    rgba(139, 92, 246, 0.05) 75%
+  background: linear-gradient(
+    90deg,
+    rgba(139, 92, 246, 0.04) 25%,
+    rgba(139, 92, 246, 0.09) 50%,
+    rgba(139, 92, 246, 0.04) 75%
   );
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  animation: shimmer 1.8s ease-in-out infinite;
 }
 
 @keyframes shimmer {
@@ -71,45 +135,44 @@
   to   { background-position: -200% 0; }
 }
 
+/* Hover overlay with links */
 .work-card-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(5, 4, 8, 0.7);
+  background: rgba(7, 6, 14, 0.78);
   opacity: 0;
   transition: opacity 0.35s ease;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  padding: 1.75rem;
+  backdrop-filter: blur(6px);
 }
 
 .work-card:hover .work-card-overlay {
   opacity: 1;
 }
 
-.work-card:hover .work-card-image img {
-  transform: scale(1.04);
-}
-
+/* Overlay link buttons */
 .work-card-links {
   display: flex;
-  gap: 1rem;
+  gap: 0.7rem;
 }
 
 .work-card-links a {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: rgba(139, 92, 246, 0.2);
-  border: 1px solid rgba(139, 92, 246, 0.4);
-  color: white;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.1rem;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.25s ease;
-  transform: translateY(10px);
+  letter-spacing: 0.04em;
   opacity: 0;
+  transform: translateY(10px);
   transition: transform 0.35s ease, opacity 0.35s ease, background 0.2s ease;
 }
 
@@ -126,120 +189,182 @@
   background: var(--accent-violet);
 }
 
+/* ── Card Content Panel ─────────────────────────────────── */
+
 .work-card-content {
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
+  justify-content: center;
+  padding: 3rem;
+  position: relative;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.work-card.reverse .work-card-content {
+  border-left: none;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Ghost number watermark */
+.work-card-number {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(139, 92, 246, 0.04);
+  letter-spacing: -0.06em;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
 .work-index {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: var(--accent-violet);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.work-index::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: rgba(139, 92, 246, 0.35);
 }
 
 .work-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
   font-weight: 800;
   color: var(--text);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   line-height: 1.1;
+  margin-bottom: 0.5rem;
 }
 
 .work-subtitle-text {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent-teal);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-teal);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 1.1rem;
 }
 
 .work-desc {
-  font-size: 0.93rem;
-  line-height: 1.75;
+  font-size: 0.9rem;
+  line-height: 1.8;
   color: var(--text-muted);
+  margin-bottom: 1.5rem;
 }
+
+/* ── Tags ───────────────────────────────────────────────── */
 
 .work-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.4rem;
+  margin-bottom: 1.75rem;
 }
 
 .work-tag {
-  padding: 0.3rem 0.8rem;
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.2);
+  padding: 0.25rem 0.75rem;
+  background: rgba(139, 92, 246, 0.07);
+  border: 1px solid rgba(139, 92, 246, 0.16);
   border-radius: 99px;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  color: var(--accent-violet-light);
-  letter-spacing: 0.06em;
+  color: rgba(167, 139, 250, 0.9);
+  letter-spacing: 0.07em;
   font-family: var(--font-mono);
+  text-transform: uppercase;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
+
+.work-tag:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.32);
+}
+
+/* ── Action Buttons ─────────────────────────────────────── */
 
 .work-actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.65rem;
   flex-wrap: wrap;
-  margin-top: 0.5rem;
 }
 
 .work-btn-ghost,
 .work-btn-primary {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.6rem 1.2rem;
+  gap: 0.45rem;
+  padding: 0.6rem 1.35rem;
   border-radius: 99px;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-decoration: none;
-  transition: all 0.25s ease;
+  letter-spacing: 0.03em;
   font-family: var(--font-body);
-  letter-spacing: 0.04em;
+  transition: all 0.25s ease;
 }
 
 .work-btn-ghost {
   background: transparent;
-  border: 1px solid rgba(240, 238, 250, 0.15);
+  border: 1px solid rgba(240, 238, 250, 0.12);
   color: var(--text-muted);
 }
 
 .work-btn-ghost:hover {
   border-color: var(--accent-violet);
-  color: var(--accent-violet-light);
+  color: rgba(167, 139, 250, 0.9);
 }
 
 .work-btn-primary {
   background: var(--gradient-violet-teal);
   border: none;
-  color: white;
+  color: #fff;
+  font-weight: 700;
 }
 
 .work-btn-primary:hover {
-  opacity: 0.88;
+  opacity: 0.9;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.35);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.38);
 }
+
+/* ── Responsive ─────────────────────────────────────────── */
 
 @media (max-width: 900px) {
   .work-card,
   .work-card.reverse {
     grid-template-columns: 1fr;
-    direction: ltr;
-    gap: 2rem;
   }
 
-  .work-card > * {
-    direction: ltr;
+  .work-card-image,
+  .work-card.reverse .work-card-image {
+    order: 0;
+    min-height: 240px;
   }
 
-  .work-card-image {
-    aspect-ratio: 16 / 10;
+  .work-card-content,
+  .work-card.reverse .work-card-content {
+    order: 1;
+    padding: 2rem;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .work-card-number {
+    font-size: 2.5rem;
   }
 }

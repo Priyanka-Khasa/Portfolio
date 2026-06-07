@@ -1,4 +1,6 @@
+/* ── Tech Stack Section ─────────────────────────────────── */
 .techstack {
+<<<<<<< HEAD
   position: relative;
   padding: clamp(6rem, 10vw, 9rem) 0;
   overflow: hidden;
@@ -15,6 +17,26 @@
   border: 1px solid rgba(25, 55, 48, 0.1);
   border-radius: 50%;
   box-shadow: 0 0 0 55px rgba(25, 55, 48, 0.025), 0 0 0 110px rgba(25, 55, 48, 0.02);
+=======
+  padding: 6rem 0 5rem;
+  background: var(--bg2);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Subtle ambient glow behind the section */
+.techstack::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 400px;
+  background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+>>>>>>> 5fe3acb (Worked on portfolio)
 }
 
 .techstack .section-inner {
@@ -23,19 +45,59 @@
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 6vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section Eyebrow Label ──────────────────────────────── */
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 99px;
+  padding: 0.3rem 0.85rem;
+  width: fit-content;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #8b5cf6;
+  flex-shrink: 0;
 }
 
 .techstack-header {
+<<<<<<< HEAD
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   gap: 3rem;
   margin-bottom: 3.5rem;
+=======
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: center;
+  margin-bottom: 4rem;
+>>>>>>> 5fe3acb (Worked on portfolio)
 }
 
 .techstack-header-text {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
   align-items: flex-start;
   gap: 0.9rem;
 }
@@ -279,3 +341,198 @@
   .skill-orbit-ring,
   .skill-group { animation: none; }
 }
+=======
+  gap: 1rem;
+}
+
+.techstack-sub {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 400px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.techstack-header-img {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.techstack-img-frame {
+  position: relative;
+  width: 160px;
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 24px 48px rgba(0, 0, 0, 0.4);
+}
+
+.techstack-img-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.techstack-img-frame:hover img {
+  transform: scale(1.06);
+}
+
+.techstack-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(5, 4, 8, 0.6) 0%,
+    rgba(5, 4, 8, 0.1) 40%,
+    transparent 70%
+  );
+  border-radius: 20px;
+}
+
+.techstack-img-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.techstack-tag-num {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  background: var(--gradient-violet-teal);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+/* ── Marquee ───────────────────────────────────────────── */
+.tech-marquee-wrap {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  /* fade edges */
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.tech-marquee-row {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 28s linear infinite;
+}
+
+.tech-marquee-row:nth-child(2) {
+  animation-direction: reverse;
+  animation-duration: 34s;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Pause on hover for accessibility */
+.tech-marquee-row:hover {
+  animation-play-state: paused;
+}
+
+/* ── Tech Badge ────────────────────────────────────────── */
+.tech-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 99px;
+  padding: 0.5rem 1rem 0.5rem 0.75rem;
+  margin: 0 0.4rem;
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    background 0.3s ease;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.tech-badge:hover {
+  border-color: rgba(139, 92, 246, 0.45);
+  background: rgba(139, 92, 246, 0.06);
+  transform: translateY(-2px);
+}
+
+.tech-badge.ghost {
+  background: transparent;
+  border-color: rgba(240, 238, 250, 0.04);
+}
+
+.tech-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/* Group name + category into a stacked mini-label */
+.tech-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.tech-name {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.tech-cat {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .techstack {
+    padding: 4rem 0 3.5rem;
+  }
+
+  .techstack-header {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .techstack-header-img {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .techstack-img-frame {
+    width: 120px;
+    height: 155px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+}
+>>>>>>> 5fe3acb (Worked on portfolio)

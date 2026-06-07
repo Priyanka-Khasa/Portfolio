@@ -1,29 +1,43 @@
+/* ============================================================
+   CONTACT SECTION
+   ============================================================ */
+
 .contact {
-  padding: 8rem 6vw;
-  background: var(--bg);
+  padding: clamp(5rem, 10vw, 8rem) 0;
 }
 
 .contact .section-inner {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 5rem;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(3rem, 5vw, 5rem);
   align-items: start;
 }
 
-/* ── Left column with photo ─────────────────────────────── */
+
+/* ── Left column ─────────────────────────────────────────── */
+
 .contact-left {
   display: flex;
   flex-direction: column;
-  gap: 1.4rem;
+  gap: var(--space-6);
 }
 
 .contact-photo-wrap {
   position: relative;
   width: 180px;
   height: 220px;
-  border-radius: 18px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  margin-bottom: 0.5rem;
+}
+
+.contact-photo-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--radius-md) + 2px);
+  background: var(--grad-ink);
+  z-index: -1;
+  opacity: 0.35;
 }
 
 .contact-photo {
@@ -32,195 +46,213 @@
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition: transform 0.5s ease;
+  transition: transform var(--dur-slow) var(--ease-out);
 }
 
 .contact-photo-wrap:hover .contact-photo {
-  transform: scale(1.04);
+  transform: scale(1.05);
 }
 
-.contact-photo-glow {
-  position: absolute;
-  inset: -2px;
-  border-radius: 20px;
-  background: var(--gradient-violet-teal);
-  z-index: -1;
-  opacity: 0.4;
-}
+/* ── Bio & links — sit on BLACK background ──────────────── */
 
+/* Bio paragraph — warm white, fully readable */
 .contact-bio {
   font-size: 0.93rem;
-  line-height: 1.8;
-  color: var(--text-muted);
+  line-height: 1.85;
+  color: #e8dcc8 !important;    /* light warm cream — clearly visible on black */
+  max-width: 38ch;
 }
 
 .contact-links {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: var(--space-2);
 }
 
+/* Link text — light on black */
 .contact-link-item {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: #c8bfad !important;    /* soft warm white, readable on black */
   text-decoration: none;
-  transition: color 0.25s ease, gap 0.25s ease;
-  padding: 0.55rem 0.75rem;
-  border-radius: 10px;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
   border: 1px solid transparent;
+  transition:
+    color var(--dur-fast) ease,
+    gap var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    background var(--dur-fast) ease;
 }
 
 .contact-link-item:hover {
-  color: var(--text);
-  gap: 1rem;
-  border-color: var(--border-color);
-  background: rgba(139, 92, 246, 0.04);
+  color: #ffffff !important;
+  gap: var(--space-4);
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .contact-link-item svg {
-  color: var(--accent-violet);
+  color: #c5873d;
   flex-shrink: 0;
-  font-size: 1rem;
+  width: 16px;
+  height: 16px;
 }
 
-/* ── Right column — form ─────────────────────────────────── */
+
+/* ── Right column — form card (light grey bg) ────────────── */
+
 .contact-form {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 20px;
-  padding: 2.5rem;
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: clamp(var(--space-6), 4vw, var(--space-10));
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: var(--space-5);
+  overflow: hidden;
 }
 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  gap: var(--space-4);
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: var(--space-2);
 }
 
+/* Labels — dark on light grey card, fully visible */
 .form-group label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
   font-family: var(--font-mono);
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a2420 !important;    /* near-black — maximum contrast on grey card */
 }
 
+/* Inputs — dark text on light input bg */
 .form-group input,
 .form-group textarea {
-  background: rgba(240, 238, 250, 0.04);
-  border: 1px solid rgba(240, 238, 250, 0.09);
-  border-radius: 10px;
+  width: 100%;
   padding: 0.78rem 1rem;
-  font-size: 0.88rem;
-  color: var(--text);
+  border-radius: var(--radius-sm);
   font-family: var(--font-body);
-  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
-  outline: none;
+  font-size: 0.88rem;
+  color: #1a2420 !important;    /* dark typed text on light input */
   resize: vertical;
+  outline: none;
+  transition:
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease;
 }
 
+/* Placeholder — medium dark, hint-like but visible */
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(240, 238, 250, 0.22);
+  color: rgba(26, 36, 32, 0.42) !important;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: var(--accent-violet);
-  background: rgba(139, 92, 246, 0.04);
-  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+  border-color: #9a6735;
+  box-shadow: 0 0 0 3px rgba(154, 103, 53, 0.18);
+  outline: none;
 }
 
+/* Submit button */
 .form-submit {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  background: var(--gradient-violet-teal);
-  border: none;
-  color: white;
-  padding: 0.9rem 2rem;
-  border-radius: 99px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  gap: var(--space-2);
+  align-self: flex-start;
+  padding: 0.78rem 1.8rem;
+  border-radius: var(--radius-full);
   font-family: var(--font-body);
-  margin-top: 0.25rem;
+  font-size: var(--text-sm);
+  font-weight: 700;
   letter-spacing: 0.03em;
+  cursor: pointer;
+  transition:
+    transform var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) ease;
 }
 
 .form-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.38);
+  box-shadow: 0 10px 32px rgba(24, 35, 31, 0.28);
 }
 
+.form-submit:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+
+/* ── Success state ───────────────────────────────────────── */
+
 .contact-success {
-  background: var(--bg-card);
-  border: 1px solid rgba(45, 212, 191, 0.28);
-  border-radius: 20px;
-  padding: 3rem;
+  border-radius: var(--radius-lg);
+  padding: clamp(var(--space-8), 5vw, var(--space-12));
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: var(--space-4);
   text-align: center;
 }
 
 .success-icon {
-  width: 60px;
-  height: 60px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  background: rgba(45, 212, 191, 0.1);
-  border: 2px solid var(--accent-teal);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.4rem;
-  color: var(--accent-teal);
-  line-height: 60px;
-  text-align: center;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  font-weight: 800;
 }
 
 .contact-success h3 {
   font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--text);
+  letter-spacing: -0.02em;
 }
 
 .contact-success p {
-  font-size: 0.88rem;
-  color: var(--text-muted);
+  font-size: var(--text-sm);
+  max-width: 36ch;
 }
 
+
 /* ── Responsive ─────────────────────────────────────────── */
+
 @media (max-width: 900px) {
   .contact .section-inner {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: var(--space-10);
   }
+
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .form-submit {
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .contact-photo-wrap {
     width: 140px;
-    height: 175px;
+    height: 172px;
+  }
+
+  .contact-bio {
+    max-width: none;
   }
 }
