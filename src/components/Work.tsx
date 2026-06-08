@@ -9,8 +9,8 @@ export default function Work() {
       <div className="section-inner">
         <div className="fade-up">
           <div className="section-tag">Selected Work</div>
-          <h2 className="section-heading">
-            Things I've <span className="gradient-text">Built</span>
+          <h2 className="section-heading1">
+            Things I've <span className="gradient-text1">Built</span>
           </h2>
           <p className="work-subtitle">
             A focused set of AI, Android, computer-vision, and full-stack products with hackathon recognition and real engineering depth.

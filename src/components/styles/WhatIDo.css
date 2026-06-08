@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════════════════════
-   WHAT I DO — Premium service cards section
+   WHAT I DO — Cleaned, High-Contrast Premium Services Section
 ══════════════════════════════════════════════════════════ */
 
 .whatido {
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-/* ── Section Header ─────────────────────────────────────── */
+/* ── Section Header Layout ──────────────────────────────── */
 
 .whatido-header {
   display: grid;
@@ -25,39 +25,26 @@
   gap: 1rem;
 }
 
-.section-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-violet);
-  background: rgba(139, 92, 246, 0.08);
-  border: 1px solid rgba(9, 2, 23, 0.18);
-  border-radius: 99px;
-  padding: 0.28rem 0.85rem;
-  width: fit-content;
+.whatido .section-heading {
+  font-size: clamp(3rem, 5.8vw, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
 }
 
-.section-eyebrow::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--accent-violet);
-  flex-shrink: 0;
+.whatido .section-heading .gradient-text {
+  color: #031425 !important;
+  -webkit-text-fill-color: currentColor !important;
+  background: none !important;
 }
 
 .whatido-intro {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: #010d1b !important; 
   line-height: 1.8;
   max-width: 420px;
 }
 
-/* ── Profile Image Frame ────────────────────────────────── */
+/* ── Profile Image Frame Layout ────────────────────────── */
 
 .whatido-header-img {
   display: flex;
@@ -65,7 +52,30 @@
   align-items: flex-end;
   gap: 0.85rem;
 }
+.whatido-img-label{
+  color:#021222 !important;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 0.55rem 0.8rem;
+  border: 1px solid rgba(2, 18, 34, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(2, 18, 34, 0.08);
+}
 
+.whatido-img-label span:first-child {
+  display: inline-block;
+  color: #031425 !important;
+  background: none !important;
+  -webkit-text-fill-color: currentColor !important;
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.whatido-img-label span:last-child {
+  color: rgba(3, 20, 37, 0.72) !important;
+  font-weight: 700;
+}
 .whatido-img-frame {
   position: relative;
   width: 165px;
@@ -77,7 +87,7 @@
     0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* Gradient glow ring behind the frame */
+/* Gradient glow ring behind the frame profile container */
 .whatido-img-accent {
   position: absolute;
   inset: -1.5px;
@@ -116,18 +126,7 @@
   text-transform: uppercase;
 }
 
-.whatido-img-label strong {
-  font-family: var(--font-display);
-  font-size: 1.6rem;
-  font-weight: 900;
-  background: var(--gradient-violet-teal);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-
-/* ── Cards Grid ─────────────────────────────────────────── */
+/* ── Service Cards Auto-Grid Setup ─────────────────────── */
 
 .whatido-grid {
   display: grid;
@@ -135,7 +134,6 @@
   gap: 1rem;
 }
 
-/* ── Cards grid ────────────────────────────────────────── */
 .whatido-card {
   position: relative;
   background: var(--bg-card);
@@ -159,56 +157,10 @@
     0 0 0 1px rgba(139, 92, 246, 0.1);
 }
 
-/* Animated top accent bar — sweeps in on hover */
-.card-top-bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--gradient-violet-teal);
-  opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition:
-    opacity 0.35s ease,
-    transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.whatido-card:hover .card-top-bar {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-/* Icon container with wiggle on hover */
-.card-icon-wrap {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
-  background: rgba(139, 92, 246, 0.1);
-  border: 1px solid rgba(139, 92, 246, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.35rem;
-  margin-bottom: 1.1rem;
-  flex-shrink: 0;
-  transition:
-    background 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.whatido-card:hover .card-icon-wrap {
-  background: rgba(17, 3, 52, 0.18);
-  border-color: rgba(9, 2, 25, 0.35);
-  transform: scale(1.08) rotate(-3deg);
-}
-
 .whatido-title {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--text);
+  color: #1a1a2e; /* Clear text clarity token on cream background elements */
   letter-spacing: -0.02em;
   margin-bottom: 0.55rem;
 }
@@ -216,40 +168,19 @@
 .whatido-desc {
   font-size: 0.84rem;
   line-height: 1.75;
-  color: var(--text-muted);
+  color: #161618; /* Inverted contrast visibility fix */
   margin-bottom: 1.25rem;
   flex: 1;
 }
 
-/* Skill pills at the bottom of each card */
-.card-skills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  margin-top: auto;
-}
-
-.card-skill {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: rgba(14, 10, 27, 0.75);
-  background: rgba(183, 158, 241, 0.06);
-  border: 1px solid rgba(10, 3, 26, 0.12);
-  border-radius: 99px;
-  padding: 0.18rem 0.6rem;
-}
-
-/* ── Marquee Strip ──────────────────────────────────────── */
+/* ── Modern React Fast Marquee Wrappers ─────────────────── */
 
 .marquee-section {
   margin-top: 4.5rem;
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
   overflow: hidden;
-  /* Soft edge fade */
+  /* Premium edge clipping mask blur properties */
   mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -266,46 +197,26 @@
   );
 }
 
-.marquee-track {
-  display: flex;
-  width: max-content;
-  animation: marquee-run 22s linear infinite;
-  padding: 1rem 0;
-}
-
-.marquee-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes marquee-run {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 .marquee-item {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0 2.25rem;
+  padding: 1rem 2.25rem;
   font-family: var(--font-display);
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: #121119;
   white-space: nowrap;
 }
 
-.marquee-dot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--accent-violet);
-  flex-shrink: 0;
-  opacity: 0.7;
+.marquee-star {
+  color: var(--accent-violet);
+  font-weight: 900;
 }
 
-/* ── Responsive ─────────────────────────────────────────── */
+/* ── Layout Breakpoint Responsive Queries ──────────────── */
 
 @media (max-width: 768px) {
   .whatido-header {
@@ -323,69 +234,12 @@
     height: 150px;
   }
 
-  .section-heading {
-    font-size: 1.8rem;
+  .whatido .section-heading {
+    font-size: clamp(2.6rem, 11vw, 3rem);
   }
 }
-/* ── LIGHT THEME FIX — Card text colors ── */
 
-.whatido-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1a1a2e;          /* Was var(--text) — too light on cream */
-  letter-spacing: -0.02em;
-  margin-bottom: 0.55rem;
-}
-
-.whatido-desc {
-  font-size: 0.84rem;
-  line-height: 1.75;
-  color: #161618;          /* Was var(--text-muted) — near invisible */
-  margin-bottom: 1.25rem;
-  flex: 1;
-}
-
-.card-skill {
-  font-family: var(--font-mono);
-  font-size: 0.6rem;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #050111;          /* Dark violet, readable on cream */
-  background: rgba(187, 165, 238, 0.1);
-  border: 1px solid rgba(7, 1, 21, 0.2);
-  border-radius: 99px;
-  padding: 0.18rem 0.6rem;
-}
-
-/* ── Section header text ── */
-.whatido-intro {
-  font-size: 0.95rem;
-  color: #18181a;          /* Dark enough on gray background */
-  line-height: 1.8;
-  max-width: 420px;
-}
-
-/* ── Marquee items ── */
-.marquee-item {
-  color: #121119;          /* Dark text on light bg */
-}
-
-/* ── Card abbr badge (AI, FS, KT, UX) ── */
-.card-abbr {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #130c24;
-  background: rgba(139, 92, 246, 0.12);
-  border: 1px solid rgba(5, 1, 14, 0.2);
-  border-radius: 6px;
-  padding: 0.2rem 0.5rem;
-  width: fit-content;
-  margin-bottom: 0.75rem;
-}
-/* Light theme card overrides */
+/* Light theme configuration options safety fallback rules */
 @media (prefers-color-scheme: light) {
   :root {
     --text: #1d1d39;

@@ -10,7 +10,7 @@ export default function WhatIDo() {
           <div className="whatido-header-text">
             <div className="section-tag">What I Do</div>
             <h2 className="section-heading">
-              My <span className="gradient-text">Superpowers</span>
+              <span className="gradient-text"> My Superpowers</span>
             </h2>
             <p className="whatido-intro">
               I blend AI engineering, full-stack development, Android craft, and motion design into products that feel alive.

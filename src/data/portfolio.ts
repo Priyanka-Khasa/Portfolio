@@ -143,25 +143,24 @@ export const projects = [
 ];
 
 export const techStack = [
-  { name: "React", category: "Frontend" },
+  { name: "React,HTML,CSS", category: "Frontend" },
   { name: "TypeScript", category: "Language" },
   { name: "JavaScript", category: "Language" },
-  { name: "Node.js", category: "Backend" },
+  { name: "Node.js,", category: "Backend" },
   { name: "Express", category: "Backend" },
   { name: "Python", category: "Language" },
-  { name: "Kotlin", category: "Language" },
   { name: "Java", category: "Language" },
-  { name: "MediaPipe", category: "AI / CV" },
-  { name: "OpenCV", category: "AI / CV" },
-  { name: "RunAnywhere SDK", category: "AI / CV" },
+  { name: "MediaPipe,NumPy", category: "AI / CV" },
+  { name: "OpenCV,Pandas", category: "AI / CV" },
+  { name: "RunAnywhere SDK,Scikit-learn", category: "AI / CV" },
   { name: "Jetpack Compose", category: "Android" },
   { name: "MongoDB", category: "Database" },
   { name: "SQL", category: "Database" },
   { name: "Firebase", category: "Backend" },
-  { name: "Tailwind", category: "Styling" },
+  { name: "Tailwind,Bootstrap", category: "Styling" },
   { name: "GSAP", category: "Animation" },
-  { name: "Arduino", category: "ECE" },
-  { name: "Git", category: "Tool" },
+  { name: "Arduino,Matlab,SciPy", category: "ECE" },
+  { name: "Git,GitHub, Docker,Notion,Jira", category: "Tool" },
 ];
 
 export const mainImages = [
