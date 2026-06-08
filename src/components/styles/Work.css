@@ -552,3 +552,148 @@
     transition-duration: 0.001ms !important;
   }
 }
+/* FINAL WORK SECTION MOBILE FIX */
+
+@media (max-width: 700px) {
+  .work {
+    padding: 4.5rem 0.9rem !important;
+    overflow-x: hidden !important;
+  }
+
+  .work-list {
+    gap: 1.5rem !important;
+  }
+
+  .work-card,
+  .work-card.reverse {
+    display: flex !important;
+    flex-direction: column !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    background: rgba(255, 255, 255, 0.92) !important;
+    border: 1px solid rgba(2, 20, 37, 0.08) !important;
+    box-shadow: 0 18px 48px rgba(2, 20, 37, 0.12) !important;
+  }
+
+  .work-card-image,
+  .work-card.reverse .work-card-image {
+    order: 0 !important;
+    width: 100% !important;
+    height: 230px !important;
+    min-height: 230px !important;
+    background: #f8faf7 !important;
+  }
+
+  .work-img-wrap,
+  .work-img-wrap img,
+  .work-card-image img {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+    filter: none !important;
+    transform: none !important;
+  }
+
+  .work-card-overlay {
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: linear-gradient(
+      to top,
+      rgba(2, 20, 37, 0.35),
+      transparent 55%
+    ) !important;
+    padding: 1rem !important;
+  }
+
+  .work-card-links {
+    gap: 0.55rem !important;
+  }
+
+  .work-card-links a {
+    width: 38px !important;
+    height: 38px !important;
+    opacity: 1 !important;
+    transform: none !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #021425 !important;
+    border: 1px solid rgba(2, 20, 37, 0.1) !important;
+  }
+
+  .work-card-content,
+  .work-card.reverse .work-card-content {
+    order: 1 !important;
+    padding: 1.25rem !important;
+    border: none !important;
+  }
+
+  .work-index {
+    font-size: 0.62rem !important;
+    margin-bottom: 0.65rem !important;
+  }
+
+  .work-title {
+    font-size: 1.35rem !important;
+    line-height: 1.12 !important;
+    color: #021425 !important;
+  }
+
+  .work-subtitle-text {
+    font-size: 0.64rem !important;
+    line-height: 1.4 !important;
+    color: #0f766e !important;
+  }
+
+  .work-desc {
+    font-size: 0.86rem !important;
+    line-height: 1.65 !important;
+    color: rgba(2, 20, 37, 0.72) !important;
+  }
+
+  .work-tags {
+    gap: 0.4rem !important;
+    margin-bottom: 1.3rem !important;
+  }
+
+  .work-tag {
+    font-size: 0.58rem !important;
+    padding: 0.32rem 0.62rem !important;
+    color: #6d28d9 !important;
+    background: rgba(139, 92, 246, 0.09) !important;
+  }
+
+  .work-actions {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.65rem !important;
+  }
+
+  .work-btn-ghost,
+  .work-btn-primary {
+    width: 100% !important;
+    min-height: 44px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .work {
+    padding-inline: 0.75rem !important;
+  }
+
+  .work-card-image {
+    height: 205px !important;
+    min-height: 205px !important;
+  }
+
+  .work-card-content {
+    padding: 1.05rem !important;
+  }
+
+  .work-title {
+    font-size: 1.22rem !important;
+  }
+}

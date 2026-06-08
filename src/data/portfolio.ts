@@ -115,7 +115,7 @@ export const projects = [
     image: "/images/GuestureOs.png",
     tags: ["Python", "OpenCV", "MediaPipe", "React", "WebSocket"],
     live: "#",
-    github: "https://github.com/Priyanka-Khasa/GuestureOs",
+    github: "https://github.com/Priyanka-Khasa/Gestra",
     accent: "#9a6735",
   },
   {
@@ -125,7 +125,7 @@ export const projects = [
     description: "An Airbnb-style travel platform with full CRUD, auth, Cloudinary image storage, Mapbox geolocation, MongoDB Atlas deployment, and a clean travel discovery flow.",
     image: "/images/Wonderlust.png",
     tags: ["Node.js", "Express", "MongoDB", "Cloudinary", "Mapbox"],
-    live: "#",
+    live: "https://wonderlust-by34.onrender.com",
     github: "https://github.com/Priyanka-Khasa/Wonderlust",
     accent: "#c5873d",
   },
@@ -137,7 +137,7 @@ export const projects = [
     image: "/images/image1.jpeg",
     tags: ["React", "TypeScript", "MediaPipe", "RunAnywhere SDK", "Web Bluetooth"],
     live: "#",
-    github: "https://github.com/Priyanka-Khasa",
+    github: "https://github.com/Priyanka-Khasa/web-starter-app",
     accent: "#182825",
   },
 ];

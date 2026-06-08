@@ -485,3 +485,108 @@ h1.landing-headline *,
   visibility: visible !important;
   display: inline-block !important;
 }
+/* FINAL LANDING MOBILE RESPONSIVE FIX */
+
+@media (max-width: 560px) {
+  .landing {
+    padding: 6.8rem 1rem 4rem !important;
+    overflow-x: hidden !important;
+  }
+
+  .landing-layout {
+    width: 100% !important;
+    gap: 2rem !important;
+  }
+
+  .landing-left {
+    width: 100% !important;
+    padding-inline: 0.2rem !important;
+  }
+
+  .landing-eyebrow {
+    max-width: 100% !important;
+    padding: 0.55rem 0.8rem !important;
+    font-size: 0.58rem !important;
+    line-height: 1.45 !important;
+    letter-spacing: 0.12em !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .landing-headline {
+    width: 100% !important;
+    font-size: clamp(2.05rem, 10vw, 2.55rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.045em !important;
+    text-align: center !important;
+  }
+
+  .landing-sub {
+    width: 100% !important;
+    max-width: 31ch !important;
+    margin: 0 auto !important;
+    font-size: 0.92rem !important;
+    line-height: 1.65 !important;
+    text-align: center !important;
+  }
+
+  .landing-cta {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.8rem !important;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 0.75rem 0.8rem !important;
+    font-size: 0.82rem !important;
+  }
+
+  .landing-stats {
+    width: 100% !important;
+    margin-top: 1.4rem !important;
+    padding: 1.15rem !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    border-radius: 22px !important;
+    background: rgba(255, 255, 255, 0.82) !important;
+    border: 1px solid rgba(2, 20, 37, 0.08) !important;
+    box-shadow: 0 16px 40px rgba(2, 20, 37, 0.1) !important;
+  }
+
+  .stat-item {
+    align-items: flex-start !important;
+    text-align: left !important;
+    padding: 0.15rem 0.55rem !important;
+  }
+
+  .stat-number {
+    font-size: 1.45rem !important;
+    color: #021425 !important;
+    -webkit-text-fill-color: #021425 !important;
+  }
+
+  .stat-label {
+    font-size: 0.58rem !important;
+    color: rgba(2, 20, 37, 0.55) !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .stat-divider {
+    display: none !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .landing {
+    padding-inline: 0.85rem !important;
+  }
+
+  .landing-cta {
+    grid-template-columns: 1fr !important;
+  }
+}

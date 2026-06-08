@@ -248,3 +248,161 @@
     --border-color: rgba(0, 0, 0, 0.08);
   }
 }
+/* FINAL WHAT I DO MOBILE RESPONSIVE FIX */
+
+.whatido {
+  overflow-x: hidden;
+}
+
+.whatido .section-heading,
+.whatido-intro {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .whatido {
+    padding: 4.5rem 1rem !important;
+  }
+
+  .whatido-header {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+
+  .whatido-header-text {
+    width: 100% !important;
+    align-items: flex-start !important;
+  }
+
+  .whatido .section-heading {
+    width: 100% !important;
+    font-size: clamp(2.1rem, 12vw, 3rem) !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.045em !important;
+    color: #021425 !important;
+  }
+
+  .whatido .section-heading span,
+  .whatido .section-heading .gradient-text {
+    color: #021425 !important;
+    -webkit-text-fill-color: #021425 !important;
+  }
+
+  .whatido-intro {
+    width: 100% !important;
+    max-width: 34ch !important;
+    font-size: 0.92rem !important;
+    line-height: 1.7 !important;
+    color: rgba(2, 20, 37, 0.78) !important;
+  }
+
+  .whatido-header-img {
+    width: 100% !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+
+  .whatido-img-frame {
+    width: 105px !important;
+    height: 130px !important;
+    border-radius: 18px !important;
+  }
+
+  .whatido-img-label {
+    font-size: 0.58rem !important;
+    padding: 0.55rem 0.7rem !important;
+    border-radius: 14px !important;
+  }
+
+  .whatido-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.9rem !important;
+  }
+
+  .whatido-card {
+    padding: 1.35rem 1.15rem !important;
+    border-radius: 18px !important;
+    background: rgba(255, 255, 255, 0.86) !important;
+  }
+
+  .whatido-title {
+    font-size: 1rem !important;
+    color: #021425 !important;
+  }
+
+  .whatido-desc {
+    font-size: 0.86rem !important;
+    line-height: 1.65 !important;
+    color: rgba(2, 20, 37, 0.76) !important;
+  }
+
+  .marquee-section {
+    margin-top: 3rem !important;
+  }
+
+  .marquee-item {
+    padding: 0.8rem 1.5rem !important;
+    font-size: 0.72rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .whatido {
+    padding: 4rem 0.85rem !important;
+  }
+
+  .whatido .section-heading {
+    font-size: 2.15rem !important;
+  }
+
+  .whatido-intro {
+    font-size: 0.88rem !important;
+  }
+
+  .whatido-header-img {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .whatido-img-frame {
+    width: 100% !important;
+    height: 220px !important;
+  }
+}
+/* FINAL WHAT I DO IMAGE FIX */
+
+@media (max-width: 420px) {
+  .whatido-header-img {
+    width: 100% !important;
+  }
+
+  .whatido-img-frame {
+    width: 100% !important;
+    height: 280px !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+  }
+
+  .whatido-img-frame img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 32% !important;
+  }
+
+  .whatido-img-label {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .whatido-img-frame {
+    height: 240px !important;
+  }
+}
