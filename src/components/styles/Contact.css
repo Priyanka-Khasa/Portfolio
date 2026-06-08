@@ -189,8 +189,35 @@
   box-shadow: 0 10px 32px rgba(24, 35, 31, 0.28);
 }
 
+.form-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+  transform: none;
+}
+
 .form-submit:active {
   transform: translateY(1px) scale(0.98);
+}
+
+.form-error {
+  margin: -0.4rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(154, 103, 53, 0.22);
+  border-radius: var(--radius-sm);
+  background: rgba(154, 103, 53, 0.08);
+  color: #1a2420 !important;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.form-error a {
+  color: #9a6735;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.form-error a:hover {
+  text-decoration: underline;
 }
 
 

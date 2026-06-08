@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-
-:root {
-  --bg: #f7f5ef;
-  --bg2: #eef1eb;
-  --bg-card: rgba(255, 255, 255, 0.72);
-  --accent-violet: #193730;
-  --accent-violet-light: #244b42;
-  --accent-teal: #193730;
-  --accent-gold: #193730;
-  --accent-rose: #193730;
-  --text: #193730;
-  --text-muted: rgba(25, 55, 48, 0.66);
-  --border-color: rgba(25, 55, 48, 0.12);
-  --gradient-violet-teal: linear-gradient(135deg, #193730 0%, #315d52 100%);
-  --gradient-gold-rose: linear-gradient(135deg, #193730 0%, #315d52 100%);
-=======
 /* ============================================================
    DESIGN TOKENS
    ============================================================ */
@@ -115,7 +98,6 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
->>>>>>> 5fe3acb (Worked on portfolio)
 }
 
 body {
@@ -1342,11 +1324,30 @@ p {
     width: 170px;
     border-radius: var(--radius-md);
   }
-<<<<<<< HEAD
+
+  .landing-headline {
+    font-size: clamp(2.2rem, 9vw, 3rem);
+  }
 }
 
 
 /* Final light editorial palette and portrait crop corrections. */
+:root {
+  --bg: #f7f5ef;
+  --bg2: #eef1eb;
+  --bg-card: rgba(255, 255, 255, 0.82);
+  --accent-violet: #193730;
+  --accent-violet-light: #244b42;
+  --accent-teal: #193730;
+  --accent-gold: #9a6735;
+  --accent-rose: #8d4d3a;
+  --text: #193730;
+  --text-muted: rgba(25, 55, 48, 0.72);
+  --border-color: rgba(25, 55, 48, 0.14);
+  --gradient-violet-teal: linear-gradient(135deg, #193730 0%, #315d52 100%);
+  --gradient-gold-rose: linear-gradient(135deg, #193730 0%, #9a6735 100%);
+}
+
 body {
   background: #f7f5ef;
 }
@@ -1400,10 +1401,91 @@ body::before {
 .techstack-img-frame img { object-position: 50% 10%; }
 .contact-photo { object-position: 50% 12%; }
 .strip-frame img { object-position: 50% 14%; }
-=======
 
-  .landing-headline {
-    font-size: clamp(2.2rem, 9vw, 3rem);
+/* Final Journey section light-theme corrections. */
+.career {
+  background:
+    radial-gradient(circle at 84% 12%, rgba(154, 103, 53, 0.18), transparent 34%),
+    radial-gradient(circle at 12% 35%, rgba(244, 237, 223, 0.08), transparent 30%),
+    linear-gradient(180deg, #111613 0%, #070908 100%);
+  color: #193730;
+}
+
+.career .section-inner {
+  width: min(100%, 1180px);
+  max-width: none;
+}
+
+.career .section-heading,
+.career .gradient-text {
+  color: #f7f1e6;
+  -webkit-text-fill-color: currentColor;
+  background: none;
+  text-shadow: none;
+}
+
+.career-intro {
+  color: rgba(247, 241, 230, 0.82);
+  font-weight: 500;
+}
+
+.timeline-role {
+  color: #193730;
+  -webkit-text-fill-color: currentColor;
+  background: none;
+  text-shadow: none;
+}
+
+.career-timeline {
+  width: min(100%, 980px);
+  max-width: none;
+  margin-inline: auto;
+  padding-left: 4.2rem;
+}
+
+.timeline-item {
+  display: block;
+  width: 100%;
+}
+
+.timeline-card {
+  width: 100%;
+  min-height: 158px;
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(25, 55, 48, 0.12);
+  color: #193730;
+  box-shadow: 0 22px 55px rgba(25, 55, 48, 0.08);
+}
+
+.timeline-year,
+.timeline-company {
+  color: #9a6735;
+}
+
+.timeline-desc {
+  color: rgba(25, 55, 48, 0.72);
+  font-weight: 500;
+}
+
+.timeline-node {
+  background: #fff;
+  color: #193730;
+  border-color: rgba(25, 55, 48, 0.16);
+}
+
+.timeline-item:hover .timeline-node {
+  background: #193730;
+  color: #fff;
+}
+
+.career-img-badge {
+  background: rgba(255, 255, 255, 0.86);
+  color: #193730;
+  border-color: rgba(25, 55, 48, 0.12);
+}
+
+@media (max-width: 560px) {
+  .career-timeline {
+    padding-left: 0;
   }
 }
->>>>>>> 5fe3acb (Worked on portfolio)

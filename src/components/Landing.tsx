@@ -21,6 +21,11 @@ export default function Landing() {
     <section className="landing" id="landing">
       <div className="landing-bg-glow" />
       <div className="landing-grid-texture" />
+      <div className="landing-kinetic-text" aria-hidden="true">
+        <span>AI BUILDER</span>
+        <span>VISION</span>
+        <span>ANDROID</span>
+      </div>
 
       <div className="landing-layout">
         <div className="landing-left">

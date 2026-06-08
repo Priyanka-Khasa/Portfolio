@@ -5,13 +5,50 @@ import "./styles/Contact.css";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
-    setForm({ name: "", email: "", message: "" });
-    setTimeout(() => setSent(false), 4000);
+    setSending(true);
+    setError("");
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${aboutData.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: `Portfolio message from ${form.name}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Message service rejected the request.");
+      }
+
+      setSent(true);
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setSent(false), 5000);
+    } catch {
+      const subject = encodeURIComponent(`Portfolio message from ${form.name}`);
+      const body = encodeURIComponent(
+        `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
+      );
+      setError(
+        `I couldn't send this automatically. Please email me directly: mailto:${aboutData.email}?subject=${subject}&body=${body}`
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -98,9 +135,15 @@ export default function Contact() {
                   onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                 />
               </div>
-              <button type="submit" className="form-submit">
+              {error && (
+                <p className="form-error">
+                  {error.split("mailto:")[0]}
+                  <a href={`mailto:${error.split("mailto:")[1]}`}>Open email app</a>
+                </p>
+              )}
+              <button type="submit" className="form-submit" disabled={sending}>
                 <FiSend />
-                Send Message
+                {sending ? "Sending..." : "Send Message"}
               </button>
             </form>
           )}

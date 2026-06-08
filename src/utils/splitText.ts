@@ -8,13 +8,16 @@ export function splitTextIntoSpans(
   elements.forEach((el) => {
     const text = el.textContent ?? "";
     el.innerHTML = text
-      .split("")
-      .map((ch) =>
-        ch === " "
-          ? `<span class="${className}-space"> </span>`
-          : `<span class="${className}">${ch}</span>`
+      .trim()
+      .split(/\s+/)
+      .map(
+        (word) =>
+          `<span class="word">${word
+            .split("")
+            .map((ch) => `<span class="${className}">${ch}</span>`)
+            .join("")}</span>`
       )
-      .join("");
+      .join(`<span class="${className}-space" aria-hidden="true"> </span>`);
   });
 }
 
