@@ -66,6 +66,13 @@ export const careerItems = [
     description: "Represented Google on campus, organized a student hackathon, and ran Gemini AI sessions focused on practical AI integration.",
   },
   {
+    year: "Jun-Jul 2026",
+    role: "Full Stack Developer Intern",
+    company: "InAmigos Foundation",
+    type: "work",
+    description: "Completed a two-week web development internship from 20 June 2026 to 3 July 2026, contributing to full-stack development tasks in a flexible remote setup.",
+  },
+  {
     year: "2025-2026",
     role: "Backend Developer Intern",
     company: "Vishvena Techno Solutions",
