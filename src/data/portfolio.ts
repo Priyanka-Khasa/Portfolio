@@ -109,6 +109,17 @@ export const projects = [
   },
   {
     id: 2,
+    title: "BPSMV Resource Hub",
+    subtitle: "Student Academic Resource Portal",
+    description: "A centralized resource hub for BPSMV students to quickly access notes, syllabus material, previous papers, announcements, and essential academic links through a clean, student-friendly web experience.",
+    image: "/images/BPSMVResourceHub.png",
+    tags: ["React", "TypeScript", "Student Portal", "Resources", "Responsive UI"],
+    live: "https://bpsmv-notes.vercel.app/",
+    github: "https://github.com/Priyanka-Khasa/BPSMV-NOTES-",
+    accent: "#0f3d2e",
+  },
+  {
+    id: 3,
     title: "Gestra",
     subtitle: "Gesture-Controlled Desktop Interface",
     description: "A touchless desktop controller using MediaPipe hand landmarks for cursor, scroll, and media control, with a live React dashboard showing gesture confidence, FPS, and action feed. Winner at HackXtreme by GeeksForGeeks.",
@@ -119,7 +130,7 @@ export const projects = [
     accent: "#9a6735",
   },
   {
-    id: 3,
+    id: 4,
     title: "Wanderlust",
     subtitle: "Full-Stack MERN Travel Platform",
     description: "An Airbnb-style travel platform with full CRUD, auth, Cloudinary image storage, Mapbox geolocation, MongoDB Atlas deployment, and a clean travel discovery flow.",
@@ -130,7 +141,7 @@ export const projects = [
     accent: "#c5873d",
   },
   {
-    id: 4,
+    id: 5,
     title: "Fitness Coach",
     subtitle: "AI Real-Time Posture Analysis",
     description: "A privacy-first AI coaching app with hybrid on-device/cloud intelligence, 30 fps posture tracking, confidence thresholding, and Web Bluetooth heart-rate integration. Grand Finalist at Vibeathon by ThoughtWorks.",

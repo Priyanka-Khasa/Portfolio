@@ -1,3 +1,39 @@
 <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="180" height="180" rx="36" fill="#FF3C00"/>
+  <title>Priyanka Khasa</title>
+  <defs>
+    <linearGradient id="base" x1="25" y1="18" x2="157" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#07090E"/>
+      <stop offset="0.45" stop-color="#101A17"/>
+      <stop offset="1" stop-color="#25463D"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="32" y1="20" x2="151" y2="157" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF6D8"/>
+      <stop offset="0.48" stop-color="#C5873D"/>
+      <stop offset="1" stop-color="#6F332C"/>
+    </linearGradient>
+    <linearGradient id="letterP" x1="42" y1="43" x2="84" y2="138" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F0"/>
+      <stop offset="1" stop-color="#EAD8BD"/>
+    </linearGradient>
+    <linearGradient id="letterK" x1="95" y1="41" x2="139" y2="139" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0B8"/>
+      <stop offset="0.38" stop-color="#D9A24F"/>
+      <stop offset="1" stop-color="#9A6735"/>
+    </linearGradient>
+    <filter id="softShadow" x="20" y="26" width="140" height="134" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect x="8" y="8" width="164" height="164" rx="42" fill="url(#base)"/>
+  <rect x="14" y="14" width="152" height="152" rx="36" stroke="url(#rim)" stroke-width="4"/>
+  <path d="M33 139L147 41" stroke="#FFF9F0" stroke-opacity="0.1" stroke-width="10" stroke-linecap="round"/>
+
+  <g filter="url(#softShadow)">
+    <path d="M42 139V43H79C99 43 112 55 112 74C112 93 99 105 79 105H64V139H42ZM64 86H77C86 86 92 81 92 74C92 66 86 61 77 61H64V86Z" fill="url(#letterP)"/>
+    <path d="M103 139V43H125V80L151 43H176L142 88L178 139H151L125 100V139H103Z" fill="url(#letterK)" transform="translate(-14 0)"/>
+  </g>
+
+  <path d="M138 30L142 39L151 43L142 47L138 56L134 47L125 43L134 39L138 30Z" fill="#F0C86A"/>
+  <circle cx="40" cy="40" r="4.5" fill="#FFF9F0" fill-opacity="0.88"/>
 </svg>
