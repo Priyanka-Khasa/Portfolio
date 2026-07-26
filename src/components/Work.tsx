@@ -18,56 +18,64 @@ export default function Work() {
         </div>
 
         <div className="work-list">
-          {projects.map((project, i) => (
-            <article
-              key={project.id}
-              className={`work-card ${i % 2 !== 0 ? "reverse" : ""} scale-in`}
-            >
-              <div className="work-card-image">
-                <WorkImage src={project.image} alt={project.title} />
-                <div className="work-card-overlay">
-                  <div className="work-card-links">
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                      <FiGithub />
-                    </a>
-                    <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label="Live">
-                      <FiExternalLink />
-                    </a>
+          {projects.map((project, i) => {
+            const hasLiveDemo = project.live !== "#";
+
+            return (
+              <article
+                key={project.id}
+                className={`work-card ${i % 2 !== 0 ? "reverse" : ""} scale-in`}
+              >
+                <div className="work-card-image">
+                  <WorkImage src={project.image} alt={project.title} />
+                  <div className="work-card-overlay">
+                    <div className="work-card-links">
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <FiGithub />
+                      </a>
+                      {hasLiveDemo && (
+                        <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label="Live demo">
+                          <FiExternalLink />
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="work-card-content">
-                <span className="work-index">0{i + 1}</span>
-                <h3 className="work-title">{project.title}</h3>
-                <p className="work-subtitle-text">{project.subtitle}</p>
-                <p className="work-desc">{project.description}</p>
-                <div className="work-tags">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="work-tag">{tag}</span>
-                  ))}
+                <div className="work-card-content">
+                  <span className="work-index">0{i + 1}</span>
+                  <h3 className="work-title">{project.title}</h3>
+                  <p className="work-subtitle-text">{project.subtitle}</p>
+                  <p className="work-desc">{project.description}</p>
+                  <div className="work-tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="work-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <div className="work-actions">
+                    <a
+                      href={project.github}
+                      className="work-btn-ghost"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FiGithub /> GitHub
+                    </a>
+                    {hasLiveDemo && (
+                      <a
+                        href={project.live}
+                        className="work-btn-primary"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FiExternalLink /> Live Demo
+                      </a>
+                    )}
+                  </div>
                 </div>
-                <div className="work-actions">
-                  <a
-                    href={project.github}
-                    className="work-btn-ghost"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FiGithub /> GitHub
-                  </a>
-                  <a
-                    href={project.live}
-                    className="work-btn-primary"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FiExternalLink /> Live Demo
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

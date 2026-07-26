@@ -4,6 +4,15 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export function initScrollAnimations(): void {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    gsap.set(".fade-up, .fade-left, .fade-right, .scale-in, .stagger-group > *", {
+      clearProps: "transform,opacity",
+      opacity: 1,
+    });
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    return;
+  }
+
   const fadeUps = document.querySelectorAll<HTMLElement>(".fade-up");
   fadeUps.forEach((el) => {
     gsap.fromTo(

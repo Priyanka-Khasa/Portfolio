@@ -10,6 +10,10 @@ export default function Landing() {
   const hasAnimated = useRef(false);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     splitTextIntoSpans(".landing-headline");
     if (!hasAnimated.current) {
       hasAnimated.current = true;

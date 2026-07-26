@@ -16,12 +16,12 @@ export default function Cursor() {
     };
 
     const handleEnterLink = () => {
-      ringRef.current?.classList.add("cursor-hover");
-      dotRef.current?.classList.add("cursor-hover");
+      ringRef.current?.classList.add("is-hovering");
+      dotRef.current?.classList.add("is-hovering");
     };
     const handleLeaveLink = () => {
-      ringRef.current?.classList.remove("cursor-hover");
-      dotRef.current?.classList.remove("cursor-hover");
+      ringRef.current?.classList.remove("is-hovering");
+      dotRef.current?.classList.remove("is-hovering");
     };
 
     document.addEventListener("mousemove", handleMove);
@@ -45,6 +45,10 @@ export default function Cursor() {
 
     return () => {
       document.removeEventListener("mousemove", handleMove);
+      links.forEach((el) => {
+        el.removeEventListener("mouseenter", handleEnterLink);
+        el.removeEventListener("mouseleave", handleLeaveLink);
+      });
       cancelAnimationFrame(raf);
     };
   }, []);

@@ -35,35 +35,41 @@ export default function MyWorks() {
       </div>
 
       <div className="myworks-grid stagger-group">
-        {projects.map((project) => (
-          <article key={project.id} className="myworks-card">
-            <div className="myworks-card-img">
-              <WorkImage src={project.image} alt={project.title} />
-              <div className="myworks-hover-overlay">
-                <div className="myworks-overlay-links">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer">
-                    <FiGithub />
-                  </a>
-                  <a href={project.live} target="_blank" rel="noopener noreferrer">
-                    <FiExternalLink />
-                  </a>
+        {projects.map((project) => {
+          const hasLiveDemo = project.live !== "#";
+
+          return (
+            <article key={project.id} className="myworks-card">
+              <div className="myworks-card-img">
+                <WorkImage src={project.image} alt={project.title} />
+                <div className="myworks-hover-overlay">
+                  <div className="myworks-overlay-links">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} GitHub`}>
+                      <FiGithub />
+                    </a>
+                    {hasLiveDemo && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} live demo`}>
+                        <FiExternalLink />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="myworks-card-info">
-              <div className="myworks-card-top">
-                <h2 className="myworks-card-title">{project.title}</h2>
-                <span className="myworks-card-sub">{project.subtitle}</span>
+              <div className="myworks-card-info">
+                <div className="myworks-card-top">
+                  <h2 className="myworks-card-title">{project.title}</h2>
+                  <span className="myworks-card-sub">{project.subtitle}</span>
+                </div>
+                <p className="myworks-card-desc">{project.description}</p>
+                <div className="myworks-tags">
+                  {project.tags.map((t) => (
+                    <span key={t} className="work-tag">{t}</span>
+                  ))}
+                </div>
               </div>
-              <p className="myworks-card-desc">{project.description}</p>
-              <div className="myworks-tags">
-                {project.tags.map((t) => (
-                  <span key={t} className="work-tag">{t}</span>
-                ))}
-              </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
 
       <Footer />

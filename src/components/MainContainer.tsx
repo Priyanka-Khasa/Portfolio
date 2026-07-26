@@ -18,6 +18,14 @@ import "./styles/AestheticRefresh.css";
 
 export default function MainContainer() {
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let frame = 0;
+
+    if (reduceMotion) {
+      initScrollAnimations();
+      return;
+    }
+
     const lenis = new Lenis({
       lerp: 0.085,
       smoothWheel: true,
@@ -25,9 +33,9 @@ export default function MainContainer() {
 
     const raf = (time: number) => {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      frame = requestAnimationFrame(raf);
     };
-    requestAnimationFrame(raf);
+    frame = requestAnimationFrame(raf);
 
     const timer = setTimeout(() => {
       initScrollAnimations();
@@ -35,6 +43,7 @@ export default function MainContainer() {
 
     return () => {
       lenis.destroy();
+      cancelAnimationFrame(frame);
       clearTimeout(timer);
     };
   }, []);
