@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { imageSizes } from "../data/portfolio";
 
 interface WorkImageProps {
   src: string;
@@ -8,6 +9,7 @@ interface WorkImageProps {
 
 export default function WorkImage({ src, alt, className = "" }: WorkImageProps) {
   const [loaded, setLoaded] = useState(false);
+  const size = imageSizes[src];
 
   return (
     <div className={`work-img-wrap ${className}`}>
@@ -15,9 +17,12 @@ export default function WorkImage({ src, alt, className = "" }: WorkImageProps) 
       <img
         src={src}
         alt={alt}
+        width={size?.width}
+        height={size?.height}
         onLoad={() => setLoaded(true)}
         style={{ opacity: loaded ? 1 : 0 }}
         loading="lazy"
+        decoding="async"
       />
     </div>
   );

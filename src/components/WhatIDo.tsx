@@ -1,5 +1,5 @@
 import Marquee from "react-fast-marquee";
-import { whatIDo, marqueeItems } from "../data/portfolio";
+import { whatIDo, imageSizes, marqueeItems } from "../data/portfolio";
 import "./styles/WhatIDo.css";
 
 export default function WhatIDo() {
@@ -18,7 +18,14 @@ export default function WhatIDo() {
           </div>
           <div className="whatido-header-img">
             <div className="whatido-img-frame">
-              <img src="/images/image2.jpeg" alt="Skills visual" loading="lazy" />
+              <img
+                src="/images/image2.jpeg"
+                alt="Skills visual"
+                width={imageSizes["/images/image2.jpeg"].width}
+                height={imageSizes["/images/image2.jpeg"].height}
+                loading="lazy"
+                decoding="async"
+              />
               <div className="whatido-img-accent" />
             </div>
             <div className="whatido-img-label">

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { aboutData } from "../data/portfolio";
+import { aboutData, imageSizes } from "../data/portfolio";
 import { FiMapPin, FiMail, FiDownload } from "react-icons/fi";
 import "./styles/About.css";
 
@@ -35,7 +35,15 @@ export default function About() {
       <div className="section-inner">
         <div className="about-image-col fade-left">
           <div className="about-img-wrap" ref={imgRef}>
-            <img src="/images/main_image2.jpeg" alt="Priyanka Khasa" className="about-photo" />
+            <img
+              src="/images/main_image2.jpeg"
+              alt="Priyanka Khasa"
+              className="about-photo"
+              width={imageSizes["/images/main_image2.jpeg"].width}
+              height={imageSizes["/images/main_image2.jpeg"].height}
+              loading="lazy"
+              decoding="async"
+            />
             <div className="about-img-border" />
             <div className="about-badge">
               <span className="badge-emoji">*</span>

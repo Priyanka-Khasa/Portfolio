@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { aboutData, mainImages } from "../data/portfolio";
+import { aboutData, imageSizes, mainImages } from "../data/portfolio";
 import { splitTextIntoSpans } from "../utils/splitText";
 import { runInitialFX } from "../utils/initialFX";
 import "./styles/Landing.css";
@@ -87,7 +87,14 @@ export default function Landing() {
             <div className="collage-accent collage-accent-top">Designing with purpose</div>
             {mainImages.map((src, index) => (
               <figure className={`collage-photo collage-photo-${index + 1}`} key={src}>
-                <img src={src} alt={`Priyanka Khasa portrait ${index + 1}`} loading={index < 2 ? "eager" : "lazy"} />
+                <img
+                  src={src}
+                  alt={`Priyanka Khasa portrait ${index + 1}`}
+                  width={imageSizes[src]?.width}
+                  height={imageSizes[src]?.height}
+                  loading={index < 2 ? "eager" : "lazy"}
+                  decoding={index < 2 ? "sync" : "async"}
+                />
                 <figcaption>{photoNotes[index]}</figcaption>
               </figure>
             ))}

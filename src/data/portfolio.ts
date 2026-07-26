@@ -217,3 +217,18 @@ export const galleryImages = [
   "/images/image3.jpeg",
   "/images/image4.jpeg",
 ];
+
+export const imageSizes: Record<string, { width: number; height: number }> = {
+  "/images/BPSMVResourceHub.png": { width: 1672, height: 941 },
+  "/images/ClassConnect.png": { width: 1024, height: 1536 },
+  "/images/GuestureOs.png": { width: 1408, height: 768 },
+  "/images/Wonderlust.png": { width: 1536, height: 1024 },
+  "/images/image1.jpeg": { width: 896, height: 1195 },
+  "/images/image2.jpeg": { width: 896, height: 1195 },
+  "/images/image3.jpeg": { width: 1195, height: 896 },
+  "/images/image4.jpeg": { width: 768, height: 1364 },
+  "/images/main_image1.jpeg": { width: 1280, height: 960 },
+  "/images/main_image2.jpeg": { width: 946, height: 895 },
+  "/images/main_image3.jpeg": { width: 1280, height: 960 },
+  "/images/main_image4.jpeg": { width: 1080, height: 1074 },
+};

@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar ${scrolled ? "navbar-scrolled" : ""}`}>
       <div className="navbar-inner">
-        <a className="navbar-logo" href="/">
+        <a className="navbar-logo" href="/" aria-label="Priyanka Khasa home">
           <span className="logo-pk">PK</span>
           <span className="logo-dot">.</span>
         </a>
@@ -51,6 +51,8 @@ export default function Navbar() {
           className={`navbar-burger ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
           <span />
           <span />
@@ -58,7 +60,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      <div className={`navbar-mobile ${menuOpen ? "open" : ""}`}>
+      <div className={`navbar-mobile ${menuOpen ? "open" : ""}`} id="mobile-navigation">
         {navLinks.map((link) => (
           <button
             key={link.label}
